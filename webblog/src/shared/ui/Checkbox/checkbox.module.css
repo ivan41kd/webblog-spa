@@ -1,0 +1,41 @@
+.chk {
+  display: flex;
+  flex-direction: column;
+}
+.chk .chk-wrapper {
+  display: flex;
+}
+.chk .chk-input {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  background: white;
+  border: 2px solid #ddd;
+  margin-right: 4px;
+  align-items: center;
+  cursor: pointer;
+}
+.chk.chk-xs .chk-wrapper {
+  width: 12px;
+  height: 12px;
+}
+.chk.chk-xs .chk-label {
+  font-size: 12px;
+}
+.chk.chk-sm .chk-label {
+  font-size: 14px;
+}
+.chk.chk-md .chk-label {
+  font-size: 16px;
+}
+.chk.chk-lg .chk-label {
+  font-size: 18px;
+}
+.chk.chk-sm .chk-wrapper {
+  width: 16px;
+  height: 16px;
+}
+.chk.chk-md .chk-wrapper {
+  width: 24px;
+  height: 24px;
+}

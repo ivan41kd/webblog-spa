@@ -1,0 +1,56 @@
+@use "@shared/styles/abstracts/variables" as *;
+.btn {
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+  background: $brand;
+  transition: 0.5s;
+  &:hover {
+    background: #002866;
+    transition: 0.5s;
+  }
+
+  &:disabled {
+    background: #f3f3f3 !important;
+    color: #a6a6a6 !important;
+  }
+  &.primary {
+    background: $primary;
+    &:hover {
+      background: #333333;
+    }
+  }
+  &.secondary {
+    background: $secondary;
+    color: black;
+    &:hover {
+      background: #d6d6d6;
+    }
+  }
+  &.tertiary {
+    background: $tertiary;
+    color: black;
+    &:hover {
+      background: #ebebeb;
+    }
+  }
+  &.xs {
+    padding: 6px 10.5px;
+    max-width: max-content;
+  }
+  &.sm {
+    padding: 10px 12px;
+    max-width: 100%;
+    width: 100%;
+  }
+  &.md {
+    padding: 14px 16px;
+    max-width: 100%;
+    width: 100%;
+  }
+  &.lg {
+    padding: 16px 20px;
+    max-width: 100%;
+    width: 100%;
+  }
+}

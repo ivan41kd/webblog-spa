@@ -1,0 +1,78 @@
+@use "@shared/styles/abstracts/variables" as *;
+.chk {
+  display: flex;
+  flex-direction: column;
+
+  & .chk-wrapper {
+    display: flex;
+    overflow: hidden;
+    border-radius: 4px;
+    position: relative;
+  }
+  & .chk-input {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background: white;
+    border: 2px solid #ddd;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: inherit;
+    z-index: -1;
+  }
+  &.chk-primary .chk-input.chk-checked {
+    background: $primary;
+    border: 2px solid $primary;
+  }
+  &.chk-secondary .chk-input.chk-checked {
+    background: $secondary;
+    border: 2px solid $secondary;
+  }
+
+  & .chk-input.chk-checked {
+    background: $brand;
+    border: 2px solid $brand;
+  }
+  & .chk-icon {
+    opacity: 0;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    transition: 0.3s;
+  }
+  & .chk-input.chk-checked .chk-icon {
+    opacity: 1;
+    transition: 0.3s;
+  }
+
+  &.chk-xs .chk-wrapper {
+    width: 12px;
+    height: 12px;
+  }
+  &.chk-xs .chk-label {
+    font-size: 12px;
+  }
+  &.chk-sm .chk-label {
+    font-size: 14px;
+  }
+  &.chk-md .chk-label {
+    font-size: 16px;
+  }
+  &.chk-lg .chk-label {
+    font-size: 18px;
+  }
+  &.chk-sm .chk-wrapper {
+    width: 14px;
+    height: 14px;
+  }
+  &.chk-md .chk-wrapper {
+    width: 16px;
+    height: 16px;
+  }
+  &.chk-lg .chk-wrapper {
+    width: 18px;
+    height: 18px;
+  }
+}
