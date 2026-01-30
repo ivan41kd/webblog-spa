@@ -1,6 +1,6 @@
-export * from "./Button/type";
-export * from "./Font/type";
-export * from "./Text/type";
-export * from "./Title/type";
-export * from "./Input/type";
-export * from "./Checkbox/type";
+export type { ButtonPropsType } from "./Button";
+export type { FontSizeType, FontWeightType } from "./Font";
+export type { TextPropsType } from "./Text";
+export type { TitlePropsType } from "./Title/type";
+export type { InputPropsType } from "./Input/type";
+export type { CheckboxPropsType } from "./Checkbox/type";

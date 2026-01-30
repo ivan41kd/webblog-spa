@@ -1,4 +1,4 @@
-import type { InputProps } from "../types/index";
+import type { InputPropsType } from "../types/index";
 import styles from "./input.module.scss";
 
 import { useIsFocused } from "../../lib/useIsFocused";
@@ -13,21 +13,22 @@ export const Input = ({
   fontSize = "md",
   fontWeight = "regular",
   type = "text",
-  disabled,
+  isDisabled = false,
   readOnly,
-  required = false,
+  isRequired = false,
   icon = null,
   iconPlace = "left",
   variant = "default",
-}: InputProps) => {
+}: InputPropsType) => {
   const { inputRef, isFocused } = useIsFocused();
+
   return (
     <div
-      className={`${styles.input} ${styles[`input-${size}`]} ${(variant !== "default" && styles[`input-${variant}`]) || ""} `}
+      className={`${styles.input} ${(isDisabled && styles["input-disabled"]) || ""} ${styles[`input-${size}`]} ${(variant !== "default" && styles[`input-${variant}`]) || ""} `}
     >
       {label && (
         <label className={styles["input-label"]}>
-          {label} {required && <span>*</span>}
+          {label} {isRequired && <span>*</span>}
         </label>
       )}
       <div
@@ -41,10 +42,10 @@ export const Input = ({
           defaultValue={value}
           placeholder={placeholder}
           type={type}
-          disabled={disabled}
+          disabled={isDisabled}
           readOnly={readOnly}
           name={name}
-          required={required}
+          required={isRequired}
           onChange={onChange}
           ref={inputRef}
         />

@@ -1,19 +1,19 @@
-import type { CheckboxProps } from "../types/index";
+import type { CheckboxPropsType } from "../types/index";
 import styles from "./checkbox.module.scss";
 import { MdOutlineDoneOutline } from "react-icons/md";
 export const Checkbox = ({
-  className = "chk",
+  className = "",
   name = "checkbox",
   value,
   label = "Label",
-  checked = false,
-  disabled,
-  required = false,
+  isChecked = false,
+  isDisabled,
+  isRequired = false,
   size = "md",
   colorIcon = "white",
   backgroundColor = "primary",
   onChange,
-}: CheckboxProps) => {
+}: CheckboxPropsType) => {
   const iconSize =
     size === "xs"
       ? 12
@@ -26,25 +26,29 @@ export const Checkbox = ({
             : 20;
   return (
     <div
-      className={`${className} ${styles.chk} ${styles[`chk-${backgroundColor}`]} ${styles[`chk-${size}`]}`}
+      className={`${className} ${styles.checkbox} ${styles[`checkbox-${backgroundColor}`]} ${styles[`checkbox-${size}`]}`}
     >
-      {label && <label className={styles["chk-label"]}>{label}</label>}
-      <div className={styles["chk-wrapper"]}>
+      {label && (
+        <label className={styles["checkbox-label"]}>
+          {label} {isRequired && <span>*</span>}
+        </label>
+      )}
+      <div className={styles["checkbox-wrapper"]}>
         <input
           type="checkbox"
-          className={`${checked ? styles["chk-checked"] : ""}`}
+          className={`${isChecked ? styles["checkbox-checked"] : ""}`}
           name={name}
           defaultValue={value}
-          defaultChecked={checked}
-          disabled={disabled}
-          required={required}
+          defaultChecked={isChecked}
+          disabled={isDisabled}
+          required={isRequired}
           onChange={onChange}
         />
         <span
-          className={`${styles["chk-input"]} ${(checked && styles["chk-checked"]) || ""}`}
+          className={`${styles["checkbox-input"]} ${(isChecked && styles["checkbox-checked"]) || ""}`}
           aria-hidden="true"
         >
-          <i className={`${styles["chk-icon"]}`}>
+          <i className={`${styles["checkbox-icon"]}`}>
             {<MdOutlineDoneOutline size={iconSize} color={colorIcon} />}
           </i>
         </span>

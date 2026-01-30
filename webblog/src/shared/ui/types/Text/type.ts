@@ -1,8 +1,8 @@
-import type { FontSize, FontWeight } from "../index";
+import type { FontSizeType, FontWeightType } from "../index";
 
-export interface TextProps {
+export interface TextPropsType {
   text: string;
   className?: string;
-  fontSize?: FontSize;
-  fontWeight?: FontWeight;
+  fontSize?: FontSizeType;
+  fontWeight?: FontWeightType;
 }

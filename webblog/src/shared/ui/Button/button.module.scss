@@ -1,37 +1,37 @@
 @use "@shared/styles/abstracts/variables" as *;
-.btn {
+.button {
   border-radius: 8px;
   cursor: pointer;
-  color: white;
+  color: $white;
   background: $brand;
   transition: 0.5s;
   &:hover {
-    background: #002866;
+    background: $brand-hover;
     transition: 0.5s;
   }
 
   &:disabled {
-    background: #f3f3f3 !important;
-    color: #a6a6a6 !important;
+    background: $disabled;
+    color: $disabled-text;
   }
   &.primary {
     background: $primary;
     &:hover {
-      background: #333333;
+      background: $dark-gray;
     }
   }
   &.secondary {
     background: $secondary;
-    color: black;
+    color: $black;
     &:hover {
-      background: #d6d6d6;
+      background: $gray;
     }
   }
   &.tertiary {
     background: $tertiary;
-    color: black;
+    color: $black;
     &:hover {
-      background: #ebebeb;
+      background: $gray;
     }
   }
   &.xs {

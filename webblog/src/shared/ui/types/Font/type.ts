@@ -1,3 +1,3 @@
-export type FontSize = "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
+export type FontSizeType = "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
 
-export type FontWeight = "regular" | "medium" | "semibold" | "bold";
+export type FontWeightType = "regular" | "medium" | "semibold" | "bold";

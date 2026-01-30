@@ -1,16 +1,16 @@
-export interface CheckboxProps {
+export interface CheckboxPropsType {
   label?: string;
   name: string;
   className?: string;
   value?: string;
-  checked?: boolean;
+  isChecked?: boolean;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   defaultValue?: string;
   placeholder?: string;
   size?: "xs" | "sm" | "md" | "lg";
-  disabled?: boolean;
+  isDisabled?: boolean;
   readOnly?: boolean;
-  required?: boolean;
+  isRequired?: boolean;
   colorIcon?: "white" | "black";
   backgroundColor?: "primary" | "secondary" | "tertiary";
 }

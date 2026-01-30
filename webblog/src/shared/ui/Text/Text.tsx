@@ -1,12 +1,16 @@
-import type { TextProps } from "../types/index";
+import type { TextPropsType } from "../types/index";
 
 export const Text = ({
   className = "text",
   text = "text",
-  fontSize = "xl",
+  fontSize,
   fontWeight = "regular",
-}: TextProps) => {
+}: TextPropsType) => {
   return (
-    <p className={`${className} text-${fontSize} font-${fontWeight}`}>{text}</p>
+    <p
+      className={`${className} ${fontSize ? `text-${fontSize}` : ""} font-${fontWeight}`}
+    >
+      {text}
+    </p>
   );
 };

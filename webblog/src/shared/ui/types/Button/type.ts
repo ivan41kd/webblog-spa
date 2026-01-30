@@ -1,12 +1,12 @@
-import type { FontSize, FontWeight } from "../index";
+import type { FontSizeType, FontWeightType } from "../";
 
-export interface ButtonProps {
-  text: string;
+export interface ButtonPropsType {
+  children: React.ReactNode;
   className?: string;
-  fontSize?: FontSize;
-  fontWeight?: FontWeight;
+  fontSize?: FontSizeType;
+  fontWeight?: FontWeightType;
   size?: "xs" | "sm" | "md" | "lg";
   variant?: "default" | "primary" | "secondary" | "tertiary";
   onClick?: () => void;
-  disabled?: boolean;
+  isDisabled?: boolean;
 }

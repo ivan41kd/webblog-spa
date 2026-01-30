@@ -1,5 +1,5 @@
-import type { FontSize, FontWeight } from "../index";
-export interface InputProps {
+import type { FontSizeType, FontWeightType } from "../index";
+export interface InputPropsType {
   label?: string;
   name: string;
   className?: string;
@@ -7,12 +7,12 @@ export interface InputProps {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
   size?: "xs" | "sm" | "md" | "lg";
-  fontSize?: FontSize;
-  fontWeight?: FontWeight;
+  fontSize?: FontSizeType;
+  fontWeight?: FontWeightType;
   type?: string;
-  disabled?: boolean;
+  isDisabled?: boolean;
   readOnly?: boolean;
-  required?: boolean;
+  isRequired?: boolean;
   icon?: React.ReactNode | null;
   iconPlace?: "left" | "right";
   variant: "default" | "lined";

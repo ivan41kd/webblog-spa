@@ -4,20 +4,24 @@
   flex-direction: column;
   transition: 0.3s ease-in-out;
   overflow: hidden;
-
-  & .input-label {
+  &:disabled,
+  &.input-disabled &-wrapper {
+    background: $disabled;
+    color: $disabled-text;
+  }
+  & &-label {
     margin-bottom: 4px;
     & span {
-      color: rgb(0, 84, 122);
+      color: $label;
     }
   }
-  & .input-icon {
+  & &-icon {
     display: flex;
     width: 32px;
     height: 32px;
   }
 
-  & .input-field {
+  & &-field {
     width: 100%;
     height: 100%;
     transition: 0.3s;
@@ -25,65 +29,65 @@
     background: transparent;
   }
 
-  &.input-lined .input-wrapper {
+  &.input-lined &-wrapper {
     border: none;
-    border-bottom: 1px solid rgb(17 17 19 / 60%);
+    border-bottom: 1px solid $border-dark;
     border-radius: 0 !important;
   }
 
-  &.input-lined .input-focus {
+  &.input-lined &-focus {
     border: none !important;
-    border-bottom: 1px solid rgba(0, 0, 124, 0.651) !important;
+    border-bottom: 1px solid $focus !important;
   }
 
-  & .input-wrapper {
+  & &-wrapper {
     transition: 0.3s ease-in-out;
-    border: 1px solid rgb(17 17 19 / 60%);
+    border: 1px solid $border-dark;
     display: flex;
     padding: 16px;
     gap: 10px;
     align-items: center;
     overflow: hidden;
     &:hover {
-      background: #f2f2f2;
+      background: $dark-white;
       transition: 0.3s;
     }
   }
-  &.input-xs .input-wrapper {
+  &-xs &-wrapper {
     padding: 4px;
     border-radius: $radius-sm;
   }
-  &.input-xs .input-label {
+  &-xs &-label {
     font-size: 12px;
   }
-  &.input-sm .input-wrapper {
+  &-sm &-wrapper {
     padding: 8px;
     border-radius: $radius-sm;
   }
-  &.input-sm .input-label {
+  &-sm &-label {
     font-size: 16px;
   }
-  &.input-md .input-wrapper {
+  &-md &-wrapper {
     padding: 12px;
     border-radius: $radius-md;
   }
-  &.input-md .input-label {
+  &-md &-label {
     font-size: 18px;
   }
-  &.input-lg .input-label {
+  &-lg &-label {
     font-size: 20px;
   }
-  &.input-lg .input-wrapper {
+  &-lg &-wrapper {
     padding: 16px;
     border-radius: $radius-lg;
   }
 
-  & .input-focus {
-    border: 1px solid rgba(0, 0, 124, 0.651) !important;
+  & &-focus {
+    border: 1px solid $focus !important;
     transition: 0.3s ease-out;
   }
-  &.error .input-field {
-    border: 1px solid #ff0000 !important;
+  &.error &-field {
+    border: 1px solid $error !important;
     transition: 0.3s ease-out;
   }
 }

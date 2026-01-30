@@ -1,40 +1,40 @@
 @use "@shared/styles/abstracts/variables" as *;
-.chk {
+.checkbox {
   display: flex;
   flex-direction: column;
 
-  & .chk-wrapper {
+  & &-wrapper {
     display: flex;
     overflow: hidden;
-    border-radius: 4px;
+    border-radius: $radius-sm;
     position: relative;
   }
-  & .chk-input {
+  & &-input {
     width: 100%;
     height: 100%;
     display: flex;
-    background: white;
-    border: 2px solid #ddd;
+    background: $white;
+    border: 2px solid $gray;
     align-items: center;
     cursor: pointer;
     transition: 0.3s;
     border-radius: inherit;
     z-index: -1;
   }
-  &.chk-primary .chk-input.chk-checked {
+  &-primary &-input.checkbox-checked {
     background: $primary;
     border: 2px solid $primary;
   }
-  &.chk-secondary .chk-input.chk-checked {
+  &-secondary &-input.checkbox-checked {
     background: $secondary;
     border: 2px solid $secondary;
   }
 
-  & .chk-input.chk-checked {
+  &-input.checkbox-checked {
     background: $brand;
     border: 2px solid $brand;
   }
-  & .chk-icon {
+  &-icon {
     opacity: 0;
     display: flex;
     width: 100%;
@@ -42,36 +42,41 @@
     align-items: center;
     transition: 0.3s;
   }
-  & .chk-input.chk-checked .chk-icon {
+  &-input.checkbox-checked &-icon {
     opacity: 1;
     transition: 0.3s;
   }
-
-  &.chk-xs .chk-wrapper {
+  & &-label {
+    margin-bottom: 4px;
+    & span {
+      color: $label;
+    }
+  }
+  &-xs &-wrapper {
     width: 12px;
     height: 12px;
   }
-  &.chk-xs .chk-label {
+  &-xs &-label {
     font-size: 12px;
   }
-  &.chk-sm .chk-label {
+  &-sm &-label {
     font-size: 14px;
   }
-  &.chk-md .chk-label {
+  &-md &-label {
     font-size: 16px;
   }
-  &.chk-lg .chk-label {
+  &-lg &-label {
     font-size: 18px;
   }
-  &.chk-sm .chk-wrapper {
+  &-sm &-wrapper {
     width: 14px;
     height: 14px;
   }
-  &.chk-md .chk-wrapper {
+  &-md &-wrapper {
     width: 16px;
     height: 16px;
   }
-  &.chk-lg .chk-wrapper {
+  &-lg &-wrapper {
     width: 18px;
     height: 18px;
   }
