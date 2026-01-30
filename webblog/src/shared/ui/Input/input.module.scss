@@ -1,0 +1,93 @@
+@use "@shared/styles/abstracts/variables" as *;
+.input {
+  display: flex;
+  flex-direction: column;
+  transition: 0.3s ease-in-out;
+  overflow: hidden;
+  &:disabled,
+  &.input-disabled &-wrapper {
+    background: $disabled;
+    color: $disabled-text;
+  }
+  & &-label {
+    margin-bottom: 4px;
+    & span {
+      color: $label;
+    }
+  }
+  & &-icon {
+    display: flex;
+    width: 32px;
+    height: 32px;
+  }
+
+  & &-field {
+    width: 100%;
+    height: 100%;
+    transition: 0.3s;
+    border: 1px solid transparent;
+    background: transparent;
+  }
+
+  &.input-lined &-wrapper {
+    border: none;
+    border-bottom: 1px solid $border-dark;
+    border-radius: 0 !important;
+  }
+
+  &.input-lined &-focus {
+    border: none !important;
+    border-bottom: 1px solid $focus !important;
+  }
+
+  & &-wrapper {
+    transition: 0.3s ease-in-out;
+    border: 1px solid $border-dark;
+    display: flex;
+    padding: 16px;
+    gap: 10px;
+    align-items: center;
+    overflow: hidden;
+    &:hover {
+      background: $dark-white;
+      transition: 0.3s;
+    }
+  }
+  &-xs &-wrapper {
+    padding: 4px;
+    border-radius: $radius-sm;
+  }
+  &-xs &-label {
+    font-size: 12px;
+  }
+  &-sm &-wrapper {
+    padding: 8px;
+    border-radius: $radius-sm;
+  }
+  &-sm &-label {
+    font-size: 16px;
+  }
+  &-md &-wrapper {
+    padding: 12px;
+    border-radius: $radius-md;
+  }
+  &-md &-label {
+    font-size: 18px;
+  }
+  &-lg &-label {
+    font-size: 20px;
+  }
+  &-lg &-wrapper {
+    padding: 16px;
+    border-radius: $radius-lg;
+  }
+
+  & &-focus {
+    border: 1px solid $focus !important;
+    transition: 0.3s ease-out;
+  }
+  &.error &-field {
+    border: 1px solid $error !important;
+    transition: 0.3s ease-out;
+  }
+}

@@ -1,0 +1,13 @@
+@use "./variables" as *;
+.brand {
+  color: $brand;
+}
+.primary {
+  color: $primary;
+}
+.secondary {
+  color: $secondary;
+}
+.tertiary {
+  color: $tertiary;
+}
