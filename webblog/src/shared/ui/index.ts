@@ -1,5 +1,6 @@
-export * from "./Button";
-export * from "./Checkbox";
-export * from "./Input";
-export * from "./Text";
-export * from "./Title";
+export { Button } from "./button";
+export { Checkbox } from "./checkbox";
+export { Input } from "./input";
+export { Section } from "./section";
+export { Text } from "./text";
+export { Title } from "./title";

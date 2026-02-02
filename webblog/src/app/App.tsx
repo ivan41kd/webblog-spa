@@ -1,9 +1,9 @@
-import { Ui } from "@pages";
+import { UiPage } from "@/pages";
 
 function App() {
   return (
     <>
-      <Ui />
+      <UiPage />
     </>
   );
 }

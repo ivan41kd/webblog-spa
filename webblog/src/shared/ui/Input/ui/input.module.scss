@@ -1,0 +1,233 @@
+@use "@styles/variables/variables" as *;
+@use "@styles/variables/colors" as *;
+@use "@styles/variables/radius" as *;
+
+.input {
+  display: flex;
+  transition: 0.2s ease-in-out;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+
+  &-label {
+    margin-bottom: 4px;
+    & span {
+      color: $label-color;
+    }
+  }
+  &-icon,
+  &-password-icon,
+  &-email-icon {
+    display: flex;
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    right: 13px;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  &-password-icon {
+    cursor: pointer;
+  }
+  &-email-icon {
+    left: 13px;
+  }
+  &-icon-left &-icon {
+    left: 13px;
+  }
+  &-xs.input-icon-left &-icon,
+  &-xs &-email-icon {
+    left: 4px;
+  }
+  &-sm.input-icon-left &-icon,
+  &-sm &-email-icon {
+    left: 8px;
+  }
+  &-xs.input-icon-right &-icon,
+  &-xs &-password-icon {
+    right: 4px;
+  }
+  &-sm.input-icon-right &-icon,
+  &-sm &-password-icon {
+    right: 8px;
+  }
+  &-md.input-icon-right &-icon,
+  &-md &-password-icon {
+    right: 12px;
+  }
+  &-lg.input-icon-right &-icon,
+  &-lg &-password-icon {
+    right: 16px;
+  }
+  &-xs.input-icon-right &-field,
+  &-xs.input-password &-field {
+    padding-right: 24px;
+  }
+  &-sm.input-icon-right &-field,
+  &-sm.input-password &-field {
+    padding-right: 36px;
+  }
+  &-md.input-icon-right &-field,
+  &-md.input-password &-field {
+    padding-right: 52px;
+  }
+  &-lg.input-icon-right &-field,
+  &-lg.input-password &-field {
+    padding-right: 55px;
+  }
+  &-xs.input-icon-left &-field,
+  &-xs.input-email &-field {
+    padding-left: 25px;
+  }
+  &-sm.input-icon-left &-field,
+  &-sm.input-email &-field {
+    padding-left: 35px;
+  }
+  &-md.input-icon-left &-field,
+  &-md.input-email &-field {
+    padding-left: 50px;
+  }
+  &-lg.input-icon-left &-field,
+  &-lg.input-email &-field {
+    padding-left: 55px;
+  }
+  &-icon-left &-field {
+    padding-left: 50px;
+  }
+  &-xs &-field {
+    padding: 4px;
+    border-radius: $radius-sm;
+  }
+  &-xs &-icon,
+  &-xs &-password-icon,
+  &-xs &-email-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  &-xs &-label {
+    font-size: 12px;
+  }
+  &-sm &-field {
+    padding: 8px;
+    border-radius: $radius-sm;
+  }
+  &-sm &-icon,
+  &-sm &-password-icon,
+  &-sm &-email-icon {
+    width: 24px;
+    height: 24px;
+  }
+  &-sm &-label {
+    font-size: 16px;
+  }
+  &-md &-field {
+    padding: 12px;
+    border-radius: $radius-md;
+  }
+  &-md &-icon,
+  &-md &-password-icon,
+  &-md &-email-icon {
+    width: 32px;
+    height: 32px;
+  }
+  &-md &-label {
+    font-size: 18px;
+  }
+  &-lg &-label {
+    font-size: 20px;
+  }
+  &-lg &-field {
+    padding: 16px;
+    border-radius: $radius-lg;
+  }
+
+  &-field {
+    transition: 0.2s ease-in-out;
+    border: 1px solid $input-border;
+    overflow: hidden;
+    width: 100%;
+    caret-color: $brand;
+
+    &:not(:placeholder-shown) {
+      border: 1px solid $filled;
+    }
+    &:hover {
+      border: 1px solid $input-hover;
+      transition: 0.2s ease-in-out;
+    }
+    &[type="email"],
+    & {
+      &:user-valid:not(:placeholder-shown, :focus, :hover),
+      &:valid:not(:placeholder-shown, :focus, :hover) {
+        border: 1px solid $success;
+      }
+    }
+    &:invalid:not(:placeholder-shown, :focus, :hover),
+    &:user-invalid:not(:placeholder-shown, :focus, :hover) {
+      border: 1px solid $error;
+    }
+    &:focus {
+      border: 1px solid $focus;
+      transition: 0.3s ease-out;
+    }
+    &::placeholder {
+      color: $input-hover;
+    }
+
+    &[readonly] {
+      background-color: $input-readonly-bg;
+      border-color: $input-readonly-border;
+      color: $input-readonly-text;
+      &::placeholder {
+        color: $input-readonly-text;
+      }
+      cursor: default;
+    }
+    &:disabled {
+      background: $disabled-bg;
+      color: $disabled-text;
+      border: 1px solid $disabled-checkbox;
+      cursor: not-allowed;
+    }
+
+    &.input-lined {
+      border: none;
+      border-bottom: 1px solid $input-border;
+      border-radius: 0;
+      &:not(:placeholder-shown) {
+        border: none;
+        border-bottom: 1px solid $filled;
+      }
+      &:hover {
+        border-bottom: 1px solid $input-hover;
+      }
+      &[type="email"],
+      & {
+        &:valid:not(:placeholder-shown, :focus, :hover) {
+          border: none;
+          border-bottom: 1px solid $success;
+        }
+      }
+      &:invalid:not(:placeholder-shown, :focus, :hover) {
+        border-bottom: 1px solid $error;
+      }
+      &:focus {
+        border-bottom: 1px solid $focus;
+      }
+      &[readonly] {
+        background-color: $input-readonly-bg;
+        border-color: $input-readonly-border;
+        color: $input-readonly-text;
+        cursor: default;
+      }
+      &:disabled {
+        border-bottom: 1px solid $disabled-checkbox;
+      }
+    }
+  }
+}

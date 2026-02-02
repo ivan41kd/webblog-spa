@@ -8,10 +8,11 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
-      "@shared": path.resolve(__dirname, "./src/shared"),
-      "@styles": path.resolve(__dirname, "./src/shared/styles"),
-      "@pages": path.resolve(__dirname, "./src/pages"),
+      "@": path.resolve(__dirname, "src"),
+      "@shared": path.resolve(__dirname, "src/shared"),
+      "@styles": path.resolve(__dirname, "src/shared/styles"),
+      "@icons": path.resolve(__dirname, "src/shared/icons"),
+      "@pages": path.resolve(__dirname, "src/pages"),
     },
   },
 });

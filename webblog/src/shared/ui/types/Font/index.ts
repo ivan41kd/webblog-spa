@@ -1,1 +1,1 @@
-export * from "./type";
+export type { FontSizeType, FontWeightType } from "./type";
