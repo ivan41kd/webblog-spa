@@ -21,6 +21,7 @@ export const UiPage = () => {
               Bold
             </Text>,
           ]}
+          className="text"
         />
         <UiList
           items={[
@@ -43,6 +44,7 @@ export const UiPage = () => {
               h6
             </Title>,
           ]}
+          className="title"
         />
         <UiList
           items={[
@@ -59,6 +61,7 @@ export const UiPage = () => {
               Tertiary
             </Button>,
           ]}
+          className="buttons"
           placement="end"
         />
         <UiList
@@ -94,6 +97,7 @@ export const UiPage = () => {
               type="password"
             />,
           ]}
+          className="inputs"
           placement="end"
         />
         <UiList
@@ -126,6 +130,7 @@ export const UiPage = () => {
               isRequired
             />,
           ]}
+          className="filled-inputs"
           placement="end"
         />
         <UiList
@@ -134,6 +139,7 @@ export const UiPage = () => {
             <Checkbox size="md" variant="primary" />,
             <Checkbox size="lg" variant="primary" isRequired />,
           ]}
+          className="checkboxes"
         />
       </div>
     </Section>
