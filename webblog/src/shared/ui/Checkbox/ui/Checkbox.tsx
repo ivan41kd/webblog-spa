@@ -1,29 +1,31 @@
-import cn from "classnames";
+import cn from 'classnames';
 
-import type { CheckboxPropsType } from "../type";
+import type { CheckboxPropsType } from '../type';
 
-import styles from "./checkbox.module.scss";
+import styles from './checkbox.module.scss';
 
 export const Checkbox = ({
-  className = "",
-  name = "checkbox",
+  className = '',
+  name = 'checkbox',
   value,
   isChecked = false,
   isDisabled,
   isRequired = false,
-  size = "md",
-  variant = "brand",
+  size = 'md',
+  variant = 'brand',
   onChange,
 }: CheckboxPropsType) => {
+  const chkClass = cn(
+    className,
+    styles.checkbox,
+    styles[`checkbox-${variant}`],
+    styles[`checkbox-${size}`]
+  );
+
   return (
     <input
       type="checkbox"
-      className={cn(
-        className,
-        styles.checkbox,
-        styles[`checkbox-${variant}`],
-        styles[`checkbox-${size}`],
-      )}
+      className={chkClass}
       name={name}
       defaultValue={value}
       defaultChecked={isChecked}

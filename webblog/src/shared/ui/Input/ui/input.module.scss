@@ -1,6 +1,6 @@
-@use "@styles/variables/variables" as *;
-@use "@styles/variables/colors" as *;
-@use "@styles/variables/radius" as *;
+@use '@styles/variables/variables' as *;
+@use '@styles/variables/colors' as *;
+@use '@styles/variables/radius' as *;
 
 .input {
   display: flex;
@@ -160,7 +160,7 @@
       border: 1px solid $input-hover;
       transition: 0.2s ease-in-out;
     }
-    &[type="email"],
+    &[type='email'],
     & {
       &:user-valid:not(:placeholder-shown, :focus, :hover),
       &:valid:not(:placeholder-shown, :focus, :hover) {
@@ -206,7 +206,7 @@
       &:hover {
         border-bottom: 1px solid $input-hover;
       }
-      &[type="email"],
+      &[type='email'],
       & {
         &:valid:not(:placeholder-shown, :focus, :hover) {
           border: none;

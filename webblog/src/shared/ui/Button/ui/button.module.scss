@@ -1,5 +1,5 @@
-@use "@styles/variables/variables" as *;
-@use "@styles/variables/colors" as *;
+@use '@styles/variables/variables' as *;
+@use '@styles/variables/colors' as *;
 
 .button {
   border-radius: 8px;
@@ -52,22 +52,21 @@
       background: $tertiary-active;
     }
   }
-  &.xs {
-    padding: 6px 10.5px;
-    max-width: max-content;
-  }
   &.sm {
-    padding: 10px 12px;
-    max-width: 100%;
-    width: 100%;
+    padding: 3px 10.5px;
   }
   &.md {
-    padding: 14px 16px;
+    padding: 6px 12px;
     max-width: 100%;
     width: 100%;
   }
   &.lg {
-    padding: 16px 20px;
+    padding: 9px 16px;
+    max-width: 100%;
+    width: 100%;
+  }
+  &.xl {
+    padding: 10px 20px;
     max-width: 100%;
     width: 100%;
   }

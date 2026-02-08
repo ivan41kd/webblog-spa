@@ -1,14 +1,15 @@
-import cn from "classnames";
+import cn from 'classnames';
 
-import type { TitlePropsType } from "../type";
+import type { TitlePropsType } from '../type';
 export const Title = ({
-  tag = "h1",
+  tag = 'h1',
   className,
   children,
-  fontSize = "xl",
-  fontWeight = "regular",
+  fontSize = 'xl',
+  fontWeight = 'regular',
 }: TitlePropsType) => {
   const Tag = tag;
+
   return (
     <Tag
       className={cn(className, {

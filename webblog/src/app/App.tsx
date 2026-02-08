@@ -1,10 +1,12 @@
-import { UiPage } from "@/pages";
+import { BrowserRouter } from 'react-router';
+
+import { AppRoutes } from './routes';
 
 function App() {
   return (
-    <>
-      <UiPage />
-    </>
+    <BrowserRouter>
+      <AppRoutes />
+    </BrowserRouter>
   );
 }
 

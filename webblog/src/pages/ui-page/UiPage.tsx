@@ -1,14 +1,14 @@
-import { Button, Text, Title, Input, Checkbox } from "@shared/ui";
-import { MasterCardIcon } from "@/shared/icons";
+import { Button, Text, Title, Input, Checkbox } from '@shared/ui';
+import { MasterCardIcon } from '@/shared/icons';
 
-import { UiList } from "./ui";
-import styles from "./ui.module.scss";
-import { Section } from "@/shared/ui";
+import { UiList } from './ui';
+import styles from './ui.module.scss';
+import { Section } from '@/shared/ui';
 
 export const UiPage = () => {
   return (
     <Section className={styles.ui}>
-      <div className={styles["ui-wrapper"]}>
+      <div className={styles['ui-wrapper']}>
         <UiList
           items={[
             <Text fontSize="sm" fontWeight="medium">
@@ -48,16 +48,16 @@ export const UiPage = () => {
         />
         <UiList
           items={[
-            <Button fontSize="sm" variant="default" size="xs">
+            <Button fontSize="sm" variant="default" size="sm">
               Default
             </Button>,
-            <Button fontSize="sm" variant="primary" size="sm">
+            <Button fontSize="md" variant="primary" size="md">
               Primary
             </Button>,
-            <Button fontSize="md" variant="secondary" size="md">
+            <Button fontSize="lg" variant="secondary" size="lg">
               Secondary
             </Button>,
-            <Button fontSize="lg" variant="tertiary" size="lg">
+            <Button fontSize="xl" variant="tertiary" size="xl">
               Tertiary
             </Button>,
           ]}

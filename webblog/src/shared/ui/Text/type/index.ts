@@ -1,1 +1,1 @@
-export type { TextPropsType } from "./type";
+export type { TextPropsType } from './type';

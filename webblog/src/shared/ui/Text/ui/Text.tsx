@@ -1,15 +1,16 @@
-import cn from "classnames";
+import cn from 'classnames';
 
-import type { TextPropsType } from "../type";
+import type { TextPropsType } from '../type';
 
 export const Text = ({
-  tag = "p",
+  tag = 'p',
   className,
   fontSize,
-  fontWeight = "regular",
+  fontWeight = 'regular',
   children,
 }: TextPropsType) => {
   const Tag = tag;
+
   return (
     <Tag
       className={cn(className, {

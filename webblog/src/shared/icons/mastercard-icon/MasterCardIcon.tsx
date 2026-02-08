@@ -1,21 +1,9 @@
-import type { SVGProps } from "react";
+import type { SVGProps } from 'react';
+
 export const MasterCardIcon = (props: SVGProps<SVGSVGElement>) => {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 -9 58 58"
-      {...props}
-    >
-      <rect
-        width={57}
-        height={39}
-        x={0.5}
-        y={0.5}
-        fill="#fff"
-        stroke="#F3F3F3"
-        rx={3.5}
-      />
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 -9 58 58" {...props}>
+      <rect width={57} height={39} x={0.5} y={0.5} fill="#fff" stroke="#F3F3F3" rx={3.5} />
       <path fill="#FF5F00" d="M34.31 28.977H23.96V10.512h10.35v18.465Z" />
       <path
         fill="#EB001B"

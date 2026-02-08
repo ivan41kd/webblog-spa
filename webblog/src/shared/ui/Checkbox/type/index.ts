@@ -1,1 +1,1 @@
-export type { CheckboxPropsType } from "./type";
+export type { CheckboxPropsType } from './type';

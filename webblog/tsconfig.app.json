@@ -22,8 +22,10 @@
       "@/*": ["src/*"],
       "@shared/*": ["src/shared/*"],
       "@icons/*": ["src/shared/icons/*"],
-      "@pages/*": ["src/pages/*"],
-      "@styles/*": ["src/shared/styles/*"]
+      "@pages": ["src/pages"],
+      "@styles/*": ["src/shared/styles/*"],
+      "@app/*": ["src/app/*"],
+      "@widgets": ["src/widgets"]
     },
 
     /* Linting */

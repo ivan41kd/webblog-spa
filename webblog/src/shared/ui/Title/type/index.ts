@@ -1,1 +1,1 @@
-export type { TitlePropsType } from "./type";
+export type { TitlePropsType } from './type';

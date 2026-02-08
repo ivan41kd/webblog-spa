@@ -1,9 +1,9 @@
-import type { FontWeightType } from "../../types/index";
+import type { FontWeightType } from '../../types';
 
 export interface TextPropsType {
   className?: string;
-  fontSize?: "sm" | "md" | "lg";
+  fontSize?: 'sm' | 'md' | 'lg';
   fontWeight?: FontWeightType;
-  tag?: "p" | "span";
+  tag?: 'p' | 'span';
   children?: React.ReactNode;
 }

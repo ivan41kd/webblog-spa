@@ -7,10 +7,10 @@ export interface CheckboxPropsType {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   defaultValue?: string;
   placeholder?: string;
-  size?: "sm" | "md" | "lg";
+  size?: 'sm' | 'md' | 'lg';
   isDisabled?: boolean;
   readOnly?: boolean;
   isRequired?: boolean;
-  colorIcon?: "white" | "black";
-  variant?: "brand" | "primary";
+  colorIcon?: 'white' | 'black';
+  variant?: 'brand' | 'primary';
 }
