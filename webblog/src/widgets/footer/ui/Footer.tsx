@@ -1,6 +1,6 @@
 import cn from 'classnames';
 
-import { Text } from '@/shared/ui';
+import { Container, Text } from '@/shared/ui';
 
 import styles from './footer.module.scss';
 
@@ -13,7 +13,11 @@ export const Footer = ({ className }: FooterPropsType) => {
 
   return (
     <footer className={footerClass}>
-      <Text>Footer</Text>
+      <Container>
+        <div className={styles['footer-wrapper']}>
+          <Text>Footer</Text>
+        </div>
+      </Container>
     </footer>
   );
 };

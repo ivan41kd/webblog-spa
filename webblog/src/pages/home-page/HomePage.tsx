@@ -1,6 +1,6 @@
 import { Header, Footer } from '@/widgets';
 
-import { LayoutMain } from '@/shared/ui/layout-main';
+import { LayoutMain } from '@/shared/ui/layouts';
 
 import { Section, Text } from '@/shared/ui';
 

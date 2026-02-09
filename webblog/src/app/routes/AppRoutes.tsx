@@ -4,7 +4,7 @@ import { HomePage, HomePage2 } from '@pages';
 
 import { HOME, HOME2 } from '@shared/routes';
 
-import { LayoutBase } from '@/app/layout-base';
+import { LayoutBase } from '@/app/layouts';
 
 export const AppRoutes = () => {
   return (

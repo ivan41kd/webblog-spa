@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import { NavLink } from 'react-router';
 
-import { Text } from '@/shared/ui';
+import { Container, Text } from '@/shared/ui';
 
 import styles from './header.module.scss';
 
@@ -14,12 +14,16 @@ export const Header = ({ className }: HeaderPropsType) => {
 
   return (
     <header className={headerClass}>
-      <Text>Header</Text>
+      <Container>
+        <div className={styles['header-wrapper']}>
+          <Text>Header</Text>
 
-      <nav className={styles['header-nav']}>
-        <NavLink to="/home">Home</NavLink>
-        <NavLink to="/home2">Home2</NavLink>
-      </nav>
+          <nav className={styles['header-nav']}>
+            <NavLink to="/home">Home</NavLink>
+            <NavLink to="/home2">Home2</NavLink>
+          </nav>
+        </div>
+      </Container>
     </header>
   );
 };

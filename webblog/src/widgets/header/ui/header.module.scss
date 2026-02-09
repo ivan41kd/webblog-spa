@@ -1,7 +1,11 @@
 .header {
   padding: 20px 0;
   display: flex;
-  justify-content: space-between;
+  &-wrapper {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+  }
   &-nav {
     display: flex;
     gap: 20px;
