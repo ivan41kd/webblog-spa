@@ -1,0 +1,73 @@
+@use '@styles/variables/variables' as *;
+@use '@styles/variables/colors' as *;
+
+.button {
+  border-radius: 8px;
+  cursor: pointer;
+  color: $brand-text;
+  background: $brand;
+  transition: 0.2s ease-in-out;
+  &:hover {
+    background: $brand-hover;
+    transition: 0.2s ease-in-out;
+  }
+  &:active {
+    background: $brand-active;
+    transition: 0.2s ease-in-out;
+  }
+
+  &:disabled {
+    background: $disabled-bg;
+    color: $disabled-text;
+  }
+
+  &.primary {
+    background: $primary;
+    color: $primary-text;
+    &:hover {
+      background: $primary-hover;
+    }
+    &:active {
+      background: $primary-active;
+    }
+  }
+  &.secondary {
+    background: $secondary;
+    color: $secondary-text;
+    &:hover {
+      background: $secondary-hover;
+    }
+    &:active {
+      background: $secondary-active;
+    }
+  }
+  &.tertiary {
+    background: $tertiary;
+    color: $tertiary-text;
+
+    &:hover {
+      background: $tertiary-hover;
+    }
+    &:active {
+      background: $tertiary-active;
+    }
+  }
+  &.sm {
+    padding: 3px 10.5px;
+  }
+  &.md {
+    padding: 6px 12px;
+    max-width: 100%;
+    width: 100%;
+  }
+  &.lg {
+    padding: 9px 16px;
+    max-width: 100%;
+    width: 100%;
+  }
+  &.xl {
+    padding: 10px 20px;
+    max-width: 100%;
+    width: 100%;
+  }
+}

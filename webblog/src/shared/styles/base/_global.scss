@@ -1,0 +1,40 @@
+@use '@styles/variables/variables' as *;
+@use './normalize';
+@use '@styles/variables/colors' as *;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+  font-family: $main-font;
+  display: flex;
+  flex-direction: column;
+  background: $body;
+}
+a {
+  text-decoration: none;
+  color: $link-default;
+  transition: 0.2s ease-in-out;
+  &:visited {
+    color: $link-visited;
+  }
+  &:active,
+  &.active {
+    color: $link-active;
+  }
+  &:hover {
+    color: $link-hover;
+  }
+}
+button {
+  border: none;
+}
+
+input {
+  padding: 0;
+  margin: 0;
+  border: none;
+  outline: none;
+}
+
+main {
+  flex-grow: 1;
+}
