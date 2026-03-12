@@ -1,19 +1,27 @@
-import { Header, Footer } from '@/widgets';
+import { useState, useCallback } from 'react';
 
-import { LayoutMain } from '@/shared/ui/layouts';
+import { Section } from '@/shared/ui';
 
-import { Section, Text } from '@/shared/ui';
+import styles from './home-page.module.scss';
+import { data } from '@/entities/post';
+import { Search } from '@/widgets';
+import { PostList } from '@/widgets/post-list/ui/PostList';
 
 export const HomePage = () => {
+  const [posts, setPosts] = useState(data);
+
+  const handleSearch = useCallback((query: string) => {
+    const filteredData = data.filter((post) =>
+      post.title.toLowerCase().includes(query.toLowerCase())
+    );
+
+    setPosts(filteredData);
+  }, []);
+
   return (
-    <LayoutMain
-      headerNode={<Header />}
-      contentNode={
-        <Section className="home">
-          <Text>home</Text>
-        </Section>
-      }
-      footerNode={<Footer />}
-    />
+    <Section className={styles.home}>
+      <Search onChange={handleSearch} />
+      <PostList posts={posts} />
+    </Section>
   );
 };

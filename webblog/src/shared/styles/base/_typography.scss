@@ -1,38 +1,41 @@
+// .text-sm {
+//   font-size: 12px;
+// }
 .text-sm {
-  font-size: 12px;
+  font-size: clamp(0.75rem, 1.5vw, 0.875rem);
 }
 .text-md {
-  font-size: 16px;
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
 }
 .text-lg {
-  font-size: 20px;
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
 }
 .text-xl {
   font-size: 24px;
 }
 .title-2xl,
 h1 {
-  font-size: 64px;
+  font-size: 4rem;
 }
 .title-xl,
 h2 {
-  font-size: 56px;
+  font-size: 3.5rem;
 }
 .title-lg,
 h3 {
-  font-size: 48px;
+  font-size: 3rem;
 }
 .title-md,
 h4 {
-  font-size: 40px;
+  font-size: 2.5rem;
 }
 .title-sm,
 h5 {
-  font-size: 32px;
+  font-size: 2rem;
 }
 .title-xs,
 h6 {
-  font-size: 24px;
+  font-size: 1.5rem;
 }
 .font-regular {
   font-weight: 400;

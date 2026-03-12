@@ -1,8 +1,9 @@
 @use '@styles/variables/variables' as *;
 @use '@styles/variables/colors' as *;
+@use '@styles/variables/radius' as *;
 
 .button {
-  border-radius: 8px;
+  border-radius: $radius-md;
   cursor: pointer;
   color: $brand-text;
   background: $brand;
@@ -19,6 +20,7 @@
   &:disabled {
     background: $disabled-bg;
     color: $disabled-text;
+    cursor: not-allowed;
   }
 
   &.primary {
@@ -53,15 +55,15 @@
     }
   }
   &.sm {
-    padding: 3px 10.5px;
+    padding: min(3px, 0.3vw) min(10.5px, 1.8vw);
   }
   &.md {
-    padding: 6px 12px;
+    padding: min(6px, 2.5vw) min(12px, 1vw);
     max-width: 100%;
     width: 100%;
   }
   &.lg {
-    padding: 9px 16px;
+    padding: min(9px, 0.8vw) min(16px, 1.2vw);
     max-width: 100%;
     width: 100%;
   }

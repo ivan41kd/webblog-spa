@@ -14,6 +14,7 @@ export const Input = ({
   name = 'input',
   onChange,
   placeholder = '',
+  error,
   size = 'md',
   fontSize = 'md',
   fontWeight = 'regular',
@@ -24,9 +25,10 @@ export const Input = ({
   icon = null,
   iconPlace = 'left',
   variant = 'default',
-  isError = false,
+  onBlur,
 }: InputPropsType) => {
   const [isVisible, setIsVisible] = useState(type === 'text');
+
   const inputClass = cn(styles.input, styles[`input-${size}`], {
     [styles['input-password']]: type === 'password',
     [styles['input-email']]: type === 'email',
@@ -39,38 +41,50 @@ export const Input = ({
       {icon && iconPlace === 'left' && type !== 'email' && (
         <i className={`${styles[`input-icon`]}`}>{icon}</i>
       )}
+      <div className={cn(styles[`input-wrapper`])}>
+        {type === 'email' && (
+          <i className={`${styles[`input-email-icon`]}`}>
+            <EmailIcon />
+          </i>
+        )}
 
-      {type === 'email' && (
-        <i className={`${styles[`input-email-icon`]}`}>
-          <EmailIcon />
-        </i>
-      )}
+        <input
+          className={cn(
+            styles['input-field'],
+            `text-${fontSize}`,
+            `font-${fontWeight}`,
+            className,
+            {
+              [styles[`input-${variant}`]]: variant !== 'default',
+            }
+          )}
+          defaultValue={value}
+          placeholder={placeholder}
+          type={
+            type === 'email' ? type : type === 'password' ? (isVisible ? 'text' : 'password') : type
+          }
+          minLength={(type === 'password' && 8) || 0}
+          disabled={isDisabled}
+          readOnly={readOnly}
+          name={name}
+          required={isRequired}
+          onChange={onChange}
+          onBlur={onBlur}
+        />
 
-      <input
-        className={cn(styles['input-field'], `text-${fontSize}`, `font-${fontWeight}`, className, {
-          [styles['input-error']]: isError,
-          [styles[`input-${variant}`]]: variant !== 'default',
-        })}
-        defaultValue={value}
-        placeholder={placeholder}
-        type={
-          type === 'email' ? type : type === 'password' ? (isVisible ? 'text' : 'password') : type
-        }
-        minLength={(type === 'password' && 8) || 0}
-        disabled={isDisabled}
-        readOnly={readOnly}
-        name={name}
-        required={isRequired}
-        onChange={onChange}
-      />
-      {icon && iconPlace === 'right' && type !== 'password' && (
-        <i className={`${styles[`input-icon`]}`}>{icon}</i>
-      )}
-      {type === 'password' && (
-        <i className={`${styles['input-password-icon']}`} onClick={() => setIsVisible(!isVisible)}>
-          {isVisible ? <EyeOpenedIcon /> : <EyeClosedIcon />}
-        </i>
-      )}
+        {icon && iconPlace === 'right' && type !== 'password' && (
+          <i className={`${styles[`input-icon`]}`}>{icon}</i>
+        )}
+        {type === 'password' && (
+          <i
+            className={`${styles['input-password-icon']}`}
+            onClick={() => setIsVisible(!isVisible)}
+          >
+            {isVisible ? <EyeOpenedIcon /> : <EyeClosedIcon />}
+          </i>
+        )}
+      </div>
+      {error && <span className={styles['input-error']}>{error}</span>}
     </div>
   );
 };

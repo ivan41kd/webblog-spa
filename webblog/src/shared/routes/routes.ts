@@ -1,2 +1,2 @@
 export const HOME = '/home';
-export const HOME2 = '/home2';
+export const LOGIN = '/login';

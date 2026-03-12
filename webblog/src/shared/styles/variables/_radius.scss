@@ -1,4 +1,4 @@
-$radius-sm: 4px;
-$radius-md: 8px;
-$radius-lg: 12px;
-$radius-xl: 16px;
+$radius-sm: min(0.25rem, 1.5vw);
+$radius-md: min(0.5rem, 1.5vw);
+$radius-lg: min(0.75rem, 1.5vw);
+$radius-xl: min(1rem, 1.5vw);

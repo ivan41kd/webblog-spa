@@ -4,7 +4,9 @@ export interface InputPropsType {
   name?: string;
   className?: string;
   value?: string;
+  error?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
   placeholder?: string;
   size?: 'xs' | 'sm' | 'md' | 'lg';
   fontSize?: FontSizeType;
@@ -16,5 +18,4 @@ export interface InputPropsType {
   icon?: React.ReactNode | null;
   iconPlace?: 'left' | 'right';
   variant: 'default' | 'lined';
-  isError?: boolean;
 }

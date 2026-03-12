@@ -6,11 +6,15 @@
   display: flex;
   transition: 0.2s ease-in-out;
   overflow: hidden;
-  position: relative;
   width: 100%;
+  flex-direction: column;
+
+  &-wrapper {
+    position: relative;
+  }
 
   &-label {
-    margin-bottom: 4px;
+    margin-bottom: 0.25rem;
     & span {
       color: $label-color;
     }
@@ -19,10 +23,10 @@
   &-password-icon,
   &-email-icon {
     display: flex;
-    width: 32px;
-    height: 32px;
+    width: 2rem;
+    height: 2rem;
     position: absolute;
-    right: 13px;
+    right: 0.8125rem;
     top: 50%;
     transform: translateY(-50%);
     -webkit-user-select: none;
@@ -34,145 +38,147 @@
     cursor: pointer;
   }
   &-email-icon {
-    left: 13px;
+    left: 0.8125rem;
   }
   &-icon-left &-icon {
-    left: 13px;
+    left: 0.8125rem;
   }
   &-xs.input-icon-left &-icon,
   &-xs &-email-icon {
-    left: 4px;
+    left: 0.25rem;
   }
   &-sm.input-icon-left &-icon,
   &-sm &-email-icon {
-    left: 8px;
+    left: 0.5rem;
   }
   &-xs.input-icon-right &-icon,
   &-xs &-password-icon {
-    right: 4px;
+    right: 0.25rem;
   }
   &-sm.input-icon-right &-icon,
   &-sm &-password-icon {
-    right: 8px;
+    right: 0.5rem;
   }
   &-md.input-icon-right &-icon,
   &-md &-password-icon {
-    right: 12px;
+    right: 0.75rem;
   }
   &-lg.input-icon-right &-icon,
   &-lg &-password-icon {
-    right: 16px;
+    right: 1rem;
   }
   &-xs.input-icon-right &-field,
   &-xs.input-password &-field {
-    padding-right: 24px;
+    padding-right: 1.5rem;
   }
   &-sm.input-icon-right &-field,
   &-sm.input-password &-field {
-    padding-right: 36px;
+    padding-right: 2.25rem;
   }
   &-md.input-icon-right &-field,
   &-md.input-password &-field {
-    padding-right: 52px;
+    padding-right: 3.25rem;
   }
   &-lg.input-icon-right &-field,
   &-lg.input-password &-field {
-    padding-right: 55px;
+    padding-right: 3.4375rem;
   }
   &-xs.input-icon-left &-field,
   &-xs.input-email &-field {
-    padding-left: 25px;
+    padding-left: 1.5625rem;
   }
   &-sm.input-icon-left &-field,
   &-sm.input-email &-field {
-    padding-left: 35px;
+    padding-left: 2.1875rem;
   }
   &-md.input-icon-left &-field,
   &-md.input-email &-field {
-    padding-left: 50px;
+    padding-left: 3.125rem;
   }
   &-lg.input-icon-left &-field,
   &-lg.input-email &-field {
-    padding-left: 55px;
+    padding-left: 3.4375rem;
   }
   &-icon-left &-field {
-    padding-left: 50px;
+    padding-left: 3.125rem;
   }
   &-xs &-field {
-    padding: 4px;
+    padding: 0.25rem;
     border-radius: $radius-sm;
   }
   &-xs &-icon,
   &-xs &-password-icon,
   &-xs &-email-icon {
-    width: 16px;
-    height: 16px;
+    width: 1rem;
+    height: 1rem;
   }
 
   &-xs &-label {
-    font-size: 12px;
+    font-size: 0.75rem;
   }
   &-sm &-field {
-    padding: 8px;
+    padding: 0.5rem;
     border-radius: $radius-sm;
   }
   &-sm &-icon,
   &-sm &-password-icon,
   &-sm &-email-icon {
-    width: 24px;
-    height: 24px;
+    width: 1.5rem;
+    height: 1.5rem;
   }
   &-sm &-label {
-    font-size: 16px;
+    font-size: 1rem;
   }
   &-md &-field {
-    padding: 12px;
+    padding: min(0.75rem, 2.5vw);
     border-radius: $radius-md;
   }
   &-md &-icon,
   &-md &-password-icon,
   &-md &-email-icon {
-    width: 32px;
-    height: 32px;
+    width: 2rem;
+    height: 2rem;
   }
   &-md &-label {
-    font-size: 18px;
+    font-size: 1.125rem;
   }
   &-lg &-label {
-    font-size: 20px;
+    font-size: 1.25rem;
   }
   &-lg &-field {
-    padding: 16px;
+    padding: 1rem;
     border-radius: $radius-lg;
   }
 
   &-field {
     transition: 0.2s ease-in-out;
-    border: 1px solid $input-border;
+    border: 0.0625rem solid $input-border;
     overflow: hidden;
     width: 100%;
     caret-color: $brand;
 
     &:not(:placeholder-shown) {
-      border: 1px solid $filled;
+      border: 0.0625rem solid $filled;
     }
     &:hover {
-      border: 1px solid $input-hover;
+      border: 0.0625rem solid $input-hover;
       transition: 0.2s ease-in-out;
     }
-    &[type='email'],
-    & {
-      &:user-valid:not(:placeholder-shown, :focus, :hover),
-      &:valid:not(:placeholder-shown, :focus, :hover) {
-        border: 1px solid $success;
+    form & {
+      &[type='email'],
+      & {
+        &:user-valid:not(:placeholder-shown, :focus, :hover),
+        &:valid:not(:placeholder-shown, :focus, :hover) {
+          border: 0.0625rem solid $success;
+        }
+      }
+      &:invalid:not(:placeholder-shown, :focus, :hover),
+      &:user-invalid:not(:placeholder-shown, :focus, :hover) {
+        border: 0.0625rem solid $error;
       }
     }
-    &:invalid:not(:placeholder-shown, :focus, :hover),
-    &:user-invalid:not(:placeholder-shown, :focus, :hover) {
-      border: 1px solid $error;
-    }
     &:focus {
-      border: 1px solid $focus;
+      border: 0.0625rem solid $focus;
       transition: 0.3s ease-out;
     }
     &::placeholder {
@@ -191,33 +197,36 @@
     &:disabled {
       background: $disabled-bg;
       color: $disabled-text;
-      border: 1px solid $disabled-checkbox;
+      border: 0.0625rem solid $disabled-checkbox;
       cursor: not-allowed;
     }
 
     &.input-lined {
       border: none;
-      border-bottom: 1px solid $input-border;
+      border-bottom: 0.0625rem solid $input-border;
       border-radius: 0;
       &:not(:placeholder-shown) {
         border: none;
-        border-bottom: 1px solid $filled;
+        border-bottom: 0.0625rem solid $filled;
       }
       &:hover {
-        border-bottom: 1px solid $input-hover;
+        border-bottom: 0.0625rem solid $input-hover;
       }
-      &[type='email'],
-      & {
-        &:valid:not(:placeholder-shown, :focus, :hover) {
-          border: none;
-          border-bottom: 1px solid $success;
+      form & {
+        &[type='email'],
+        & {
+          &:valid:not(:placeholder-shown, :focus, :hover) {
+            border: none;
+            border-bottom: 0.0625rem solid $success;
+          }
+        }
+        &:invalid:not(:placeholder-shown, :focus, :hover),
+        &:user-invalid:not(:hover) {
+          border-bottom: 0.0625rem solid $error;
         }
       }
-      &:invalid:not(:placeholder-shown, :focus, :hover) {
-        border-bottom: 1px solid $error;
-      }
       &:focus {
-        border-bottom: 1px solid $focus;
+        border-bottom: 0.0625rem solid $focus;
       }
       &[readonly] {
         background-color: $input-readonly-bg;
@@ -226,8 +235,12 @@
         cursor: default;
       }
       &:disabled {
-        border-bottom: 1px solid $disabled-checkbox;
+        border-bottom: 0.0625rem solid $disabled-checkbox;
       }
     }
+  }
+
+  &-error {
+    color: $error;
   }
 }
