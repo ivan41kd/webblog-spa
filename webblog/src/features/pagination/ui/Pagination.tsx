@@ -2,7 +2,6 @@ import { Button } from '@/shared/ui';
 
 import type { PaginationTypeProps } from '../type';
 import styles from './pagination.module.scss';
-import { useEffect } from 'react';
 
 export const Pagination = ({
   data,
@@ -10,11 +9,6 @@ export const Pagination = ({
   onPageChange,
   currentPage,
 }: PaginationTypeProps) => {
-  useEffect(() => {
-    if (currentPage > Math.ceil(data.length / dataPerPage)) {
-      onPageChange(Math.ceil(data.length / dataPerPage));
-    }
-  });
   const totalData = data.length;
 
   const pageNumbers = [];

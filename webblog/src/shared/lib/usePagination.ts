@@ -9,5 +9,8 @@ export const usePagination = <T>(data: T[]) => {
   const indexOfFirstPost = indexOfLastPost - dataPerPage;
   const currentData = data.slice(indexOfFirstPost, indexOfLastPost);
 
+  if (currentPage > Math.ceil(totalData / dataPerPage))
+    setCurrentPage(Math.ceil(totalData / dataPerPage));
+
   return { currentData, dataPerPage, currentPage, setCurrentPage, totalData };
 };
