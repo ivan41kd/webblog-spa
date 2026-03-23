@@ -1,12 +1,13 @@
+import type { FC } from 'react';
 import { Routes, Route, Navigate } from 'react-router';
+
+import { LayoutBase } from '@/app/layouts';
 
 import { HomePage, LoginPage } from '@pages';
 
 import { HOME, LOGIN } from '@shared/routes';
 
-import { LayoutBase } from '@/app/layouts';
-
-export const AppRoutes = () => {
+export const AppRoutes: FC = () => {
   return (
     <Routes>
       <Route path="/" element={<Navigate to="/home" replace />} />

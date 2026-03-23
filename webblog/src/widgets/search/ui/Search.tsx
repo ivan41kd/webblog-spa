@@ -1,10 +1,16 @@
-import { Input } from '@/shared/ui';
-import { useState, useEffect, memo } from 'react';
+import { useState, useEffect, memo, type FC } from 'react';
 import { useDebounce } from 'use-debounce';
 
-export const Search = memo(({ onChange }: { onChange: (query: string) => void }) => {
+import { Input } from '@/shared/ui';
+
+interface SearchPropsType {
+  onChange: (query: string) => void;
+}
+
+export const Search: FC<SearchPropsType> = memo(({ onChange }) => {
   const [text, setText] = useState('');
   const [debouncedValue] = useDebounce(text, 500);
+
   useEffect(() => {
     onChange(debouncedValue);
   }, [debouncedValue, onChange]);

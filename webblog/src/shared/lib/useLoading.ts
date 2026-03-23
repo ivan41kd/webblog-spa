@@ -1,16 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
-export const useLoading = () => {
-  const [isLoading, setIsLoading] = useState(true);
+export const useLoading = (initial = true) => {
+  const [isLoading, setIsLoading] = useState(initial);
 
   useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
-    return () => {
-      setIsLoading(true);
-    };
+    const timer = setTimeout(() => setIsLoading(false), 3000);
+    return () => clearTimeout(timer);
   }, []);
 
-  return { isLoading };
+  return { isLoading, setIsLoading };
 };

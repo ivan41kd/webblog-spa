@@ -38,3 +38,9 @@ input {
 main {
   flex-grow: 1;
 }
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.25rem, 1.5vw, 1rem);
+}

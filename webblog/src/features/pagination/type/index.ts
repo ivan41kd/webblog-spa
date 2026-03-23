@@ -1,1 +1,1 @@
-export type { PaginationTypeProps } from './type';
+export type { PaginationPropsType } from './type';

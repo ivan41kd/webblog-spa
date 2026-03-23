@@ -1,3 +1,4 @@
+import type { FC } from 'react';
 import { NavLink } from 'react-router';
 
 interface NavListPropsType {
@@ -6,7 +7,7 @@ interface NavListPropsType {
   itemsList: { title: string; link: string }[];
 }
 
-export const NavList = ({ listClassName, itemClassName, itemsList }: NavListPropsType) => {
+export const NavList: FC<NavListPropsType> = ({ listClassName, itemClassName, itemsList }) => {
   return (
     <ul className={listClassName}>
       {itemsList.map(({ title, link }) => (

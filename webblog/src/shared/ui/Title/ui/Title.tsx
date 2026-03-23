@@ -1,13 +1,15 @@
+import type { FC } from 'react';
 import cn from 'classnames';
 
 import type { TitlePropsType } from '../type';
-export const Title = ({
+
+export const Title: FC<TitlePropsType> = ({
   tag = 'h1',
   className,
   children,
   fontSize = 'xl',
   fontWeight = 'regular',
-}: TitlePropsType) => {
+}) => {
   const Tag = tag;
 
   return (

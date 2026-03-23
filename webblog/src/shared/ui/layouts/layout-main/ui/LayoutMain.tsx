@@ -1,11 +1,12 @@
+import type { FC } from 'react';
 import cn from 'classnames';
 
-import type { LayoutMainPropsType } from '../type';
-
-import styles from './layout.module.scss';
 import { Container } from '@/shared/ui/container';
 
-export const LayoutMain = ({ headerNode, contentNode, footerNode }: LayoutMainPropsType) => {
+import type { LayoutMainPropsType } from '../type';
+import styles from './layout.module.scss';
+
+export const LayoutMain: FC<LayoutMainPropsType> = ({ headerNode, contentNode, footerNode }) => {
   const layoutClass = cn(styles.layout);
 
   return (

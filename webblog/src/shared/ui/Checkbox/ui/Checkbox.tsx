@@ -1,10 +1,10 @@
+import type { FC } from 'react';
 import cn from 'classnames';
 
 import type { CheckboxPropsType } from '../type';
-
 import styles from './checkbox.module.scss';
 
-export const Checkbox = ({
+export const Checkbox: FC<CheckboxPropsType> = ({
   className = '',
   name = 'checkbox',
   value,
@@ -14,7 +14,7 @@ export const Checkbox = ({
   size = 'md',
   variant = 'brand',
   onChange,
-}: CheckboxPropsType) => {
+}) => {
   const chkClass = cn(
     className,
     styles.checkbox,

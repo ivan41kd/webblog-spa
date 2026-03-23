@@ -1,3 +1,3 @@
-export { PostCard } from './ui/PostCard';
+export { mocks } from './mocks';
+export { PostCard } from './ui';
 export type { PostCardPropsType } from './type';
-export { data } from './model/data';

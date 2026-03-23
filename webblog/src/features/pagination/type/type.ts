@@ -1,4 +1,4 @@
-export interface PaginationTypeProps {
+export interface PaginationPropsType {
   data: unknown[];
   currentPage: number;
   dataPerPage: number;

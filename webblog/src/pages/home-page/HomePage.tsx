@@ -1,27 +1,22 @@
-import { useState, useCallback } from 'react';
+import { type FC } from 'react';
 
+import { Search, PostList, Results } from '@/widgets';
+
+import { mocks } from '@/entities/post';
+
+import { useSearch } from '@/shared/lib';
 import { Section } from '@/shared/ui';
 
 import styles from './home-page.module.scss';
-import { data } from '@/entities/post';
-import { Search } from '@/widgets';
-import { PostList } from '@/widgets/post-list/ui/PostList';
 
-export const HomePage = () => {
-  const [posts, setPosts] = useState(data);
-
-  const handleSearch = useCallback((query: string) => {
-    const filteredData = data.filter((post) =>
-      post.title.toLowerCase().includes(query.toLowerCase())
-    );
-
-    setPosts(filteredData);
-  }, []);
+export const HomePage: FC = () => {
+  const { filteredData, showResults, handleSearch, count } = useSearch(mocks);
 
   return (
     <Section className={styles.home}>
       <Search onChange={handleSearch} />
-      <PostList posts={posts} />
+      {showResults && <Results count={count} />}
+      <PostList posts={filteredData} />
     </Section>
   );
 };

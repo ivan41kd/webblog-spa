@@ -1,8 +1,10 @@
+import type { FC } from 'react';
+
+import { LoginForm } from '@features';
+
 import { Container, Section } from '@shared/ui';
 
-import { LoginForm } from './ui';
-
-export const LoginPage = () => {
+export const LoginPage: FC = () => {
   return (
     <Section className="login">
       <Container>

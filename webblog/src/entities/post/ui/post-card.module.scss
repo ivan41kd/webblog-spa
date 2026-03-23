@@ -24,6 +24,7 @@
     justify-content: space-between;
     gap: 0;
     padding: min(0.625rem, 1.5vw);
+    margin-top: auto;
   }
 
   &-description {
@@ -48,8 +49,8 @@
   }
   &:hover &-description {
     grid-template-rows: 1fr;
-    margin-top: 0.625rem;
-    margin-bottom: 0.625rem;
+    margin-top: 0.325rem;
+    margin-bottom: 0.325rem;
 
     &-text {
       opacity: 1;

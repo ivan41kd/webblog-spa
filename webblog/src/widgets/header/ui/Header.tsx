@@ -1,10 +1,11 @@
+import type { FC } from 'react';
 import cn from 'classnames';
 import { Link, useNavigate } from 'react-router';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 
 import { Button, Container, Text } from '@/shared/ui';
-import { useCookies, useLoading } from '@/shared/lib';
+import { useLocalStorage, useLoading } from '@/shared/lib';
 import { CompanyIcon, UserIcon } from '@/shared/icons';
 import { NavList } from '@/shared/ui/nav-list/ui/NavList';
 
@@ -12,14 +13,15 @@ import styles from './header.module.scss';
 
 interface HeaderPropsType {
   className?: string;
-  navList?: { title: string; link: string }[];
 }
 
-export const Header = ({ className, navList }: HeaderPropsType) => {
-  const { getCookie, deleteCookie } = useCookies();
+export const Header: FC<HeaderPropsType> = ({ className }) => {
+  const { getItem, removeItem } = useLocalStorage();
   const { isLoading } = useLoading();
   const navigate = useNavigate();
   const headerClass = cn(className, styles.header);
+
+  const listLinks = [{ title: 'Home', link: '/home' }];
 
   return (
     <header className={headerClass}>
@@ -30,11 +32,11 @@ export const Header = ({ className, navList }: HeaderPropsType) => {
               <CompanyIcon className={styles['header-logo']} />
             </Link>
 
-            {isLoading || !navList ? (
+            {isLoading || !listLinks ? (
               <Skeleton width={200} height={'100%'} />
             ) : (
               <NavList
-                itemsList={navList}
+                itemsList={listLinks}
                 listClassName={styles['header-nav']}
                 itemClassName={styles['header-nav-item']}
               />
@@ -42,7 +44,7 @@ export const Header = ({ className, navList }: HeaderPropsType) => {
           </div>
           {isLoading ? (
             <Skeleton width={100} height={'100%'} />
-          ) : !getCookie('user') ? (
+          ) : !getItem('user') ? (
             <Button
               variant="primary"
               size="sm"
@@ -55,12 +57,12 @@ export const Header = ({ className, navList }: HeaderPropsType) => {
           ) : (
             <div className={styles['header-user']}>
               <UserIcon className={styles['header-user-icon']} />
-              <Text>{getCookie('user')['name']}</Text>
+              <Text>{getItem('user') && JSON.parse(getItem('user') as string).name}</Text>
               <Button
                 variant="secondary"
                 size="sm"
                 onClick={() => {
-                  deleteCookie('user', { path: '/' });
+                  removeItem('user');
                   navigate('/');
                 }}
                 className="btn btn-sm"

@@ -1,52 +1,44 @@
-import { Button } from '@/shared/ui';
+import type { FC } from 'react';
 
-import type { PaginationTypeProps } from '../type';
+import { Button } from '@/shared/ui';
+import { usePagination } from '@/shared/lib';
+
+import type { PaginationPropsType } from '../type';
 import styles from './pagination.module.scss';
 
-export const Pagination = ({
-  data,
-  dataPerPage,
-  onPageChange,
-  currentPage,
-}: PaginationTypeProps) => {
-  const totalData = data.length;
+export const Pagination: FC<PaginationPropsType> = ({ data, onPageChange, currentPage }) => {
+  const { generatePages, totalPages } = usePagination(data);
 
-  const pageNumbers = [];
+  const pageNumbers = generatePages(currentPage, totalPages);
 
-  for (let i = 1; i <= Math.ceil(totalData / dataPerPage); i++) {
-    pageNumbers.push(i);
-  }
-
-  const paginate = (pageNumber: number, e: React.MouseEvent) => {
-    e.preventDefault();
+  const paginate = (pageNumber: number) => {
     onPageChange(pageNumber);
-    window.scrollTo(0, 0);
   };
 
   return (
     <div className={styles.pagination}>
       <Button
-        onClick={(e) => paginate(currentPage - 1, e)}
+        onClick={() => paginate(currentPage - 1)}
         className="page-item"
         isDisabled={currentPage === 1}
       >
         {'<'}
       </Button>
-      {pageNumbers.map((number) => (
+      {pageNumbers.map((number, index) => (
         <Button
           className={
             number === currentPage ? styles['pagination-item-active'] : styles['pagination-item']
           }
-          key={number}
-          onClick={(e) => paginate(number, e)}
+          key={typeof number === 'number' ? number : `ellipsis-${index}`}
+          onClick={() => number === currentPage || (number !== '...' && paginate(number as number))}
         >
           {number}
         </Button>
       ))}
       <Button
         className="page-item"
-        onClick={(e) => paginate(currentPage + 1, e)}
-        isDisabled={currentPage === pageNumbers.length}
+        onClick={() => paginate(currentPage + 1)}
+        isDisabled={currentPage === totalPages}
       >
         {'>'}
       </Button>

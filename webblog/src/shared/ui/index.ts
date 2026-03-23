@@ -1,6 +1,4 @@
 export { Button } from './button';
-export { Form } from './form';
-export { FormInput } from './form-input';
 export { Checkbox } from './checkbox';
 export { Container } from './container';
 export { Input } from './input';

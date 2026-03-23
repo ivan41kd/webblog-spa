@@ -1,14 +1,12 @@
-import { useState } from 'react';
-
+import { useState, type FC } from 'react';
 import cn from 'classnames';
 
 import { EyeClosedIcon, EyeOpenedIcon, EmailIcon } from '@shared/icons';
 
 import type { InputPropsType } from '../type';
-
 import styles from './input.module.scss';
 
-export const Input = ({
+export const Input: FC<InputPropsType> = ({
   className,
   value = '',
   name = 'input',
@@ -26,7 +24,7 @@ export const Input = ({
   iconPlace = 'left',
   variant = 'default',
   onBlur,
-}: InputPropsType) => {
+}) => {
   const [isVisible, setIsVisible] = useState(type === 'text');
 
   const inputClass = cn(styles.input, styles[`input-${size}`], {
