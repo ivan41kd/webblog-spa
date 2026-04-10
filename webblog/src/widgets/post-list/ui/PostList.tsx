@@ -1,4 +1,4 @@
-import { memo, useMemo, type FC } from 'react';
+import { memo, useEffect, useMemo, type FC } from 'react';
 
 import { Pagination } from '@/features';
 
@@ -15,8 +15,22 @@ interface PostListPropsType {
 }
 
 export const PostList: FC<PostListPropsType> = memo(({ posts }) => {
-  const { currentPage, setCurrentPage, dataPerPage, currentData } = usePagination(posts);
+  const {
+    currentPage,
+    setCurrentPage,
+    dataPerPage,
+    currentData,
+    generatePages,
+    totalPages,
+    resetPagination,
+  } = usePagination(posts);
+  const pageNumbers = generatePages(currentPage, totalPages);
+
   const { isLoading } = useLoading();
+
+  useEffect(() => {
+    resetPagination();
+  }, [resetPagination, totalPages]);
 
   const renderedPosts = useMemo(
     () =>
@@ -38,21 +52,22 @@ export const PostList: FC<PostListPropsType> = memo(({ posts }) => {
     return <div className={styles['post-list']}>{skeletons}</div>;
   }
 
+  if (!renderedPosts.length) {
+    return <p>Posts not found</p>;
+  }
+
   return (
     <>
-      {posts.length > 0 ? (
-        <div className={styles['post-list']}>
-          {renderedPosts.map((post) => (
-            <PostCard key={post.id} {...post} />
-          ))}
-        </div>
-      ) : (
-        <p>Posts not found</p>
-      )}
+      <div className={styles['post-list']}>
+        {renderedPosts.map((post) => (
+          <PostCard key={post.id} {...post} />
+        ))}
+      </div>
 
       {posts.length > dataPerPage && (
         <Pagination
-          data={posts}
+          pages={pageNumbers}
+          totalPages={totalPages}
           dataPerPage={dataPerPage}
           onPageChange={setCurrentPage}
           currentPage={currentPage}

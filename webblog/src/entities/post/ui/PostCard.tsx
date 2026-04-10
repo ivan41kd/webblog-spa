@@ -1,6 +1,6 @@
 import { memo, type FC } from 'react';
 
-import { Text } from '@/shared/ui';
+import { Text, Image } from '@/shared/ui';
 
 import type { PostCardPropsType } from '../type';
 import styles from './post-card.module.scss';
@@ -10,15 +10,7 @@ export const PostCard: FC<PostCardPropsType> = memo(
     return (
       <div className={styles['post-card']}>
         <div className={styles['post-card-header']}>
-          {img && (
-            <img
-              className={styles['post-card-img']}
-              src={img}
-              alt={title}
-              loading="lazy"
-              decoding="async"
-            />
-          )}
+          <Image src={img} alt={title} className={styles['post-card-img']} />
         </div>
         <div className={styles['post-card-body']}>
           <Text fontSize="lg" className={styles['post-card-title']}>

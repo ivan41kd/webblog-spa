@@ -44,7 +44,8 @@ export const useForm = ({ defaultValues }: { defaultValues: FormDataType }) => {
 
   const validateForm = (data: FormDataType) => {
     const errorsObj: { [key: string]: string } = {};
-    if (data.name) {
+
+    if (!data.name) {
       if (!data.name.trim()) {
         errorsObj.name = 'Name is required';
       }

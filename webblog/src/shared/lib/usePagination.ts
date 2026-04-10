@@ -1,17 +1,16 @@
-import { useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 
 export const usePagination = <T>(data: T[]) => {
   const [currentPage, setCurrentPage] = useState(1);
   const dataPerPage = 12;
 
   const totalPages = Math.ceil(data.length / dataPerPage);
-  const effectivePage = Math.max(1, Math.min(currentPage, totalPages));
 
   const currentData = useMemo(() => {
-    const indexOfLast = effectivePage * dataPerPage;
+    const indexOfLast = currentPage * dataPerPage;
     const indexOfFirst = indexOfLast - dataPerPage;
     return data.slice(indexOfFirst, indexOfLast);
-  }, [data, effectivePage]);
+  }, [data, currentPage]);
 
   const generatePages = (current: number, total: number): (number | string)[] => {
     const pages: (number | string)[] = [];
@@ -33,12 +32,17 @@ export const usePagination = <T>(data: T[]) => {
     return pages;
   };
 
+  const resetPagination = useCallback(() => {
+    setCurrentPage(1);
+  }, []);
+
   return {
     currentData,
-    currentPage: effectivePage,
+    currentPage,
     setCurrentPage,
     totalPages,
     dataPerPage,
     generatePages,
+    resetPagination,
   };
 };

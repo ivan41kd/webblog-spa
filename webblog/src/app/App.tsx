@@ -1,11 +1,15 @@
 import { BrowserRouter } from 'react-router';
+import { Provider } from 'react-redux';
+import { store } from './store/rootReducer';
 
 import { AppRoutes } from './routes';
 
 function App() {
   return (
     <BrowserRouter>
-      <AppRoutes />
+      <Provider store={store}>
+        <AppRoutes />
+      </Provider>
     </BrowserRouter>
   );
 }

@@ -7,7 +7,7 @@ import 'react-loading-skeleton/dist/skeleton.css';
 import { Button, Container, Text } from '@/shared/ui';
 import { useLocalStorage, useLoading } from '@/shared/lib';
 import { CompanyIcon, UserIcon } from '@/shared/icons';
-import { NavList } from '@/shared/ui/nav-list/ui/NavList';
+import { NavList } from '@/shared/ui';
 
 import styles from './header.module.scss';
 

@@ -21,10 +21,11 @@
   }
   &-icon,
   &-password-icon,
-  &-email-icon {
+  &-email-icon,
+  &-search-icon {
     display: flex;
-    width: clamp(1.5rem, 3vw, 2rem);
-    height: clamp(1.5rem, 3vw, 2rem);
+    width: clamp(1.5rem, 1vw, 2rem);
+    height: clamp(1.5rem, 1vw, 2rem);
     position: absolute;
     right: 0.8125rem;
     top: 50%;
@@ -37,7 +38,8 @@
   &-password-icon {
     cursor: pointer;
   }
-  &-email-icon {
+  &-email-icon,
+  &-search-icon {
     left: 0.8125rem;
   }
   &-icon-left &-icon {
@@ -48,7 +50,8 @@
     left: 0.25rem;
   }
   &-sm.input-icon-left &-icon,
-  &-sm &-email-icon {
+  &-sm &-email-icon,
+  &-sm &-search-icon {
     left: 0.5rem;
   }
   &-xs.input-icon-right &-icon,
@@ -65,7 +68,7 @@
   }
   &-lg.input-icon-right &-icon,
   &-lg &-password-icon {
-    right: 1rem;
+    right: min(1rem, 3vw);
   }
   &-xs.input-icon-right &-field,
   &-xs.input-password &-field {
@@ -81,23 +84,27 @@
   }
   &-lg.input-icon-right &-field,
   &-lg.input-password &-field {
-    padding-right: 3.4375rem;
+    padding-right: 3.1875rem;
   }
   &-xs.input-icon-left &-field,
-  &-xs.input-email &-field {
-    padding-left: 1.5625rem;
+  &-xs.input-email &-field,
+  &-xs.input-search &-field {
+    padding-left: 2.1875rem;
   }
   &-sm.input-icon-left &-field,
-  &-sm.input-email &-field {
+  &-sm.input-email &-field,
+  &-sm.input-search &-field {
     padding-left: 2.1875rem;
   }
   &-md.input-icon-left &-field,
-  &-md.input-email &-field {
-    padding-left: 3.125rem;
+  &-md.input-email &-field,
+  &-md.input-search &-field {
+    padding-left: 2.725rem;
   }
   &-lg.input-icon-left &-field,
-  &-lg.input-email &-field {
-    padding-left: 3.4375rem;
+  &-lg.input-email &-field,
+  &-lg.input-search &-field {
+    padding-left: 3.0375rem;
   }
   &-icon-left &-field {
     padding-left: 3.125rem;
@@ -108,9 +115,10 @@
   }
   &-xs &-icon,
   &-xs &-password-icon,
-  &-xs &-email-icon {
-    width: clamp(1rem, 3vw, 1.5rem);
-    height: clamp(1rem, 3vw, 1.5rem);
+  &-xs &-email-icon,
+  &-xs &-search-icon {
+    width: 1rem;
+    height: 1rem;
   }
 
   &-xs &-label {
@@ -122,22 +130,24 @@
   }
   &-sm &-icon,
   &-sm &-password-icon,
-  &-sm &-email-icon {
-    width: clamp(1.5rem, 3vw, 2rem);
-    height: clamp(1.5rem, 3vw, 2rem);
+  &-sm &-email-icon,
+  &-sm &-search-icon {
+    width: 1.5rem;
+    height: 1.5rem;
   }
   &-sm &-label {
     font-size: 1rem;
   }
   &-md &-field {
-    padding: min(0.75rem, 2.5vw);
+    padding: 0.75rem;
     border-radius: $radius-md;
   }
   &-md &-icon,
   &-md &-password-icon,
-  &-md &-email-icon {
-    width: clamp(1.5rem, 3vw, 2rem);
-    height: clamp(1.5rem, 3vw, 2rem);
+  &-md &-email-icon,
+  &-md &-search-icon {
+    width: clamp(1.5rem, 1vw, 2rem);
+    height: clamp(1.5rem, 1vw, 2rem);
   }
   &-md &-label {
     font-size: 1.125rem;
@@ -146,7 +156,7 @@
     font-size: 1.25rem;
   }
   &-lg &-field {
-    padding: 1rem;
+    padding: clamp(0.5rem, 1vw, 2rem);
     border-radius: $radius-lg;
   }
 
@@ -167,13 +177,12 @@
     form & {
       &[type='email'],
       & {
-        &:user-valid:not(:placeholder-shown, :focus, :hover),
-        &:valid:not(:placeholder-shown, :focus, :hover) {
+        &:user-valid:not(:placeholder-shown, :focus, :hover) {
           border: 0.0625rem solid $success;
         }
       }
-      &:invalid:not(:placeholder-shown, :focus, :hover),
-      &:user-invalid:not(:placeholder-shown, :focus, :hover) {
+
+      &:user-invalid:not(:focus, :hover) {
         border: 0.0625rem solid $error;
       }
     }
@@ -215,12 +224,12 @@
       form & {
         &[type='email'],
         & {
-          &:valid:not(:placeholder-shown, :focus, :hover) {
+          &:user-valid:not(:placeholder-shown, :focus, :hover) {
             border: none;
             border-bottom: 0.0625rem solid $success;
           }
         }
-        &:invalid:not(:placeholder-shown, :focus, :hover),
+
         &:user-invalid:not(:hover) {
           border-bottom: 0.0625rem solid $error;
         }
@@ -239,8 +248,19 @@
       }
     }
   }
+  [type='search']::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    background-color: grey;
+    -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23777'><path d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/></svg>");
+    background-size: 20px 20px;
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+    opacity: 1;
+  }
 
   &-error {
     color: $error;
+    font-size: clamp(0.75rem, 1.5vw, 1rem);
   }
 }

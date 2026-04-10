@@ -1,6 +1,7 @@
 export interface PaginationPropsType {
-  data: unknown[];
+  pages: (number | string)[];
   currentPage: number;
   dataPerPage: number;
   onPageChange: (page: number) => void;
+  totalPages: number;
 }

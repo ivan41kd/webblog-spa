@@ -11,7 +11,7 @@ export interface InputPropsType {
   size?: 'xs' | 'sm' | 'md' | 'lg';
   fontSize?: FontSizeType;
   fontWeight?: FontWeightType;
-  type?: 'text' | 'email' | 'password';
+  type?: 'text' | 'email' | 'password' | 'search';
   isDisabled?: boolean;
   readOnly?: boolean;
   isRequired?: boolean;

@@ -41,6 +41,7 @@ export const LoginForm: FC = () => {
         placeholder="Name"
         name="name"
         variant="default"
+        isRequired
       />
       <Input
         size="lg"
@@ -50,6 +51,7 @@ export const LoginForm: FC = () => {
         placeholder="Password"
         name="password"
         variant="default"
+        isRequired
       />
       <Button isSubmit>Login</Button>
     </form>

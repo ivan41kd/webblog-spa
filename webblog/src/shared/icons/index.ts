@@ -1,6 +1,6 @@
-export { CompanyIcon } from './company-icon/CompanyIcon';
-export { EmailIcon } from './email-icon/EmailIcon';
-export { EyeClosedIcon } from './eye-closed-icon/EyeClosedIcon';
-export { EyeOpenedIcon } from './eye-opened-icon/EyeOpenedIcon';
-export { MasterCardIcon } from './mastercard-icon/MasterCardIcon';
-export { UserIcon } from './user-icon/UserIcon';
+export { CompanyIcon } from './company-icon';
+export { EmailIcon } from './email-icon';
+export { EyeClosedIcon } from './eye-closed-icon';
+export { EyeOpenedIcon } from './eye-opened-icon';
+export { SearchIcon } from './search-icon';
+export { UserIcon } from './user-icon';

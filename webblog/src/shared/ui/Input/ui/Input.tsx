@@ -1,7 +1,7 @@
 import { useState, type FC } from 'react';
 import cn from 'classnames';
 
-import { EyeClosedIcon, EyeOpenedIcon, EmailIcon } from '@shared/icons';
+import { EyeClosedIcon, EyeOpenedIcon, EmailIcon, SearchIcon } from '@shared/icons';
 
 import type { InputPropsType } from '../type';
 import styles from './input.module.scss';
@@ -30,6 +30,7 @@ export const Input: FC<InputPropsType> = ({
   const inputClass = cn(styles.input, styles[`input-${size}`], {
     [styles['input-password']]: type === 'password',
     [styles['input-email']]: type === 'email',
+    [styles['input-search']]: type === 'search',
     [styles['input-icon-left']]: icon && iconPlace === 'left',
     [styles['input-icon-right']]: icon && iconPlace === 'right',
   });
@@ -43,6 +44,12 @@ export const Input: FC<InputPropsType> = ({
         {type === 'email' && (
           <i className={`${styles[`input-email-icon`]}`}>
             <EmailIcon />
+          </i>
+        )}
+
+        {type === 'search' && (
+          <i className={`${styles[`input-search-icon`]}`}>
+            <SearchIcon />
           </i>
         )}
 
