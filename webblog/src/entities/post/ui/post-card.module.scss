@@ -34,6 +34,9 @@
           transition-delay: 0.3s;
         }
       }
+      &-title {
+        -webkit-line-clamp: 2;
+      }
     }
   }
 
@@ -44,7 +47,7 @@
   }
 
   &-header {
-    height: 300px;
+    height: 20rem;
   }
 
   &-body {
@@ -56,14 +59,17 @@
     margin-top: auto;
     background-color: white;
     transition: 0.3s all;
-
-    //
     position: absolute;
     bottom: 0px;
     left: 0px;
     right: 0px;
   }
-
+  &-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
   &-description {
     transition: all 0.3s;
     overflow: hidden;

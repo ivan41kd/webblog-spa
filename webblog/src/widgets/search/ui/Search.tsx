@@ -16,12 +16,6 @@ export const Search: FC<SearchPropsType> = memo(({ onChange }) => {
   }, [debouncedValue, onChange]);
 
   return (
-    <Input
-      variant="default"
-      type="search"
-      size="lg"
-      placeholder="Search"
-      onChange={(e) => setText(e.target.value)}
-    />
+    <Input type="search" size="lg" placeholder="Search" onChange={(e) => setText(e.target.value)} />
   );
 });

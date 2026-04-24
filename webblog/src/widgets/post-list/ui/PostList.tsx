@@ -20,11 +20,10 @@ export const PostList: FC<PostListPropsType> = memo(({ posts }) => {
     setCurrentPage,
     dataPerPage,
     currentData,
-    generatePages,
     totalPages,
     resetPagination,
+    pageNumbers,
   } = usePagination(posts);
-  const pageNumbers = generatePages(currentPage, totalPages);
 
   const { isLoading } = useLoading();
 
@@ -60,7 +59,15 @@ export const PostList: FC<PostListPropsType> = memo(({ posts }) => {
     <>
       <div className={styles['post-list']}>
         {renderedPosts.map((post) => (
-          <PostCard key={post.id} {...post} />
+          <PostCard
+            key={post.id}
+            title={post.title}
+            description={post.description}
+            date={post.date}
+            views={post.views}
+            likes={post.likes}
+            img={post.img}
+          />
         ))}
       </div>
 

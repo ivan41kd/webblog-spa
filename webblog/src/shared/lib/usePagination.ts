@@ -12,7 +12,7 @@ export const usePagination = <T>(data: T[]) => {
     return data.slice(indexOfFirst, indexOfLast);
   }, [data, currentPage]);
 
-  const generatePages = (current: number, total: number): (number | string)[] => {
+  const generatePages = useCallback((current: number, total: number): (number | string)[] => {
     const pages: (number | string)[] = [];
     const siblingCount = 1;
 
@@ -30,7 +30,12 @@ export const usePagination = <T>(data: T[]) => {
     }
 
     return pages;
-  };
+  }, []);
+
+  const pageNumbers = useMemo(
+    () => generatePages(currentPage, totalPages),
+    [currentPage, totalPages, generatePages]
+  );
 
   const resetPagination = useCallback(() => {
     setCurrentPage(1);
@@ -42,7 +47,7 @@ export const usePagination = <T>(data: T[]) => {
     setCurrentPage,
     totalPages,
     dataPerPage,
-    generatePages,
     resetPagination,
+    pageNumbers,
   };
 };

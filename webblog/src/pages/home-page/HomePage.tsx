@@ -11,9 +11,9 @@ import { Section } from '@/shared/ui';
 import styles from './home-page.module.scss';
 
 export const HomePage: FC = () => {
-  const posts = useSelector((state: RootState) => state.posts.posts);
+  const postsSelector = useSelector((state: RootState) => state.posts.posts);
 
-  const { filteredData, showResults, handleSearch, count } = useSearch(posts);
+  const { filteredData, showResults, handleSearch, count } = useSearch(postsSelector);
 
   return (
     <Section className={styles.home}>

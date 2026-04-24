@@ -35,22 +35,25 @@ export const Input: FC<InputPropsType> = ({
     [styles['input-icon-right']]: icon && iconPlace === 'right',
   });
 
+  const inputType =
+    type === 'email' ? type : type === 'password' ? (isVisible ? 'text' : 'password') : type;
+
   return (
     <div className={inputClass}>
       {icon && iconPlace === 'left' && type !== 'email' && (
-        <i className={`${styles[`input-icon`]}`}>{icon}</i>
+        <div className={`${styles[`input-icon`]}`}>{icon}</div>
       )}
       <div className={cn(styles[`input-wrapper`])}>
         {type === 'email' && (
-          <i className={`${styles[`input-email-icon`]}`}>
+          <div className={`${styles[`input-email-icon`]}`}>
             <EmailIcon />
-          </i>
+          </div>
         )}
 
         {type === 'search' && (
-          <i className={`${styles[`input-search-icon`]}`}>
+          <div className={`${styles[`input-search-icon`]}`}>
             <SearchIcon />
-          </i>
+          </div>
         )}
 
         <input
@@ -65,9 +68,7 @@ export const Input: FC<InputPropsType> = ({
           )}
           defaultValue={value}
           placeholder={placeholder}
-          type={
-            type === 'email' ? type : type === 'password' ? (isVisible ? 'text' : 'password') : type
-          }
+          type={inputType}
           minLength={(type === 'password' && 8) || 0}
           disabled={isDisabled}
           readOnly={readOnly}
@@ -78,15 +79,15 @@ export const Input: FC<InputPropsType> = ({
         />
 
         {icon && iconPlace === 'right' && type !== 'password' && (
-          <i className={`${styles[`input-icon`]}`}>{icon}</i>
+          <div className={`${styles[`input-icon`]}`}>{icon}</div>
         )}
         {type === 'password' && (
-          <i
+          <div
             className={`${styles['input-password-icon']}`}
             onClick={() => setIsVisible(!isVisible)}
           >
             {isVisible ? <EyeOpenedIcon /> : <EyeClosedIcon />}
-          </i>
+          </div>
         )}
       </div>
       {error && <span className={styles['input-error']}>{error}</span>}

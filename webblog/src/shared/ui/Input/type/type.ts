@@ -17,5 +17,5 @@ export interface InputPropsType {
   isRequired?: boolean;
   icon?: React.ReactNode | null;
   iconPlace?: 'left' | 'right';
-  variant: 'default' | 'lined';
+  variant?: 'default' | 'lined';
 }

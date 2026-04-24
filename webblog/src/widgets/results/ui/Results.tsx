@@ -7,7 +7,7 @@ interface ResultsPropsType {
 export const Results: FC<ResultsPropsType> = ({ count }) => {
   return (
     <div>
-      Found {count} {count > 1 ? 'posts' : 'post'}{' '}
+      Found {count} {count > 1 ? 'posts' : 'post'}
     </div>
   );
 };

@@ -1,8 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
+
 import { mocks as posts } from '../mocks';
+import type { PostCardPropsType } from '../type';
 
 const initialState: {
-  posts: typeof posts;
+  posts: PostCardPropsType[];
 } = {
   posts,
 };
