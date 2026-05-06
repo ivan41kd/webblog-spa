@@ -1,1 +1,1 @@
-export { HOME, LOGIN } from './routes';
+export { HOME, LOGIN, POST } from './routes';

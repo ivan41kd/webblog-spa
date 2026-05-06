@@ -1,0 +1,23 @@
+import { memo, type FC } from 'react';
+
+import { useAppDispatch } from '@app/store/rootReducer';
+
+import { likePost } from '@entities';
+
+import { Button } from '@shared/ui';
+
+interface PostLikePropsType {
+  isLiked?: boolean;
+}
+
+export const PostLike: FC<PostLikePropsType> = memo(({ isLiked = false }) => {
+  const dispatch = useAppDispatch();
+
+  return (
+    <>
+      <Button size="md" onClick={() => dispatch(likePost())}>
+        {isLiked ? 'Unlike post' : 'Like post'}
+      </Button>
+    </>
+  );
+});

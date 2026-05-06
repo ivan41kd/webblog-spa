@@ -1,4 +1,5 @@
 import type { FC } from 'react';
+
 import cn from 'classnames';
 
 import type { TitlePropsType } from '../type';
@@ -17,8 +18,7 @@ export const Title: FC<TitlePropsType> = ({
       className={cn(className, {
         [`title-${fontSize}`]: fontSize,
         [`font-${fontWeight}`]: fontWeight,
-      })}
-    >
+      })}>
       {children}
     </Tag>
   );

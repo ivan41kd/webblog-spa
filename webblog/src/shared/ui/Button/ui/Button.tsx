@@ -1,4 +1,5 @@
-import { memo, type FC } from 'react';
+import { type FC, memo } from 'react';
+
 import cn from 'classnames';
 
 import type { ButtonPropsType } from '../type';
@@ -28,8 +29,7 @@ export const Button: FC<ButtonPropsType> = memo(
         className={btnClass}
         disabled={isDisabled}
         type={isSubmit ? 'submit' : 'button'}
-        onClick={onClick}
-      >
+        onClick={onClick}>
         {children}
       </button>
     );

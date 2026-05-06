@@ -1,0 +1,26 @@
+@use '@styles/variables/colors' as *;
+
+.post-article {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.5rem, 5vw, 3.125rem);
+  &-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+  }
+  &-action {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+  }
+  &-action-icon {
+    width: 1.875rem;
+    height: 1.875rem;
+  }
+  &-comments {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+  }
+}

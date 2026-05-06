@@ -1,0 +1,14 @@
+.post-recommended {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  &-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+  }
+  &-img {
+    width: 18.75rem;
+    height: 18.75rem;
+  }
+}

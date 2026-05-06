@@ -1,36 +1,59 @@
 import { useCallback, useMemo, useState } from 'react';
 
-export const usePagination = <T>(data: T[]) => {
+interface UsePaginationReturnType<T> {
+  pageData: T[];
+  visibleData: T[];
+  currentPage: number;
+  setCurrentPage: (page: number) => void;
+  totalPages: number;
+  dataPerPage: number;
+  resetPagination: () => void;
+  pageNumbers: (number | string)[];
+  offset: number;
+  setOffset: React.Dispatch<React.SetStateAction<number>>;
+}
+
+export const usePagination = <T>(
+  data: T[],
+  dataPerPage = 12
+): UsePaginationReturnType<T> => {
   const [currentPage, setCurrentPage] = useState(1);
-  const dataPerPage = 12;
+  const [offset, setOffset] = useState<number>(0);
 
   const totalPages = Math.ceil(data.length / dataPerPage);
 
-  const currentData = useMemo(() => {
+  const pageData = useMemo(() => {
     const indexOfLast = currentPage * dataPerPage;
     const indexOfFirst = indexOfLast - dataPerPage;
     return data.slice(indexOfFirst, indexOfLast);
-  }, [data, currentPage]);
+  }, [currentPage, dataPerPage, data]);
 
-  const generatePages = useCallback((current: number, total: number): (number | string)[] => {
-    const pages: (number | string)[] = [];
-    const siblingCount = 1;
+  const visibleData = useMemo(() => {
+    const indexOfLast = currentPage * dataPerPage + offset;
+    return data.slice(0, indexOfLast);
+  }, [currentPage, data, dataPerPage, offset]);
 
-    for (let i = 1; i <= total; i++) {
-      if (
-        i === 1 ||
-        i === total ||
-        (i >= current - siblingCount && i <= current + siblingCount) ||
-        (i <= 5 && current < 5)
-      ) {
-        pages.push(i);
-      } else if (pages[pages.length - 1] !== '...') {
-        pages.push('...');
+  const generatePages = useCallback(
+    (current: number, total: number): (number | string)[] => {
+      const pages: (number | string)[] = [];
+      const siblingCount = 1;
+
+      for (let i = 1; i <= total; i++) {
+        if (
+          i === 1 ||
+          i === total ||
+          (i >= current - siblingCount && i <= current + siblingCount) ||
+          (i <= 5 && current < 5)
+        ) {
+          pages.push(i);
+        } else if (pages[pages.length - 1] !== '...') {
+          pages.push('...');
+        }
       }
-    }
-
-    return pages;
-  }, []);
+      return pages;
+    },
+    []
+  );
 
   const pageNumbers = useMemo(
     () => generatePages(currentPage, totalPages),
@@ -39,15 +62,19 @@ export const usePagination = <T>(data: T[]) => {
 
   const resetPagination = useCallback(() => {
     setCurrentPage(1);
+    setOffset(0);
   }, []);
 
   return {
-    currentData,
+    pageData,
+    visibleData,
     currentPage,
     setCurrentPage,
     totalPages,
     dataPerPage,
     resetPagination,
     pageNumbers,
+    offset,
+    setOffset,
   };
 };

@@ -1,16 +1,24 @@
-import { useState, type FC } from 'react';
+import { type FC, useState } from 'react';
+
 import cn from 'classnames';
 
-import { EyeClosedIcon, EyeOpenedIcon, EmailIcon, SearchIcon } from '@shared/icons';
+import {
+  EmailIcon,
+  EyeClosedIcon,
+  EyeOpenedIcon,
+  ResetIcon,
+  SearchIcon,
+} from '@shared/icons';
 
 import type { InputPropsType } from '../type';
 import styles from './input.module.scss';
 
 export const Input: FC<InputPropsType> = ({
   className,
-  value = '',
   name = 'input',
+  value = '',
   onChange,
+  onReset,
   placeholder = '',
   error,
   size = 'md',
@@ -36,7 +44,13 @@ export const Input: FC<InputPropsType> = ({
   });
 
   const inputType =
-    type === 'email' ? type : type === 'password' ? (isVisible ? 'text' : 'password') : type;
+    type === 'email'
+      ? type
+      : type === 'password'
+        ? isVisible
+          ? 'text'
+          : 'password'
+        : type;
 
   return (
     <div className={inputClass}>
@@ -66,7 +80,7 @@ export const Input: FC<InputPropsType> = ({
               [styles[`input-${variant}`]]: variant !== 'default',
             }
           )}
-          defaultValue={value}
+          value={value}
           placeholder={placeholder}
           type={inputType}
           minLength={(type === 'password' && 8) || 0}
@@ -84,13 +98,17 @@ export const Input: FC<InputPropsType> = ({
         {type === 'password' && (
           <div
             className={`${styles['input-password-icon']}`}
-            onClick={() => setIsVisible(!isVisible)}
-          >
+            onClick={() => setIsVisible(!isVisible)}>
             {isVisible ? <EyeOpenedIcon /> : <EyeClosedIcon />}
           </div>
         )}
+        {type === 'search' && value && (
+          <div className={`${styles['input-reset-icon']}`} onClick={onReset}>
+            <ResetIcon />
+          </div>
+        )}
       </div>
-      {error && <span className={styles['input-error']}>{error}</span>}
+      {error && <span className="error-text">{error}</span>}
     </div>
   );
 };

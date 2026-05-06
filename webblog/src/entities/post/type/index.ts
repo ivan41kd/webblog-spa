@@ -1,1 +1,1 @@
-export type { PostCardPropsType } from './type';
+export type { PostType } from './type';

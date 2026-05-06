@@ -10,11 +10,11 @@
   &-main {
     display: flex;
     align-items: center;
-    gap: 1.25rem;
+    gap: min(1.25rem, 2vw);
   }
   &-logo {
-    width: 2.5rem;
-    height: 2.5rem;
+    width: clamp(1.75rem, 5vw, 2.5rem);
+    height: clamp(1.75rem, 5vw, 2.5rem);
   }
   &-nav {
     display: flex;
@@ -27,11 +27,11 @@
   &-user {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 0.625rem;
   }
 
   &-user-icon {
-    width: 32px;
-    height: 32px;
+    width: clamp(1.75rem, 5vw, 2.5rem);
+    height: clamp(1.75rem, 5vw, 2.5rem);
   }
 }

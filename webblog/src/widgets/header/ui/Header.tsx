@@ -1,14 +1,18 @@
-import type { FC } from 'react';
-import cn from 'classnames';
-import { Link, useNavigate } from 'react-router';
+import { useEffect, type FC } from 'react';
 import Skeleton from 'react-loading-skeleton';
-import 'react-loading-skeleton/dist/skeleton.css';
+import { Link } from 'react-router';
 
-import { Button, Container, Text } from '@/shared/ui';
-import { useLocalStorage, useLoading } from '@/shared/lib';
-import { CompanyIcon, UserIcon } from '@/shared/icons';
-import { NavList } from '@/shared/ui';
+import cn from 'classnames';
 
+import { useAppDispatch, useAppSelector } from '@app/store/rootReducer';
+
+import { LoginButton, SignoutButton } from '@features';
+
+import { CompanyIcon, UserIcon } from '@shared/icons';
+import { useLocalStorage } from '@shared/lib';
+import { Container, NavList, Text } from '@shared/ui';
+
+import { fetchHeaderList } from '../model/slice';
 import styles from './header.module.scss';
 
 interface HeaderPropsType {
@@ -16,12 +20,15 @@ interface HeaderPropsType {
 }
 
 export const Header: FC<HeaderPropsType> = ({ className }) => {
-  const { getItem, removeItem } = useLocalStorage();
-  const { isLoading } = useLoading();
-  const navigate = useNavigate();
+  const { getItem } = useLocalStorage();
+  const { links, isLoading } = useAppSelector((state) => state.header);
+  const dispatch = useAppDispatch();
+
   const headerClass = cn(className, styles.header);
 
-  const listLinks = [{ title: 'Home', link: '/home' }];
+  useEffect(() => {
+    dispatch(fetchHeaderList([{ title: 'Home', link: '/home' }]));
+  }, []);
 
   return (
     <header className={headerClass}>
@@ -32,43 +39,27 @@ export const Header: FC<HeaderPropsType> = ({ className }) => {
               <CompanyIcon className={styles['header-logo']} />
             </Link>
 
-            {isLoading || !listLinks ? (
-              <Skeleton width={200} height={'100%'} />
+            {isLoading ? (
+              <Skeleton width={100} />
             ) : (
               <NavList
-                itemsList={listLinks}
+                itemsList={links}
                 listClassName={styles['header-nav']}
                 itemClassName={styles['header-nav-item']}
               />
             )}
           </div>
           {isLoading ? (
-            <Skeleton width={100} height={'100%'} />
+            <Skeleton width={100} />
           ) : !getItem('user') ? (
-            <Button
-              variant="primary"
-              size="sm"
-              onClick={() => {
-                navigate('/login');
-              }}
-            >
-              Login
-            </Button>
+            <LoginButton />
           ) : (
             <div className={styles['header-user']}>
               <UserIcon className={styles['header-user-icon']} />
-              <Text>{getItem('user') && JSON.parse(getItem('user') as string).name}</Text>
-              <Button
-                variant="secondary"
-                size="sm"
-                onClick={() => {
-                  removeItem('user');
-                  navigate('/');
-                }}
-                className="btn btn-sm"
-              >
-                Logout
-              </Button>
+              <Text>
+                {getItem('user') && JSON.parse(getItem('user') as string).name}
+              </Text>
+              <SignoutButton />
             </div>
           )}
         </div>

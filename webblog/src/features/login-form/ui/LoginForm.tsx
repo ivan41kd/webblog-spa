@@ -1,22 +1,20 @@
 import type { FC } from 'react';
 import { useNavigate } from 'react-router';
 
-import { Button, Input } from '@/shared/ui';
-import { useLocalStorage, useForm } from '@/shared/lib';
+import { useForm, useLocalStorage } from '@shared/lib';
+import { Button, Input } from '@shared/ui';
 
 export const LoginForm: FC = () => {
   const navigate = useNavigate();
   const { setItem } = useLocalStorage();
-  const { handleChange, formData, errors, setErrors, validateForm } = useForm({
+  const { handleChange, formData, errors, validateForm } = useForm({
     defaultValues: { name: '', password: '' },
   });
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formErrors = validateForm(formData);
-    setErrors(formErrors);
 
-    if (Object.keys(formErrors).length === 0) {
+    if (validateForm()) {
       setItem('user', JSON.stringify(formData));
       navigate('/');
     }
@@ -31,12 +29,12 @@ export const LoginForm: FC = () => {
       onSubmit={(e) => {
         handleSubmit(e);
       }}
-      noValidate
-    >
+      noValidate>
       <Input
         size="lg"
         type="text"
         onChange={handleInputChange}
+        value={formData.name}
         error={errors.name}
         placeholder="Name"
         name="name"
@@ -47,6 +45,7 @@ export const LoginForm: FC = () => {
         size="lg"
         type="password"
         onChange={handleInputChange}
+        value={formData.password}
         error={errors.password}
         placeholder="Password"
         name="password"

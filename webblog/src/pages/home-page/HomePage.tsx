@@ -1,25 +1,19 @@
 import { type FC } from 'react';
-import { useSelector } from 'react-redux';
 
-import type { RootState } from '@/app/store/rootReducer';
+import { PostList, PromoBanner } from '@widgets';
 
-import { Search, PostList, Results } from '@/widgets';
+import { PostSearch } from '@features';
 
-import { useSearch } from '@/shared/lib';
-import { Section } from '@/shared/ui';
+import { Section } from '@shared/ui';
 
 import styles from './home-page.module.scss';
 
 export const HomePage: FC = () => {
-  const postsSelector = useSelector((state: RootState) => state.posts.posts);
-
-  const { filteredData, showResults, handleSearch, count } = useSearch(postsSelector);
-
   return (
     <Section className={styles.home}>
-      <Search onChange={handleSearch} />
-      {showResults && <Results count={count} />}
-      <PostList posts={filteredData} />
+      <PostSearch />
+      <PostList />
+      <PromoBanner />
     </Section>
   );
 };

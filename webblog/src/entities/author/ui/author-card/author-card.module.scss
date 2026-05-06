@@ -1,0 +1,11 @@
+@use '@styles/variables/radius' as *;
+.author-card {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  &-img {
+    width: clamp(3rem, 5.5vw, 5rem);
+    height: clamp(3rem, 5.5vw, 5rem);
+    border-radius: $radius-md;
+  }
+}

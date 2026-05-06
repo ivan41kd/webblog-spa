@@ -1,0 +1,17 @@
+@use '@styles/variables/colors' as *;
+
+.breadcrumbs {
+  display: flex;
+  gap: 0.3125rem;
+  align-items: center;
+
+  &-item {
+    display: flex;
+    gap: 0.3125rem;
+    align-items: center;
+  }
+  &-item:not(:last-child)::after {
+    content: '>';
+    color: $brand;
+  }
+}

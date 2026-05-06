@@ -4,4 +4,5 @@ export interface PaginationPropsType {
   dataPerPage: number;
   onPageChange: (page: number) => void;
   totalPages: number;
+  type?: 'base' | 'loadMore';
 }

@@ -1,6 +1,6 @@
 @use '@styles/variables/variables' as *;
-@use './normalize';
 @use '@styles/variables/colors' as *;
+@use './normalize';
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 body {
@@ -43,4 +43,8 @@ form {
   display: flex;
   flex-direction: column;
   gap: clamp(0.25rem, 1.5vw, 1rem);
+}
+
+.hidden {
+  display: none;
 }

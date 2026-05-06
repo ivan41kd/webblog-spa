@@ -1,0 +1,20 @@
+@use '@styles/variables/colors' as *;
+
+.read-more {
+  &-button {
+    cursor: pointer;
+    color: $brand;
+    transition: 0.3s color;
+    &:hover {
+      color: $brand-hover;
+    }
+    &:active {
+      color: $brand-active;
+    }
+  }
+  &-text.end {
+    &.hidden {
+      display: none;
+    }
+  }
+}

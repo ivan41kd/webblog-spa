@@ -8,6 +8,10 @@
   color: $brand-text;
   background: $brand;
   transition: 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3125rem;
   &:hover {
     background: $brand-hover;
     transition: 0.2s ease-in-out;
@@ -59,17 +63,11 @@
   }
   &.md {
     padding: min(6px, 2.5vw) min(12px, 1vw);
-    max-width: 100%;
-    width: 100%;
   }
   &.lg {
     padding: min(9px, 0.8vw) min(16px, 1.2vw);
-    max-width: 100%;
-    width: 100%;
   }
   &.xl {
     padding: 10px 20px;
-    max-width: 100%;
-    width: 100%;
   }
 }

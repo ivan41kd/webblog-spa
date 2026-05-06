@@ -1,39 +1,42 @@
-import { memo, useEffect, useMemo, type FC } from 'react';
+import { type FC, memo, useEffect, useMemo } from 'react';
+import { Link } from 'react-router';
 
-import { Pagination } from '@/features';
+import { useAppDispatch, useAppSelector } from '@app/store/rootReducer';
 
-import { PostCard, type PostCardPropsType } from '@/entities/post';
-import { PostCardSkeleton } from '@/entities/post/ui';
+import { Pagination } from '@features';
 
-import { useLoading, usePagination } from '@/shared/lib';
-import { formatDate } from '@/shared/utils/formatDate';
+import { PostCard, PostCardSkeleton, fetchPosts } from '@entities';
+
+import { usePagination } from '@shared/lib';
+import { formatDate } from '@shared/utils/formatDate';
 
 import styles from './post-list.module.scss';
 
-interface PostListPropsType {
-  posts: PostCardPropsType[];
-}
+export const PostList: FC = memo(() => {
+  const { posts, isLoading } = useAppSelector((state) => state.posts);
+  const dispatch = useAppDispatch();
 
-export const PostList: FC<PostListPropsType> = memo(({ posts }) => {
   const {
     currentPage,
     setCurrentPage,
     dataPerPage,
-    currentData,
+    pageData,
     totalPages,
     resetPagination,
     pageNumbers,
-  } = usePagination(posts);
-
-  const { isLoading } = useLoading();
+  } = usePagination(posts || []);
 
   useEffect(() => {
     resetPagination();
-  }, [resetPagination, totalPages]);
+  }, [totalPages]);
+
+  useEffect(() => {
+    dispatch(fetchPosts());
+  }, [dispatch]);
 
   const renderedPosts = useMemo(
     () =>
-      currentData.map((post) => ({
+      pageData.map((post) => ({
         id: post.id,
         img: post.img,
         title: post.title,
@@ -42,10 +45,12 @@ export const PostList: FC<PostListPropsType> = memo(({ posts }) => {
         views: post.views,
         likes: post.likes,
       })),
-    [currentData]
+    [pageData]
   );
 
-  const skeletons = Array.from({ length: 3 }, (_, i) => <PostCardSkeleton key={`skeleton-${i}`} />);
+  const skeletons = Array.from({ length: 3 }, (_, i) => (
+    <PostCardSkeleton key={`skeleton-${i}`} />
+  ));
 
   if (isLoading) {
     return <div className={styles['post-list']}>{skeletons}</div>;
@@ -59,19 +64,20 @@ export const PostList: FC<PostListPropsType> = memo(({ posts }) => {
     <>
       <div className={styles['post-list']}>
         {renderedPosts.map((post) => (
-          <PostCard
-            key={post.id}
-            title={post.title}
-            description={post.description}
-            date={post.date}
-            views={post.views}
-            likes={post.likes}
-            img={post.img}
-          />
+          <Link key={`post-${post.id}`} to={`/posts/${post.id}`}>
+            <PostCard
+              title={post.title}
+              description={post.description}
+              date={post.date}
+              views={post.views}
+              likes={post.likes}
+              img={post.img}
+            />
+          </Link>
         ))}
       </div>
 
-      {posts.length > dataPerPage && (
+      {posts && posts.length > dataPerPage && (
         <Pagination
           pages={pageNumbers}
           totalPages={totalPages}

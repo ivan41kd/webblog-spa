@@ -1,9 +1,13 @@
 export { Button } from './button';
 export { Checkbox } from './checkbox';
 export { Container } from './container';
-export { Input } from './input';
 export { Image } from './image';
+export { Input } from './input';
+export { LayoutMain } from './layouts';
+export { NavList } from './nav-list';
+export { NotFound } from './not-found';
+export { ReadMore } from './read-more';
 export { Section } from './section';
 export { Text } from './text';
-export { NavList } from './nav-list';
+export { Textarea } from './textarea';
 export { Title } from './title';

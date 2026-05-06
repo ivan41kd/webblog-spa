@@ -1,3 +1,21 @@
 export { mocks } from './mocks';
-export { PostCard } from './ui';
-export type { PostCardPropsType } from './type';
+export type { PostType } from './type';
+
+export {
+  addComment,
+  clearPost,
+  clearSearch,
+  fetchPost,
+  fetchPosts,
+  fetchPostSearch,
+  likeComment,
+  likePost,
+  postReducer,
+} from './model';
+export {
+  PostCard,
+  PostCardSkeleton,
+  PostDetails,
+  PostDetailsSkeleton,
+  PostRow,
+} from './ui';

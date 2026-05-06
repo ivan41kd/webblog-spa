@@ -1,7 +1,8 @@
 import type { FC } from 'react';
+
 import cn from 'classnames';
 
-import { Container, Text } from '@/shared/ui';
+import { Container, Text } from '@shared/ui';
 
 import styles from './footer.module.scss';
 

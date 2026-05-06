@@ -1,0 +1,5 @@
+.post {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 1.5vw, 3.125rem);
+}

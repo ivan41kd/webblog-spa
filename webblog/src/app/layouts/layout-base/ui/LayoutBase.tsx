@@ -1,10 +1,19 @@
-import type { FC } from 'react';
-import { Outlet } from 'react-router';
+import { type FC } from 'react';
+import { Outlet, ScrollRestoration } from 'react-router';
 
-import { Header, Footer } from '@widgets';
+import { Footer, Header } from '@widgets';
 
-import { LayoutMain } from '@/shared/ui/layouts';
+import { LayoutMain } from '@shared/ui';
 
 export const LayoutBase: FC = () => {
-  return <LayoutMain headerNode={<Header />} contentNode={<Outlet />} footerNode={<Footer />} />;
+  return (
+    <>
+      <LayoutMain
+        headerNode={<Header />}
+        contentNode={<Outlet />}
+        footerNode={<Footer />}
+      />
+      <ScrollRestoration />
+    </>
+  );
 };

@@ -5,13 +5,18 @@
   justify-content: center;
   gap: min(0.625rem, 1.5vw);
   background: $body;
-  position: sticky;
+
   padding: min(0.625rem, 1.5vw) 0;
-  bottom: 0;
   &-item {
-    &-active {
-      background-color: #007bff;
-      color: #fff;
-    }
+    width: 100%;
+    max-width: 100%;
   }
+  &-item.active {
+    background-color: #007bff;
+    color: #fff;
+  }
+}
+.pagination.base {
+  position: sticky;
+  bottom: 0.3125rem;
 }

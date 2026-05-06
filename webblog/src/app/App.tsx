@@ -1,16 +1,14 @@
-import { BrowserRouter } from 'react-router';
+import 'react-loading-skeleton/dist/skeleton.css';
 import { Provider } from 'react-redux';
-import { store } from './store/rootReducer';
 
 import { AppRoutes } from './routes';
+import { store } from './store/rootReducer';
 
 function App() {
   return (
-    <BrowserRouter>
-      <Provider store={store}>
-        <AppRoutes />
-      </Provider>
-    </BrowserRouter>
+    <Provider store={store}>
+      <AppRoutes />
+    </Provider>
   );
 }
 
