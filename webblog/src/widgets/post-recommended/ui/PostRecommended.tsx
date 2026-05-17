@@ -1,5 +1,7 @@
 import type { FC } from 'react';
 
+import { Link } from 'react-router';
+
 import { PostRow } from '@entities';
 
 import { Title } from '@shared/ui';
@@ -14,16 +16,17 @@ export const PostRecommended: FC = () => {
       <div className={styles['post-recommended-list']}>
         {RECOMMENDED_POSTS.map((item) => {
           return (
-            <PostRow
-              key={item.id}
-              img={item.img}
-              title={item.title}
-              description={item.description}
-              authorImg={item.author.avatar}
-              authorName={item.author.name}
-              views={item.views}
-              date={item.date}
-            />
+            <Link to={`/posts/${item.id}`} key={item.id}>
+              <PostRow
+                img={item.img}
+                title={item.title}
+                description={item.description}
+                authorImg={item.author.avatar}
+                authorName={item.author.name}
+                views={item.views}
+                date={item.date}
+              />
+            </Link>
           );
         })}
       </div>

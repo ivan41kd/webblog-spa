@@ -6,68 +6,66 @@
   border-radius: $radius-md;
   cursor: pointer;
   color: $brand-text;
-  background: $brand;
-  transition: 0.2s ease-in-out;
+  background-color: $brand;
+  transition: background-color 0.2s ease;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.3125rem;
   &:hover {
-    background: $brand-hover;
-    transition: 0.2s ease-in-out;
+    background-color: $brand-hover;
   }
   &:active {
-    background: $brand-active;
-    transition: 0.2s ease-in-out;
+    background-color: $brand-active;
   }
 
   &:disabled {
-    background: $disabled-bg;
+    background-color: $disabled-bg;
     color: $disabled-text;
     cursor: not-allowed;
   }
 
   &.primary {
-    background: $primary;
+    background-color: $primary;
     color: $primary-text;
     &:hover {
-      background: $primary-hover;
+      background-color: $primary-hover;
     }
     &:active {
-      background: $primary-active;
+      background-color: $primary-active;
     }
   }
   &.secondary {
-    background: $secondary;
+    background-color: $secondary;
     color: $secondary-text;
     &:hover {
-      background: $secondary-hover;
+      background-color: $secondary-hover;
     }
     &:active {
-      background: $secondary-active;
+      background-color: $secondary-active;
     }
   }
   &.tertiary {
-    background: $tertiary;
+    background-color: $tertiary;
     color: $tertiary-text;
 
     &:hover {
-      background: $tertiary-hover;
+      background-color: $tertiary-hover;
     }
     &:active {
-      background: $tertiary-active;
+      background-color: $tertiary-active;
     }
   }
   &.sm {
-    padding: min(3px, 0.3vw) min(10.5px, 1.8vw);
+    padding: min(0.1875rem, 0.3vw) min(0.6563rem, 1.8vw);
   }
   &.md {
-    padding: min(6px, 2.5vw) min(12px, 1vw);
+    padding: min(0.375rem, 2.5vw) min(0.75rem, 1vw);
   }
   &.lg {
-    padding: min(9px, 0.8vw) min(16px, 1.2vw);
+    padding: min(0.5625rem, 0.8vw) min(1rem, 1.2vw);
   }
   &.xl {
-    padding: 10px 20px;
+    padding: 0.625rem 1.25rem;
   }
 }

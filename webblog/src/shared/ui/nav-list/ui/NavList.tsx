@@ -1,11 +1,18 @@
 import type { FC } from 'react';
 
-import { NavLink } from 'react-router';
+import { AppLink } from '../../app-link';
+
+interface NavItem {
+  title: string;
+  link: string;
+  query?: string;
+  queryType?: string;
+}
 
 interface NavListPropsType {
   listClassName?: string;
   itemClassName?: string;
-  itemsList: { title: string; link: string }[];
+  itemsList: NavItem[];
 }
 
 export const NavList: FC<NavListPropsType> = ({
@@ -15,16 +22,15 @@ export const NavList: FC<NavListPropsType> = ({
 }) => {
   return (
     <ul className={listClassName}>
-      {itemsList.map(({ title, link }) => (
-        <NavLink
-          to={link}
-          key={title}
-          className={({ isActive }) =>
-            isActive ? `${itemClassName} active` : itemClassName
-          }>
-          <li key={title}>{title}</li>
-        </NavLink>
-      ))}
+      {itemsList.map(({ title, link }, index) => {
+        return (
+          <li className={itemClassName} key={link + index}>
+            <AppLink title={title} href={link}>
+              {title}
+            </AppLink>
+          </li>
+        );
+      })}
     </ul>
   );
 };

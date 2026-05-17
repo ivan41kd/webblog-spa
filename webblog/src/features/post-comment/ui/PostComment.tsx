@@ -2,12 +2,10 @@ import type { FC } from 'react';
 
 import { useAppDispatch } from '@app/store/rootReducer';
 
-import { addComment } from '@entities';
+import { fetchPostComment } from '@entities';
 
 import { useForm, useLocalStorage } from '@shared/lib';
 import { Button, Textarea } from '@shared/ui';
-
-import styles from './post-comment.module.scss';
 
 interface PostCommentPropsType {
   onCommentAdded: () => void;
@@ -24,9 +22,10 @@ export const PostComment: FC<PostCommentPropsType> = ({ onCommentAdded }) => {
     e.preventDefault();
     if (validateForm()) {
       dispatch(
-        addComment({
+        fetchPostComment({
           name: getItem('user') && JSON.parse(getItem('user') as string).name,
-          comment: formData.comment,
+          text: formData.comment,
+          date: new Date() + '',
         })
       );
       resetField('comment');
@@ -43,7 +42,6 @@ export const PostComment: FC<PostCommentPropsType> = ({ onCommentAdded }) => {
       <Textarea
         isRequired
         name="comment"
-        className={styles['post-comment-field']}
         value={formData.comment}
         error={errors.comment}
         onChange={handleInputChange}

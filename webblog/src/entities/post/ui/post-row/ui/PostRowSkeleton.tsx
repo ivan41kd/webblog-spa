@@ -1,46 +1,39 @@
 import type { FC } from 'react';
 
-import { CalendarIcon, ViewsIcon } from '@shared/icons';
-import { Image, Text } from '@shared/ui';
-import { formatDate } from '@shared/utils/formatDate';
+import Skeleton from 'react-loading-skeleton';
 
-import type { PostRowPropsType } from '../type';
+import { CalendarIcon, ViewsIcon } from '@shared/icons';
+
 import styles from './post-row.module.scss';
 
-export const PostRow: FC<PostRowPropsType> = ({
-  img,
-  title,
-  description,
-  authorName,
-  authorImg,
-  views,
-  date,
-}) => {
+export const PostRowSkeleton: FC = () => {
   return (
     <div className={styles['post-row']}>
-      <Image src={img} className={styles['post-row-img']} />
+      <div className="">
+        <Skeleton className={styles['post-row-img']} inline height={'100%'} />
+      </div>
 
       <div className={styles['post-row-content']}>
         <div className={styles['post-row-author']}>
-          <Image src={authorImg} className={styles['post-row-author-avatar']} />
+          <Skeleton className={styles['post-row-author-avatar']} />
           <div className={styles['post-row-author-info']}>
-            <Text className={styles['post-row-author-name']}>{authorName}</Text>
+            <Skeleton className={styles['post-row-author-name']} />
             <div className={styles['post-row-info']}>
               <div className={styles['post-row-info-item']}>
                 <ViewsIcon className={styles['post-row-info-item-icon']} />
-                <Text>{views}</Text>
+                <Skeleton width={30} />
               </div>
               <div className={styles['post-row-info-item']}>
                 <CalendarIcon className={styles['post-row-info-item-icon']} />
-                <Text>{formatDate(date)}</Text>
+                <Skeleton width={30} />
               </div>
             </div>
           </div>
         </div>
 
         <div className={styles['post-row-body']}>
-          <Text className={styles['post-row-title']}>{title}</Text>
-          <Text className={styles['post-row-description']}>{description}</Text>
+          <Skeleton />
+          <Skeleton />
         </div>
       </div>
     </div>

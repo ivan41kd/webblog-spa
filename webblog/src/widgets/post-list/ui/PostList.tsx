@@ -1,11 +1,12 @@
-import { type FC, memo, useEffect, useMemo } from 'react';
-import { Link } from 'react-router';
+import { memo, useEffect, useMemo, type FC } from 'react';
 
-import { useAppDispatch, useAppSelector } from '@app/store/rootReducer';
+import { Link, useSearchParams } from 'react-router';
+
+import { useAppSelector } from '@app/store/rootReducer';
 
 import { Pagination } from '@features';
 
-import { PostCard, PostCardSkeleton, fetchPosts } from '@entities';
+import { PostCard, PostCardSkeleton } from '@entities';
 
 import { usePagination } from '@shared/lib';
 import { formatDate } from '@shared/utils/formatDate';
@@ -14,25 +15,16 @@ import styles from './post-list.module.scss';
 
 export const PostList: FC = memo(() => {
   const { posts, isLoading } = useAppSelector((state) => state.posts);
-  const dispatch = useAppDispatch();
-
+  const [searchParams, setSearchParams] = useSearchParams();
   const {
     currentPage,
     setCurrentPage,
     dataPerPage,
     pageData,
     totalPages,
-    resetPagination,
     pageNumbers,
+    resetPagination,
   } = usePagination(posts || []);
-
-  useEffect(() => {
-    resetPagination();
-  }, [totalPages]);
-
-  useEffect(() => {
-    dispatch(fetchPosts());
-  }, [dispatch]);
 
   const renderedPosts = useMemo(
     () =>
@@ -44,13 +36,24 @@ export const PostList: FC = memo(() => {
         date: formatDate(post.date),
         views: post.views,
         likes: post.likes,
+        tags: post.tags,
       })),
     [pageData]
   );
 
-  const skeletons = Array.from({ length: 3 }, (_, i) => (
+  const skeletons = Array.from({ length: 4 }, (_, i) => (
     <PostCardSkeleton key={`skeleton-${i}`} />
   ));
+
+  useEffect(() => {
+    if (
+      (!searchParams.get('q') && !searchParams.get('p')) ||
+      searchParams.get('p') === '1' ||
+      !searchParams.get('p')
+    ) {
+      resetPagination();
+    }
+  }, [searchParams]);
 
   if (isLoading) {
     return <div className={styles['post-list']}>{skeletons}</div>;
@@ -72,6 +75,7 @@ export const PostList: FC = memo(() => {
               views={post.views}
               likes={post.likes}
               img={post.img}
+              tags={post.tags}
             />
           </Link>
         ))}
@@ -82,7 +86,13 @@ export const PostList: FC = memo(() => {
           pages={pageNumbers}
           totalPages={totalPages}
           dataPerPage={dataPerPage}
-          onPageChange={setCurrentPage}
+          onPageChange={(number) => {
+            setSearchParams((prev) => {
+              prev.set('p', String(number));
+              return prev;
+            });
+            setCurrentPage(number);
+          }}
           currentPage={currentPage}
         />
       )}

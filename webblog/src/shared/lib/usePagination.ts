@@ -1,10 +1,12 @@
 import { useCallback, useMemo, useState } from 'react';
 
+import { useSearchParams } from 'react-router';
+
 interface UsePaginationReturnType<T> {
   pageData: T[];
   visibleData: T[];
   currentPage: number;
-  setCurrentPage: (page: number) => void;
+  setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
   totalPages: number;
   dataPerPage: number;
   resetPagination: () => void;
@@ -17,7 +19,11 @@ export const usePagination = <T>(
   data: T[],
   dataPerPage = 12
 ): UsePaginationReturnType<T> => {
-  const [currentPage, setCurrentPage] = useState(1);
+  const [searchParams] = useSearchParams();
+  const [currentPage, setCurrentPage] = useState(
+    Number(searchParams.get('p')) || 1
+  );
+
   const [offset, setOffset] = useState<number>(0);
 
   const totalPages = Math.ceil(data.length / dataPerPage);
@@ -29,7 +35,7 @@ export const usePagination = <T>(
   }, [currentPage, dataPerPage, data]);
 
   const visibleData = useMemo(() => {
-    const indexOfLast = currentPage * dataPerPage + offset;
+    const indexOfLast = currentPage * dataPerPage;
     return data.slice(0, indexOfLast);
   }, [currentPage, data, dataPerPage, offset]);
 

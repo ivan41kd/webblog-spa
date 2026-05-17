@@ -13,11 +13,13 @@ export interface PostCommentsType {
   text: string;
   likes: number;
   isLiked?: boolean;
+  date: string;
 }
 export interface PostType {
   id?: string;
   img: string;
   title: string;
+  tags?: string[];
   description: string;
   author: PostAuthorType;
   content: PostContentType[];

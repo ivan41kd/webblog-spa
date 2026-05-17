@@ -1,1 +1,1 @@
-export { PostRow } from './ui';
+export { PostRow, PostRowSkeleton } from './ui';

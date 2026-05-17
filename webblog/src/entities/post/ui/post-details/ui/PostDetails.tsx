@@ -1,4 +1,4 @@
-import { type FC, memo, useMemo } from 'react';
+import { memo, useMemo, type FC } from 'react';
 
 import { CalendarIcon, ClockIcon, ViewsIcon } from '@shared/icons';
 import { Image, Text, Title } from '@shared/ui';
@@ -23,11 +23,11 @@ export const PostDetails: FC<PostDetailsPropsType> = memo(
           <Title className={styles['post-details-title']}>{title}</Title>
           <div className={styles['post-details-info']}>
             <div className={styles['post-details-info-item']}>
-              <ViewsIcon className={styles['post-details-info-icon']} />{' '}
+              <ViewsIcon className={styles['post-details-info-icon']} />
               <Text>{views}</Text>
             </div>
             <div className={styles['post-details-info-item']}>
-              <CalendarIcon className={styles['post-details-info-icon']} />{' '}
+              <CalendarIcon className={styles['post-details-info-icon']} />
               <Text>{displayDate}</Text>
             </div>
             <div className={styles['post-details-info-item']}>

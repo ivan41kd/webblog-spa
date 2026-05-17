@@ -1,11 +1,13 @@
-import type { FC } from 'react';
-import { useNavigate } from 'react-router';
+import { type FC } from 'react';
+
+import { useNavigate, useSearchParams } from 'react-router';
 
 import { useForm, useLocalStorage } from '@shared/lib';
 import { Button, Input } from '@shared/ui';
 
 export const LoginForm: FC = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const { setItem } = useLocalStorage();
   const { handleChange, formData, errors, validateForm } = useForm({
     defaultValues: { name: '', password: '' },
@@ -16,7 +18,13 @@ export const LoginForm: FC = () => {
 
     if (validateForm()) {
       setItem('user', JSON.stringify(formData));
-      navigate('/');
+      const continuePath = searchParams.get('continue') || '/';
+      const cleanHash = window.location.hash.replace('#', '');
+
+      navigate({
+        pathname: continuePath,
+        hash: cleanHash,
+      });
     }
   };
 
@@ -52,7 +60,10 @@ export const LoginForm: FC = () => {
         variant="default"
         isRequired
       />
-      <Button isSubmit>Login</Button>
+
+      <Button onClick={() => {}} isSubmit>
+        Login
+      </Button>
     </form>
   );
 };

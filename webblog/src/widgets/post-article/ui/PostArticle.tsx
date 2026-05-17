@@ -1,4 +1,4 @@
-import { type FC, useEffect } from 'react';
+import { useEffect, type FC } from 'react';
 import { Navigate, useParams } from 'react-router';
 
 import { useAppDispatch, useAppSelector } from '@app/store/rootReducer';
@@ -21,8 +21,13 @@ import styles from './post-article.module.scss';
 
 export const PostArticle: FC = () => {
   const dispatch = useAppDispatch();
-  const { post, isLoading, error } = useAppSelector((state) => state.posts);
+
+  const post = useAppSelector((state) => state.posts.post);
+  const error = useAppSelector((state) => state.posts.error);
+  const isLoading = useAppSelector((state) => state.posts.isLoading);
+
   const { id } = useParams();
+
   const { getItem } = useLocalStorage();
 
   useEffect(() => {
@@ -41,10 +46,11 @@ export const PostArticle: FC = () => {
       </div>
     );
   }
+
   if (error) return <Navigate to="/404" replace />;
 
   return (
-    post && (
+    !!post && (
       <div className={styles['post-article']}>
         <PostDetails
           title={post.title}

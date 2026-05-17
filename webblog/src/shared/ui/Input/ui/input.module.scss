@@ -28,7 +28,7 @@
     width: clamp(1.5rem, 1vw, 2rem);
     height: clamp(1.5rem, 1vw, 2rem);
     position: absolute;
-    right: 0.8125rem;
+    right: 0.75rem;
     top: 50%;
     transform: translateY(-50%);
     -webkit-user-select: none;
@@ -36,16 +36,17 @@
     user-select: none;
   }
 
-  &-password-icon {
+  &-password-icon,
+  &-field:not(:disabled) + &-reset-icon {
     cursor: pointer;
   }
 
   &-email-icon,
   &-search-icon {
-    left: 0.8125rem;
+    left: 0.75rem;
   }
   &-icon-left &-icon {
-    left: 0.8125rem;
+    left: 0.75rem;
   }
   &-xs.input-icon-left &-icon,
   &-xs &-email-icon {
@@ -86,30 +87,30 @@
   }
   &-lg.input-icon-right &-field,
   &-lg.input-password &-field {
-    padding-right: 3.1875rem;
+    padding-right: 3.25rem;
   }
   &-xs.input-icon-left &-field,
   &-xs.input-email &-field,
   &-xs.input-search &-field {
-    padding-left: 2.1875rem;
+    padding-left: 2rem;
   }
   &-sm.input-icon-left &-field,
   &-sm.input-email &-field,
   &-sm.input-search &-field {
-    padding-left: 2.1875rem;
+    padding-left: 2.25rem;
   }
   &-md.input-icon-left &-field,
   &-md.input-email &-field,
   &-md.input-search &-field {
-    padding-left: 2.725rem;
+    padding-left: 2.75rem;
   }
   &-lg.input-icon-left &-field,
   &-lg.input-email &-field,
   &-lg.input-search &-field {
-    padding-left: 3.0375rem;
+    padding-left: 3rem;
   }
   &-icon-left &-field {
-    padding-left: 3.125rem;
+    padding-left: 3.25rem;
   }
 
   &-xs &-field {

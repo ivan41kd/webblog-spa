@@ -1,1 +1,1 @@
-export { PostRecommended } from './ui';
+export { PostRecommended, PostRecommendedSkeletons } from './ui';

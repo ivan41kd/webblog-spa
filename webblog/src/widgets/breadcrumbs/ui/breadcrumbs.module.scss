@@ -2,12 +2,12 @@
 
 .breadcrumbs {
   display: flex;
-  gap: 0.3125rem;
+  gap: 0.5rem;
   align-items: center;
 
   &-item {
     display: flex;
-    gap: 0.3125rem;
+    gap: 0.5rem;
     align-items: center;
   }
   &-item:not(:last-child)::after {

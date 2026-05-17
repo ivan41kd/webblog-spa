@@ -1,4 +1,4 @@
-import { type FC } from 'react';
+import { useCallback, useRef, type FC, type RefObject } from 'react';
 
 import { useAppDispatch, useAppSelector } from '@app/store/rootReducer';
 
@@ -13,8 +13,15 @@ import styles from './post-comments.module.scss';
 
 export const PostComments: FC = () => {
   const dispatch = useAppDispatch();
-  const { post, isLoading } = useAppSelector((state) => state.posts);
+
+  const comments = useAppSelector((state) => state.posts.post?.comments);
+  const isLoading = useAppSelector((state) => state.posts.isLoading);
+  const isCommentLoading = useAppSelector(
+    (state) => state.posts.isCommentLoading
+  );
   const { getItem } = useLocalStorage();
+  const commentListRef = useRef<HTMLDivElement>(null);
+  const commentRef = useRef<HTMLDivElement>(null);
   const {
     visibleData,
     setCurrentPage,
@@ -22,56 +29,86 @@ export const PostComments: FC = () => {
     dataPerPage,
     totalPages,
     pageNumbers,
-    setOffset,
-  } = usePagination(post?.comments || [], 2);
+  } = usePagination(comments || [], 2);
 
   const commentSkeletons = Array.from({ length: 3 }, (_, i) => (
     <CommentCardSkeleton key={`skeleton-${i}`} />
   ));
 
-  if (isLoading) {
-    return commentSkeletons;
-  }
+  const handleLike = useCallback(
+    (id: number) => {
+      if (getItem('user')) {
+        dispatch(
+          likeComment({
+            id,
+          })
+        );
+      }
+    },
+    [dispatch, getItem]
+  );
 
-  return (
-    post && (
-      <div className={styles['post-comments']}>
-        <Title tag="h2" fontSize="md">
+  const handleScroll = (ref: RefObject<HTMLDivElement | null>) => {
+    if (ref.current) {
+      ref.current.scrollIntoView({
+        behavior: 'smooth',
+      });
+    }
+  };
+
+  if (isLoading) {
+    return (
+      <div className={styles['post-comments']} id="post-comments">
+        <Title tag="h2" fontSize="md" className={styles['post-comments-title']}>
           Comments
         </Title>
+        {commentSkeletons}
+      </div>
+    );
+  }
+  return (
+    comments && (
+      <div
+        className={styles['post-comments']}
+        ref={commentListRef}
+        id="post-comments">
+        <Title tag="h2" fontSize="md" className={styles['post-comments-title']}>
+          Comments
+          <span className={styles['post-comments-value']}>
+            {comments.length}
+          </span>
+        </Title>
+        <div className={styles['post-comments-list']}>
+          {isCommentLoading && <CommentCardSkeleton key={`skeleton-${1}`} />}
+          {!visibleData.length && !isCommentLoading && <Text>No comments</Text>}
 
-        {visibleData.length ? (
-          <div className={styles['post-comments-list']}>
-            {visibleData.map((comment, index) => {
-              return (
-                <CommentCard
-                  key={`comment-${index}-${comment.name}`}
-                  comment={comment.text}
-                  user={comment.name}
-                  likes={comment.likes}
-                  avatar={comment.avatar}
-                  isLiked={comment.isLiked}
-                  onLike={() =>
-                    getItem('user') &&
-                    dispatch(
-                      likeComment({
-                        id: index,
-                      })
-                    )
-                  }
-                />
-              );
-            })}
-          </div>
-        ) : (
-          <Text>No comments</Text>
-        )}
-        {post?.comments.length > visibleData.length && (
+          {visibleData.map((comment, index) => {
+            return (
+              <CommentCard
+                key={`comment-${index}-${comment.name}`}
+                ref={commentRef}
+                comment={comment.text}
+                user={comment.name}
+                likes={comment.likes}
+                avatar={comment.avatar}
+                isLiked={comment.isLiked}
+                date={comment.date}
+                onLike={() => {
+                  handleLike(index);
+                }}
+              />
+            );
+          })}
+        </div>
+        {comments.length > visibleData.length && (
           <Pagination
             pages={pageNumbers}
             totalPages={totalPages}
             dataPerPage={dataPerPage}
-            onPageChange={setCurrentPage}
+            onPageChange={(number) => {
+              setCurrentPage(number);
+              handleScroll(commentRef);
+            }}
             currentPage={currentPage}
             type="loadMore"
           />
@@ -79,11 +116,16 @@ export const PostComments: FC = () => {
 
         {getItem('user') ? (
           <PostComment
-            onCommentAdded={() => setOffset((prev: number) => prev + 1)}
+            onCommentAdded={() => {
+              handleScroll(commentListRef);
+            }}
           />
         ) : (
           <div className={styles['post-comments-login-prompt']}>
-            <LoginPrompt text="Please log in to leave a comment." />
+            <LoginPrompt
+              text="Please log in to leave a comment."
+              anchor="post-comments"
+            />
           </div>
         )}
       </div>

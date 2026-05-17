@@ -1,11 +1,11 @@
 export {
-  addComment,
   clearPost,
-  clearSearch,
   fetchPost,
+  fetchPostComment,
   fetchPosts,
   fetchPostSearch,
   likeComment,
   likePost,
   postReducer,
+  resetSearch,
 } from './slice';

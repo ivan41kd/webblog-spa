@@ -2,15 +2,15 @@ export { mocks } from './mocks';
 export type { PostType } from './type';
 
 export {
-  addComment,
   clearPost,
-  clearSearch,
   fetchPost,
+  fetchPostComment,
   fetchPosts,
   fetchPostSearch,
   likeComment,
   likePost,
   postReducer,
+  resetSearch,
 } from './model';
 export {
   PostCard,
@@ -18,4 +18,5 @@ export {
   PostDetails,
   PostDetailsSkeleton,
   PostRow,
+  PostRowSkeleton,
 } from './ui';

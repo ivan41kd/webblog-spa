@@ -1,3 +1,4 @@
+export { AppLink } from './app-link';
 export { Button } from './button';
 export { Checkbox } from './checkbox';
 export { Container } from './container';

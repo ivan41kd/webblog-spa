@@ -1,6 +1,8 @@
 import { useEffect, type FC } from 'react';
+
 import Skeleton from 'react-loading-skeleton';
-import { Link } from 'react-router';
+
+import { Link, NavLink } from 'react-router';
 
 import cn from 'classnames';
 
@@ -27,7 +29,16 @@ export const Header: FC<HeaderPropsType> = ({ className }) => {
   const headerClass = cn(className, styles.header);
 
   useEffect(() => {
-    dispatch(fetchHeaderList([{ title: 'Home', link: '/home' }]));
+    dispatch(
+      fetchHeaderList([
+        { title: 'Coffee', link: '/home?type=coffee' },
+        {
+          title: 'Weekend',
+          link: '/home?type=weekend',
+        },
+        { title: 'Code', link: '/home?type=code' },
+      ])
+    );
   }, []);
 
   return (
@@ -38,17 +49,23 @@ export const Header: FC<HeaderPropsType> = ({ className }) => {
             <Link to="/" className={styles['header-logo']} aria-label="Home">
               <CompanyIcon className={styles['header-logo']} />
             </Link>
-
-            {isLoading ? (
-              <Skeleton width={100} />
-            ) : (
-              <NavList
-                itemsList={links}
-                listClassName={styles['header-nav']}
-                itemClassName={styles['header-nav-item']}
-              />
-            )}
+            <NavLink
+              to={'/home'}
+              className={({ isActive }) =>
+                cn(styles['header-home'], isActive && 'active')
+              }>
+              Home
+            </NavLink>
           </div>
+          {isLoading ? (
+            <Skeleton width={300} />
+          ) : (
+            <NavList
+              itemsList={links}
+              listClassName={styles['header-nav']}
+              itemClassName={styles['header-nav-item']}
+            />
+          )}
           {isLoading ? (
             <Skeleton width={100} />
           ) : !getItem('user') ? (

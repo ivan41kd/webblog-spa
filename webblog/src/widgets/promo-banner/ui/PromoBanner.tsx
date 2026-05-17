@@ -1,4 +1,4 @@
-import { useState, type FC } from 'react';
+import { type FC } from 'react';
 
 import { Image } from '@shared/ui';
 
@@ -20,7 +20,8 @@ export const PromoBanner: FC = () => {
     },
   ];
 
-  const [id] = useState(() => Math.floor(Math.random() * items.length));
+  // eslint-disable-next-line react-hooks/purity
+  const id = Math.floor(Math.random() * items.length);
 
   return (
     <div className={styles.promo}>

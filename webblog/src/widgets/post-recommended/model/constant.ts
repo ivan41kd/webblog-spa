@@ -1,9 +1,10 @@
 export const RECOMMENDED_POSTS = [
   {
-    id: '1',
+    id: '6',
     img: 'https://placehold.co/600x600?text=Post+6',
     title: 'Street Photography',
-    description: 'Exploring street photography and capturing spontaneous moments.',
+    description:
+      'Exploring street photography and capturing spontaneous moments.',
     author: {
       name: 'Alex Rivera',
       avatar: 'https://placehold.co/150x150?text=AR',
@@ -12,7 +13,7 @@ export const RECOMMENDED_POSTS = [
     date: '2023-01-18T00:00:00.000Z',
   },
   {
-    id: '2',
+    id: '7',
     img: 'https://placehold.co/600x600?text=Post+7',
     title: 'Learning React',
     description: 'Today I practiced hooks and built a small interactive UI.',
@@ -24,7 +25,7 @@ export const RECOMMENDED_POSTS = [
     date: '2023-01-21T00:00:00.000Z',
   },
   {
-    id: '3',
+    id: '9',
     img: 'https://placehold.co/600x600?text=Post+9',
     title: 'Mountain Trip',
     description: 'A short trip to the mountains with amazing fresh air.',

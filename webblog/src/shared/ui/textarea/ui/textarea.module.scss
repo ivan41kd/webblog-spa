@@ -9,7 +9,7 @@
   &-field {
     transition: 0.2s border;
     field-sizing: content;
-    resize: vertical;
+    resize: none;
     &:not(:placeholder-shown) {
       border: 0.0625rem solid $filled;
     }

@@ -1,4 +1,4 @@
-import { type FC, memo } from 'react';
+import { memo, type FC } from 'react';
 
 import cn from 'classnames';
 
@@ -8,7 +8,7 @@ import type { PaginationPropsType } from '../type';
 import styles from './pagination.module.scss';
 
 export const Pagination: FC<PaginationPropsType> = memo(
-  ({ onPageChange, currentPage = 1, pages, totalPages, type = 'base' }) => {
+  ({ onPageChange, currentPage, pages, totalPages, type = 'base' }) => {
     const paginationClassName = cn(styles.pagination, styles[type]);
 
     return (
@@ -40,7 +40,10 @@ export const Pagination: FC<PaginationPropsType> = memo(
                 </Button>
               ) : (
                 <Button
-                  className={styles['pagination-item']}
+                  className={cn(
+                    styles['pagination-item'],
+                    typeof page !== 'number' && styles['ellipsis']
+                  )}
                   key={`ellipsis-${index}`}>
                   {page}
                 </Button>
