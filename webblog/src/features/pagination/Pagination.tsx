@@ -3,8 +3,8 @@ import { type FC, memo } from 'react';
 
 import { Button } from '@shared/ui';
 
-import type { PaginationPropsType } from '../type';
 import styles from './pagination.module.scss';
+import type { PaginationPropsType } from './type';
 
 export const Pagination: FC<PaginationPropsType> = memo(
   ({ onPageChange, currentPage, pages, totalPages, type = 'base' }) => {

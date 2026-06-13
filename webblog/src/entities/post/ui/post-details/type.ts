@@ -5,6 +5,5 @@ export interface PostDetailsPropsType {
   description: string;
   content: PostContentType[];
   views: number;
-  img: string;
   date: string;
 }
