@@ -1,1 +1,0 @@
-export { PostLike } from './ui';

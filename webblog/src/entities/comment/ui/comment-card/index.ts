@@ -1,1 +1,2 @@
-export { CommentCard, CommentCardSkeleton } from './ui';
+export { CommentCard } from './CommentCard';
+export { CommentCardSkeleton } from './CommentCardSkeleton';

@@ -1,6 +1,5 @@
-import { useState, type FC } from 'react';
-
 import classNames from 'classnames';
+import { type FC, useState } from 'react';
 
 import { Text } from '../../text';
 import styles from './read-more.module.scss';

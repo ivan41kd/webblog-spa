@@ -2,12 +2,16 @@ import { useCallback, useRef, type FC, type RefObject } from 'react';
 
 import { useAppDispatch, useAppSelector } from '@app/store/rootReducer';
 
-import { LoginPrompt, Pagination, PostComment } from '@features';
+import { Pagination } from '@features';
+import { LoginModal } from '@features/auth';
+import { CommentLike } from '@features/comment';
+import { PostComment } from '@features/post';
 
-import { CommentCard, CommentCardSkeleton, likeComment } from '@entities';
+import { CommentCard, CommentCardSkeleton } from '@entities/comment';
+import { likeComment } from '@entities/post';
 
 import { useLocalStorage, usePagination } from '@shared/lib';
-import { Text, Title } from '@shared/ui';
+import { Button, Text, Title } from '@shared/ui';
 
 import styles from './post-comments.module.scss';
 
@@ -79,7 +83,7 @@ export const PostComments: FC = () => {
           </span>
         </Title>
         <div className={styles['post-comments-list']}>
-          {isCommentLoading && <CommentCardSkeleton key={`skeleton-${1}`} />}
+          {isCommentLoading && <CommentCardSkeleton key={'skeleton'} />}
           {!visibleData.length && !isCommentLoading && <Text>No comments</Text>}
 
           {visibleData.map((comment, index) => {
@@ -96,6 +100,25 @@ export const PostComments: FC = () => {
                 onLike={() => {
                   handleLike(index);
                 }}
+                likeSlot={
+                  !getItem('user') ? (
+                    <LoginModal
+                      handler={
+                        <CommentLike
+                          likes={comment.likes}
+                          isLiked={comment.isLiked}
+                          onLike={() => handleLike(index)}
+                        />
+                      }
+                    />
+                  ) : (
+                    <CommentLike
+                      likes={comment.likes}
+                      isLiked={comment.isLiked}
+                      onLike={() => handleLike(index)}
+                    />
+                  )
+                }
               />
             );
           })}
@@ -122,10 +145,8 @@ export const PostComments: FC = () => {
           />
         ) : (
           <div className={styles['post-comments-login-prompt']}>
-            <LoginPrompt
-              text="Please log in to leave a comment."
-              anchor="post-comments"
-            />
+            <Text>Please log in to leave a comment.</Text>
+            <LoginModal handler={<Button>Login</Button>} />
           </div>
         )}
       </div>

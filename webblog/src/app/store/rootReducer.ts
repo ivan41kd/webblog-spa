@@ -1,14 +1,13 @@
+import { configureStore } from '@reduxjs/toolkit';
 import {
+  type TypedUseSelectorHook,
   useDispatch,
   useSelector,
-  type TypedUseSelectorHook,
 } from 'react-redux';
 
-import { configureStore } from '@reduxjs/toolkit';
+import { headerReducer } from '@widgets/header';
 
-import { headerReducer } from '@widgets';
-
-import { postReducer } from '@entities';
+import { postReducer } from '@entities/post';
 
 export const store = configureStore({
   reducer: {

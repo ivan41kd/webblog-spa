@@ -1,5 +1,4 @@
 import { type FC } from 'react';
-
 import { useNavigate, useSearchParams } from 'react-router';
 
 import { useForm, useLocalStorage } from '@shared/lib';

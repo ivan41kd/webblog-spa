@@ -25,13 +25,13 @@ export const fetchPostSearch = createAsyncThunk(
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
     if (tag) {
-      return posts
-        ?.filter((post) =>
-          post.tags?.includes(tag.charAt(0).toUpperCase() + tag.slice(1))
-        )
-        .filter((post) =>
-          post.title.toLowerCase().includes(searchTerm.toLowerCase())
-        );
+      const postsWithTag = posts?.filter((post) =>
+        post.tags?.includes(tag.charAt(0).toUpperCase() + tag.slice(1))
+      );
+
+      return postsWithTag.filter((post) =>
+        post.title.toLowerCase().includes(searchTerm.toLowerCase())
+      );
     }
     return posts.filter((post) =>
       post.title.toLowerCase().includes(searchTerm.toLowerCase())
@@ -49,7 +49,7 @@ export const fetchPost = createAsyncThunk(
       return rejectWithValue('Post not found');
     }
 
-    return post;
+    return { ...post, views: post.views + 1 };
   }
 );
 
@@ -137,6 +137,7 @@ export const PostSlice = createSlice({
     builder.addCase(fetchPostSearch.pending, (state) => {
       state.isFound = false;
       state.isLoading = true;
+      state.error = false;
     });
     builder.addCase(fetchPostSearch.fulfilled, (state, action) => {
       state.posts = action.payload;
@@ -146,6 +147,7 @@ export const PostSlice = createSlice({
     builder.addCase(fetchPostSearch.rejected, (state) => {
       state.isLoading = false;
       state.isFound = false;
+      state.error = true;
     });
     builder.addCase(resetSearch.pending, (state) => {
       state.isLoading = true;
@@ -162,13 +164,13 @@ export const PostSlice = createSlice({
       state.isLoading = true;
       state.error = false;
     });
+    builder.addCase(fetchPosts.rejected, (state) => {
+      state.error = true;
+      state.isLoading = true;
+    });
     builder.addCase(fetchPosts.fulfilled, (state, action) => {
       state.isLoading = false;
       state.posts = action.payload;
-    });
-    builder.addCase(fetchPosts.rejected, (state) => {
-      state.error = true;
-      state.isLoading = false;
     });
 
     builder.addCase(fetchPost.pending, (state) => {

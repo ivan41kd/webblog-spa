@@ -1,1 +1,1 @@
-export { LoginButton, LoginPrompt, SignoutButton } from './ui';
+export { LoginButton, LoginForm, LoginModal, SignoutButton } from './ui';

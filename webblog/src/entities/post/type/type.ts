@@ -17,7 +17,7 @@ export interface PostCommentsType {
 }
 export interface PostType {
   id?: string;
-  img: string;
+  img?: string;
   title: string;
   tags?: string[];
   description: string;

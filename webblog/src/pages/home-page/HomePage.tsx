@@ -1,14 +1,13 @@
-import { useEffect, type FC } from 'react';
-
+import { type FC, useEffect } from 'react';
 import { useSearchParams } from 'react-router';
 
 import { useAppDispatch, useAppSelector } from '@app/store/rootReducer';
 
 import { PostList, PromoBanner } from '@widgets';
 
-import { PostSearch } from '@features';
+import { PostSearch } from '@features/post';
 
-import { fetchPostSearch, fetchPosts } from '@entities';
+import { fetchPostSearch, fetchPosts } from '@entities/post';
 
 import { Section } from '@shared/ui';
 
@@ -38,7 +37,7 @@ export const HomePage: FC = () => {
 
   return (
     <Section className={styles.home}>
-      <PostSearch />
+      <PostSearch key={searchQuery} />
       <PostList />
       {!isLoading && <PromoBanner />}
     </Section>

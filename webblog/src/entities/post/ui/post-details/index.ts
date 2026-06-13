@@ -1,1 +1,2 @@
-export { PostDetails, PostDetailsSkeleton } from './ui';
+export { PostDetails } from './PostDetails';
+export { PostDetailsSkeleton } from './PostDetailsSkeleton';

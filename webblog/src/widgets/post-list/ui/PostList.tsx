@@ -1,12 +1,11 @@
-import { memo, useEffect, useMemo, type FC } from 'react';
-
+import { type FC, memo, useEffect, useMemo } from 'react';
 import { Link, useSearchParams } from 'react-router';
 
 import { useAppSelector } from '@app/store/rootReducer';
 
 import { Pagination } from '@features';
 
-import { PostCard, PostCardSkeleton } from '@entities';
+import { PostCard, PostCardSkeleton } from '@entities/post';
 
 import { usePagination } from '@shared/lib';
 import { formatDate } from '@shared/utils/formatDate';
@@ -16,6 +15,7 @@ import styles from './post-list.module.scss';
 export const PostList: FC = memo(() => {
   const { posts, isLoading } = useAppSelector((state) => state.posts);
   const [searchParams, setSearchParams] = useSearchParams();
+  const pageParam = Number(searchParams.get('p')) || 1;
   const {
     currentPage,
     setCurrentPage,
@@ -25,6 +25,12 @@ export const PostList: FC = memo(() => {
     pageNumbers,
     resetPagination,
   } = usePagination(posts || []);
+
+  useEffect(() => {
+    if (currentPage !== pageParam) {
+      setCurrentPage(pageParam);
+    }
+  }, [pageParam]);
 
   const renderedPosts = useMemo(
     () =>
@@ -50,9 +56,8 @@ export const PostList: FC = memo(() => {
       (!searchParams.get('q') && !searchParams.get('p')) ||
       searchParams.get('p') === '1' ||
       !searchParams.get('p')
-    ) {
+    )
       resetPagination();
-    }
   }, [searchParams]);
 
   if (isLoading) {
@@ -74,7 +79,6 @@ export const PostList: FC = memo(() => {
               date={post.date}
               views={post.views}
               likes={post.likes}
-              img={post.img}
               tags={post.tags}
             />
           </Link>

@@ -5,6 +5,7 @@ export { Container } from './container';
 export { Image } from './image';
 export { Input } from './input';
 export { LayoutMain } from './layouts';
+export { Modal } from './modal';
 export { NavList } from './nav-list';
 export { NotFound } from './not-found';
 export { ReadMore } from './read-more';

@@ -4,7 +4,6 @@ import { Outlet, ScrollRestoration } from 'react-router';
 
 import { Footer, Header } from '@widgets';
 
-import { ScrollToAnchor } from '@shared/lib';
 import { LayoutMain } from '@shared/ui';
 
 export const LayoutBase: FC = () => {
@@ -16,7 +15,6 @@ export const LayoutBase: FC = () => {
         footerNode={<Footer />}
       />
       <ScrollRestoration />
-      <ScrollToAnchor />
     </>
   );
 };

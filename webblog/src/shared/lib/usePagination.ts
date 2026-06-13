@@ -1,5 +1,4 @@
 import { useCallback, useMemo, useState } from 'react';
-
 import { useSearchParams } from 'react-router';
 
 interface UsePaginationReturnType<T> {

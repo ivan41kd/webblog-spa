@@ -1,6 +1,5 @@
-import { type FC, memo } from 'react';
-
 import cn from 'classnames';
+import { type FC, memo } from 'react';
 
 import type { ButtonPropsType } from '../type';
 import styles from './button.module.scss';
@@ -17,12 +16,16 @@ export const Button: FC<ButtonPropsType> = memo(
     isDisabled = false,
     isSubmit = false,
   }) => {
-    const btnClass = cn(className, styles.button, {
-      [styles[variant]]: variant !== 'default',
-      [styles[size]]: size,
-      [`text-${fontSize}`]: fontSize,
-      [`font-${fontWeight}`]: fontWeight,
-    });
+    const btnClass = cn(
+      styles.button,
+      {
+        [styles[variant]]: variant !== 'default',
+        [styles[size]]: size,
+        [`text-${fontSize}`]: fontSize,
+        [`font-${fontWeight}`]: fontWeight,
+      },
+      className
+    );
 
     return (
       <button

@@ -1,0 +1,59 @@
+@use '@styles/variables/radius' as *;
+@use '@styles/variables/colors' as *;
+
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  width: 100dvw;
+  height: 100dvh;
+  display: flex;
+  z-index: 10;
+  &-overlay {
+    background: #000000c7;
+    width: 100%;
+    height: 100%;
+  }
+  &-window {
+    max-width: 31.25rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    z-index: 5;
+    padding: 1rem;
+    &-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1rem;
+      align-items: center;
+      padding: 1rem;
+      background: $body;
+      border-radius: $radius-md;
+      max-height: 90dvh;
+    }
+  }
+  &-container {
+    width: 100%;
+  }
+  &-header {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    background: $body;
+  }
+  &-close-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    cursor: pointer;
+  }
+
+  &-content {
+    width: 100%;
+    overflow: auto;
+  }
+}

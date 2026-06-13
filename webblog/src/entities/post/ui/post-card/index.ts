@@ -1,1 +1,2 @@
-export { PostCard, PostCardSkeleton } from './ui';
+export { PostCard } from './PostCard';
+export { PostCardSkeleton } from './PostCardSkeleton';

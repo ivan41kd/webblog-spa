@@ -1,7 +1,7 @@
 export const mocks = [
   {
     id: '1',
-    img: 'https://placehold.co/600x600?text=Post+1',
+
     title: 'Morning Coffee',
     tags: ['Coffee'],
     description:
@@ -50,7 +50,7 @@ export const mocks = [
   },
   {
     id: '2',
-    img: 'https://placehold.co/600x600?text=Post+2',
+
     title: 'City Walk',
     description: 'A relaxing walk through the city discovering hidden gems.',
     author: {
@@ -90,7 +90,7 @@ export const mocks = [
   },
   {
     id: '3',
-    img: 'https://placehold.co/600x600?text=Post+3',
+
     title: 'Sunset View',
     description: 'Captured a stunning sunset on the coast.',
     author: {
@@ -130,7 +130,7 @@ export const mocks = [
   },
   {
     id: '4',
-    img: 'https://placehold.co/600x600?text=Post+4',
+
     title: 'Weekend Coding',
     tags: ['Weekend', 'Code'],
     description:
@@ -165,7 +165,7 @@ export const mocks = [
   },
   {
     id: '5',
-    img: 'https://placehold.co/600x600?text=Post+5',
+
     title: 'Morning Run',
     description: 'An energizing run in the park early in the morning.',
     author: {
@@ -205,7 +205,7 @@ export const mocks = [
   },
   {
     id: '6',
-    img: 'https://placehold.co/600x600?text=Post+6',
+
     title: 'Street Photography',
     description:
       'Exploring street photography and capturing spontaneous moments.',
@@ -239,7 +239,7 @@ export const mocks = [
   },
   {
     id: '7',
-    img: 'https://placehold.co/600x600?text=Post+7',
+
     title: 'Learning React',
     tags: ['Code'],
     description: 'Today I practiced hooks and built a small interactive UI.',
@@ -264,7 +264,7 @@ export const mocks = [
   },
   {
     id: '8',
-    img: 'https://placehold.co/600x600?text=Post+8',
+
     title: 'Reading Time',
     description: 'Reading an inspiring book about productivity and habits.',
     author: {
@@ -296,7 +296,7 @@ export const mocks = [
   },
   {
     id: '9',
-    img: 'https://placehold.co/600x600?text=Post+9',
+
     title: 'Mountain Trip',
     description: 'A short trip to the mountains with amazing fresh air.',
     author: {
@@ -328,7 +328,7 @@ export const mocks = [
   },
   {
     id: '10',
-    img: 'https://placehold.co/600x600?text=Post+10',
+
     title: 'Workspace Setup',
     description: 'Improved my workspace with better lighting and organization.',
     author: {
@@ -360,7 +360,7 @@ export const mocks = [
   },
   {
     id: '11',
-    img: 'https://placehold.co/600x600?text=Post+11',
+
     title: 'Cooking Pasta',
     description: 'Tried a new homemade pasta recipe today.',
     author: {
@@ -400,7 +400,7 @@ export const mocks = [
   },
   {
     id: '12',
-    img: 'https://placehold.co/600x600?text=Post+12',
+
     title: 'Evening Bike Ride',
     description: 'A calm bike ride during sunset along the river.',
     author: {
@@ -440,7 +440,7 @@ export const mocks = [
   },
   {
     id: '13',
-    img: 'https://placehold.co/600x600?text=Post+13',
+
     title: 'UI Design Practice',
     description: 'Practiced designing a minimal mobile interface.',
     author: {
@@ -473,7 +473,7 @@ export const mocks = [
   },
   {
     id: '14',
-    img: 'https://placehold.co/600x600?text=Post+14',
+
     title: 'Photography Gear',
     description: 'Testing a new lens and experimenting with lighting.',
     author: {
@@ -506,7 +506,7 @@ export const mocks = [
   },
   {
     id: '15',
-    img: 'https://placehold.co/600x600?text=Post+15',
+
     title: 'Nature Walk',
     description: 'Enjoying a peaceful walk surrounded by nature.',
     author: {
@@ -539,7 +539,7 @@ export const mocks = [
   },
   {
     id: '16',
-    img: 'https://placehold.co/600x600?text=Post+16',
+
     title: 'JavaScript Tips',
     tags: ['Code'],
     description: 'Sharing a few useful JavaScript tricks I discovered.',
@@ -580,7 +580,7 @@ export const mocks = [
   },
   {
     id: '17',
-    img: 'https://placehold.co/600x600?text=Post+17',
+
     title: 'Minimal Desk',
     description: 'Decluttered my desk for a cleaner workflow.',
     author: {
@@ -613,7 +613,7 @@ export const mocks = [
   },
   {
     id: '18',
-    img: 'https://placehold.co/600x600?text=Post+18',
+
     title: 'Cafe Work',
     tags: ['Coffee'],
     description: 'Worked remotely from a cozy cafe downtown.',
@@ -647,7 +647,7 @@ export const mocks = [
   },
   {
     id: '19',
-    img: 'https://placehold.co/600x600?text=Post+19',
+
     title: 'New Keyboard',
     tags: ['Code'],
     description: 'Finally got a mechanical keyboard for coding.',
@@ -681,7 +681,7 @@ export const mocks = [
   },
   {
     id: '20',
-    img: 'https://placehold.co/600x600?text=Post+20',
+
     title: 'Weekend Hiking',
     tags: ['Weekend'],
     description: 'Hiking through scenic trails outside the city.',
@@ -715,7 +715,7 @@ export const mocks = [
   },
   {
     id: '21',
-    img: 'https://placehold.co/600x600?text=Post+21',
+
     title: 'Learning CSS Grid',
     tags: ['Code'],
     description: 'Practicing complex layouts using CSS Grid.',
@@ -763,7 +763,7 @@ export const mocks = [
   },
   {
     id: '22',
-    img: 'https://placehold.co/600x600?text=Post+22',
+
     title: 'Creative Writing',
     description: 'Spent some time writing ideas for future projects.',
     author: {
@@ -810,7 +810,7 @@ export const mocks = [
   },
   {
     id: '23',
-    img: 'https://placehold.co/600x600?text=Post+23',
+
     title: 'Morning Routine',
     tags: ['Coffee'],
     description: 'Building a healthy and productive morning routine.',
@@ -865,7 +865,7 @@ export const mocks = [
   },
   {
     id: '24',
-    img: 'https://placehold.co/600x600?text=Post+24',
+
     title: 'Coffee Beans',
     tags: ['Coffee'],
     description: 'Testing different coffee beans and brewing styles.',
@@ -913,7 +913,7 @@ export const mocks = [
   },
   {
     id: '25',
-    img: 'https://placehold.co/600x600?text=Post+25',
+
     title: 'Open Source Contribution',
     tags: ['Code'],
     description: 'Contributed to an open source project today.',
@@ -968,7 +968,7 @@ export const mocks = [
   },
   {
     id: '26',
-    img: 'https://placehold.co/600x600?text=Post+26',
+
     title: 'Coding Night',
     tags: ['Code'],
     description: 'Late night coding session building a small app.',
@@ -1016,7 +1016,7 @@ export const mocks = [
   },
   {
     id: '27',
-    img: 'https://placehold.co/600x600?text=Post+27',
+
     title: 'Minimal UI Exploration',
     description: 'Exploring minimal design principles.',
     author: {
@@ -1056,7 +1056,7 @@ export const mocks = [
   },
   {
     id: '28',
-    img: 'https://placehold.co/600x600?text=Post+28',
+
     title: 'Park Picnic',
     description: 'Relaxing afternoon picnic with friends.',
     author: {
@@ -1103,7 +1103,7 @@ export const mocks = [
   },
   {
     id: '29',
-    img: 'https://placehold.co/600x600?text=Post+29',
+
     title: 'Debugging Day',
     tags: ['Code'],
     description: 'Spent hours debugging a tricky bug.',
@@ -1151,7 +1151,7 @@ export const mocks = [
   },
   {
     id: '30',
-    img: 'https://placehold.co/600x600?text=Post+30',
+
     title: 'Travel Plans',
     description: 'Planning the next travel destination.',
     author: {
@@ -1198,7 +1198,7 @@ export const mocks = [
   },
   {
     id: '31',
-    img: 'https://placehold.co/600x600?text=Post+31',
+
     title: 'New Project Kickoff',
     tags: ['Code'],
     description: 'Started working on a brand new side project.',
@@ -1253,7 +1253,7 @@ export const mocks = [
   },
   {
     id: '32',
-    img: 'https://placehold.co/600x600?text=Post+32',
+
     title: 'Healthy Lunch Prep',
     description: 'Prepared a healthy and delicious lunch.',
     author: {
@@ -1300,7 +1300,7 @@ export const mocks = [
   },
   {
     id: '33',
-    img: 'https://placehold.co/600x600?text=Post+33',
+
     title: 'Night Photography',
     description: 'Trying night photography techniques.',
     author: {
@@ -1354,7 +1354,7 @@ export const mocks = [
   },
   {
     id: '34',
-    img: 'https://placehold.co/600x600?text=Post+34',
+
     title: 'Music Break',
     description: 'Listening to music while taking a coding break.',
     author: {
@@ -1401,7 +1401,7 @@ export const mocks = [
   },
   {
     id: '35',
-    img: 'https://placehold.co/600x600?text=Post+35',
+
     title: 'Learning Node.js',
     tags: ['Code'],
     description: 'Deep diving into backend with Node.js.',
@@ -1456,7 +1456,7 @@ export const mocks = [
   },
   {
     id: '36',
-    img: 'https://placehold.co/600x600?text=Post+36',
+
     title: 'Morning Yoga',
     description: 'Started the morning with a short yoga session.',
     author: {
@@ -1503,7 +1503,7 @@ export const mocks = [
   },
   {
     id: '37',
-    img: 'https://placehold.co/600x600?text=Post+37',
+
     title: 'Design Inspiration',
     description: 'Collected UI inspiration from modern apps.',
     author: {
@@ -1550,7 +1550,7 @@ export const mocks = [
   },
   {
     id: '38',
-    img: 'https://placehold.co/600x600?text=Post+38',
+
     title: 'Weekend Market Visit',
     tags: ['Weekend'],
     description: 'Visited a local street market full of colors.',
@@ -1598,7 +1598,7 @@ export const mocks = [
   },
   {
     id: '39',
-    img: 'https://placehold.co/600x600?text=Post+39',
+
     title: 'App Prototype',
     tags: ['Code'],
     description: 'Built a quick prototype for a new idea.',
@@ -1646,7 +1646,7 @@ export const mocks = [
   },
   {
     id: '40',
-    img: 'https://placehold.co/600x600?text=Post+40',
+
     title: 'Late Night Ideas',
     description: 'Sometimes the best ideas come at night.',
     author: {
@@ -1700,7 +1700,7 @@ export const mocks = [
   },
   {
     id: '41',
-    img: 'https://placehold.co/600x600?text=Post+41',
+
     title: 'Frontend Refactor',
     tags: ['Code'],
     description: 'Refactored a big part of my frontend code.',
@@ -1755,7 +1755,7 @@ export const mocks = [
   },
   {
     id: '42',
-    img: 'https://placehold.co/600x600?text=Post+42',
+
     title: 'Minimal Theme Experiment',
     description: 'Experimenting with a clean minimal theme.',
     author: {
@@ -1802,7 +1802,7 @@ export const mocks = [
   },
   {
     id: '43',
-    img: 'https://placehold.co/600x600?text=Post+43',
+
     title: 'Learning Git Advanced',
     tags: ['Code'],
     description: 'Practicing advanced Git commands and workflows.',
@@ -1857,7 +1857,7 @@ export const mocks = [
   },
   {
     id: '44',
-    img: 'https://placehold.co/600x600?text=Post+44',
+
     title: 'Coffee Break Reflection',
     tags: ['Coffee'],
     description: 'Taking a small coffee break after intense work.',
@@ -1905,7 +1905,7 @@ export const mocks = [
   },
   {
     id: '45',
-    img: 'https://placehold.co/600x600?text=Post+45',
+
     title: 'Travel Memories Review',
     description: 'Looking back at photos from past trips.',
     author: {
@@ -1959,7 +1959,7 @@ export const mocks = [
   },
   {
     id: '46',
-    img: 'https://placehold.co/600x600?text=Post+46',
+
     title: 'Clean Code Thoughts',
     tags: ['Code'],
     description: 'Reflected on the importance of writing clean code.',
@@ -2014,7 +2014,7 @@ export const mocks = [
   },
   {
     id: '47',
-    img: 'https://placehold.co/600x600?text=Post+47',
+
     title: 'Creative Sketch Session',
     description: 'Made a quick UI sketch for a new app idea.',
     author: {
@@ -2061,7 +2061,7 @@ export const mocks = [
   },
   {
     id: '48',
-    img: 'https://placehold.co/600x600?text=Post+48',
+
     title: 'Morning Energy Boost',
     description: 'Feeling productive and focused today.',
     author: {
@@ -2108,7 +2108,7 @@ export const mocks = [
   },
   {
     id: '49',
-    img: 'https://placehold.co/600x600?text=Post+49',
+
     title: 'Coding Playlist Share',
     description: 'Shared my favorite coding music playlist.',
     author: {
@@ -2162,7 +2162,7 @@ export const mocks = [
   },
   {
     id: '50',
-    img: 'https://placehold.co/600x600?text=Post+50',
+
     title: 'Weekend Relax Mode',
     tags: ['Weekend'],
     description: 'Taking time to relax and recharge fully.',
@@ -2210,7 +2210,7 @@ export const mocks = [
   },
   {
     id: '51',
-    img: 'https://placehold.co/600x600?text=Post+51',
+
     title: 'New Ideas Brainstorm',
     description: 'Brainstorming ideas for upcoming projects.',
     author: {
@@ -2264,7 +2264,7 @@ export const mocks = [
   },
   {
     id: '52',
-    img: 'https://placehold.co/600x600?text=Post+52',
+
     title: 'Tech Reading Session',
     description: 'Reading articles about new web technologies.',
     author: {
@@ -2311,7 +2311,7 @@ export const mocks = [
   },
   {
     id: '53',
-    img: 'https://placehold.co/600x600?text=Post+53',
+
     title: 'Code Refactoring Day',
     tags: ['Code'],
     description: 'Improving structure and readability of existing code.',
@@ -2366,7 +2366,7 @@ export const mocks = [
   },
   {
     id: '54',
-    img: 'https://placehold.co/600x600?text=Post+54',
+
     title: 'Evening Chill Time',
     description: 'Relaxing with music and tea after a long day.',
     author: {
@@ -2413,7 +2413,7 @@ export const mocks = [
   },
   {
     id: '55',
-    img: 'https://placehold.co/600x600?text=Post+55',
+
     title: 'Tech Meetup Visit',
     description: 'Attended a local tech meetup event.',
     author: {
@@ -2467,7 +2467,7 @@ export const mocks = [
   },
   {
     id: '56',
-    img: 'https://placehold.co/600x600?text=Post+56',
+
     title: 'Quick Prototype Build',
     tags: ['Code'],
     description: 'Built a quick working prototype for validation.',
@@ -2515,7 +2515,7 @@ export const mocks = [
   },
   {
     id: '57',
-    img: 'https://placehold.co/600x600?text=Post+57',
+
     title: 'Morning Thoughts',
     description: 'Reflecting on goals and progress over coffee.',
     author: {
@@ -2562,7 +2562,7 @@ export const mocks = [
   },
   {
     id: '58',
-    img: 'https://placehold.co/600x600?text=Post+58',
+
     title: 'Creative Flow State',
     description: 'Enjoying a strong creative flow today.',
     author: {
@@ -2609,7 +2609,7 @@ export const mocks = [
   },
   {
     id: '59',
-    img: 'https://placehold.co/600x600?text=Post+59',
+
     title: 'Late Night Coding',
     tags: ['Code'],
     description: 'Working late to finish an important feature.',
@@ -2657,7 +2657,7 @@ export const mocks = [
   },
   {
     id: '60',
-    img: 'https://placehold.co/600x600?text=Post+60',
+
     title: 'Project Milestone',
     description: 'Reached a major milestone in my side project.',
     author: {
@@ -2711,7 +2711,7 @@ export const mocks = [
   },
   {
     id: '61',
-    img: 'https://placehold.co/600x600?text=Post+61',
+
     title: 'Autumn Colors Walk',
     description: 'Enjoying the golden autumn leaves in the park.',
     author: {
@@ -2765,7 +2765,7 @@ export const mocks = [
   },
   {
     id: '62',
-    img: 'https://placehold.co/600x600?text=Post+62',
+
     title: 'Bun.js First Try',
     tags: ['Code'],
     description: 'Experimenting with Bun.js as a faster runtime.',
@@ -2820,7 +2820,7 @@ export const mocks = [
   },
   {
     id: '63',
-    img: 'https://placehold.co/600x600?text=Post+63',
+
     title: 'Winter Setup',
     description: 'Preparing workspace for cold dark evenings.',
     author: {
@@ -2867,7 +2867,7 @@ export const mocks = [
   },
   {
     id: '64',
-    img: 'https://placehold.co/600x600?text=Post+64',
+
     title: '2024 Goals Planning',
     description: 'Setting meaningful goals for the new year.',
     author: {
@@ -2914,7 +2914,7 @@ export const mocks = [
   },
   {
     id: '65',
-    img: 'https://placehold.co/600x600?text=Post+65',
+
     title: 'Astro Framework Intro',
     tags: ['Code'],
     description: 'First steps with Astro — really impressed.',
@@ -2962,7 +2962,7 @@ export const mocks = [
   },
   {
     id: '66',
-    img: 'https://placehold.co/600x600?text=Post+66',
+
     title: 'Spring Cleaning Code',
     tags: ['Code'],
     description: 'Removing old unused code and dependencies.',
@@ -3010,7 +3010,7 @@ export const mocks = [
   },
   {
     id: '67',
-    img: 'https://placehold.co/600x600?text=Post+67',
+
     title: 'Cherry Blossom Photos',
     description: 'Quiet morning capturing sakura in full bloom.',
     author: {
@@ -3057,7 +3057,7 @@ export const mocks = [
   },
   {
     id: '68',
-    img: 'https://placehold.co/600x600?text=Post+68',
+
     title: 'Next.js App Router',
     tags: ['Code'],
     description: 'Migrating to the new App Router — lessons learned.',
@@ -3105,7 +3105,7 @@ export const mocks = [
   },
   {
     id: '69',
-    img: 'https://placehold.co/600x600?text=Post+69',
+
     title: 'Summer Side Quest',
     description: 'Building a small habit tracker during vacation.',
     author: {
@@ -3152,7 +3152,7 @@ export const mocks = [
   },
   {
     id: '70',
-    img: 'https://placehold.co/600x600?text=Post+70',
+
     title: 'Tailwind v4 Upgrade',
     tags: ['Code'],
     description: 'Upgraded to Tailwind CSS v4 — first impressions.',
@@ -3207,7 +3207,7 @@ export const mocks = [
   },
   {
     id: '71',
-    img: 'https://placehold.co/600x600?text=Post+71',
+
     title: 'Golden Hour Shoot',
     description: 'Playing with golden hour light for portraits.',
     author: {
@@ -3261,7 +3261,7 @@ export const mocks = [
   },
   {
     id: '72',
-    img: 'https://placehold.co/600x600?text=Post+72',
+
     title: 'Zod + TypeScript',
     tags: ['Code'],
     description: 'Using Zod for runtime validation — game changer.',
@@ -3316,7 +3316,7 @@ export const mocks = [
   },
   {
     id: '73',
-    img: 'https://placehold.co/600x600?text=Post+73',
+
     title: 'Cozy Rainy Day',
     description: 'Coding with rain sounds in the background.',
     author: {
@@ -3363,7 +3363,7 @@ export const mocks = [
   },
   {
     id: '74',
-    img: 'https://placehold.co/600x600?text=Post+74',
+
     title: '2025 Tech Predictions',
     description: 'My personal predictions for frontend in 2025.',
     author: {
@@ -3418,7 +3418,7 @@ export const mocks = [
   },
   {
     id: '75',
-    img: 'https://placehold.co/600x600?text=Post+75',
+
     title: 'React Compiler First Look',
     tags: ['Code'],
     description: 'Trying the new React Compiler — mind blown.',
@@ -3473,7 +3473,7 @@ export const mocks = [
   },
   {
     id: '76',
-    img: 'https://placehold.co/600x600?text=Post+76',
+
     title: 'Spring UI Refresh',
     tags: ['Code'],
     description: 'Giving the personal site a spring refresh.',
@@ -3521,7 +3521,7 @@ export const mocks = [
   },
   {
     id: '77',
-    img: 'https://placehold.co/600x600?text=Post+77',
+
     title: 'Minimalist Photography',
     description: 'Experimenting with minimalist composition.',
     author: {
@@ -3568,7 +3568,7 @@ export const mocks = [
   },
   {
     id: '78',
-    img: 'https://placehold.co/600x600?text=Post+78',
+
     title: 'Shadcn/ui Deep Dive',
     description: 'Customizing components from shadcn/ui collection.',
     author: {
@@ -3615,7 +3615,7 @@ export const mocks = [
   },
   {
     id: '79',
-    img: 'https://placehold.co/600x600?text=Post+79',
+
     title: 'Summer Open Air Coding',
     description: 'Coding outside in a park café.',
     author: {
@@ -3662,7 +3662,7 @@ export const mocks = [
   },
   {
     id: '80',
-    img: 'https://placehold.co/600x600?text=Post+80',
+
     title: 'Motion One Experiments',
     tags: ['Code'],
     description: 'Playing with Motion One for smooth animations.',
@@ -3710,7 +3710,7 @@ export const mocks = [
   },
   {
     id: '81',
-    img: 'https://placehold.co/600x600?text=Post+81',
+
     title: 'Harvest Season Walk',
     description: 'Autumn colors and harvest time vibes.',
     author: {
@@ -3764,7 +3764,7 @@ export const mocks = [
   },
   {
     id: '82',
-    img: 'https://placehold.co/600x600?text=Post+82',
+
     title: 'TypeScript 5.8 Features',
     tags: ['Code'],
     description: 'New goodies in TypeScript 5.8 release.',
@@ -3812,7 +3812,7 @@ export const mocks = [
   },
   {
     id: '83',
-    img: 'https://placehold.co/600x600?text=Post+83',
+
     title: 'Winter Light Play',
     description: 'Experimenting with low light indoor photography.',
     author: {
@@ -3859,7 +3859,7 @@ export const mocks = [
   },
   {
     id: '84',
-    img: 'https://placehold.co/600x600?text=Post+84',
+
     title: '2026 Vision Board',
     description: 'Creating a visual board for next year goals.',
     author: {
@@ -3906,7 +3906,7 @@ export const mocks = [
   },
   {
     id: '85',
-    img: 'https://placehold.co/600x600?text=Post+85',
+
     title: 'Vite 6 First Impressions',
     tags: ['Code'],
     description: 'Upgraded to Vite 6 — blazing fast as promised.',
@@ -3954,7 +3954,7 @@ export const mocks = [
   },
   {
     id: '86',
-    img: 'https://placehold.co/600x600?text=Post+86',
+
     title: 'Spring Moodboard',
     description: 'Collecting pastel colors and spring inspiration.',
     author: {
@@ -4001,7 +4001,7 @@ export const mocks = [
   },
   {
     id: '87',
-    img: 'https://placehold.co/600x600?text=Post+87',
+
     title: 'Sakura Season 2026',
     description: 'Another year, another beautiful sakura walk.',
     author: {
@@ -4048,7 +4048,7 @@ export const mocks = [
   },
   {
     id: '88',
-    img: 'https://placehold.co/600x600?text=Post+88',
+
     title: 'Server Components Deep Dive',
     tags: ['Code'],
     description: 'Understanding React Server Components better.',
@@ -4096,7 +4096,7 @@ export const mocks = [
   },
   {
     id: '89',
-    img: 'https://placehold.co/600x600?text=Post+89',
+
     title: 'Summer Festival Visit',
     description: 'Local summer festival — food, music, good vibes.',
     author: {
@@ -4143,7 +4143,7 @@ export const mocks = [
   },
   {
     id: '90',
-    img: 'https://placehold.co/600x600?text=Post+90',
+
     title: 'CSS Nesting Mastery',
     tags: ['Code'],
     description: 'Finally comfortable with native CSS nesting.',
@@ -4191,7 +4191,7 @@ export const mocks = [
   },
   {
     id: '91',
-    img: 'https://placehold.co/600x600?text=Post+91',
+
     title: 'Mid-Year Review',
     description: 'Half-year reflection: wins, lessons, next steps.',
     author: {
@@ -4238,7 +4238,7 @@ export const mocks = [
   },
   {
     id: '92',
-    img: 'https://placehold.co/600x600?text=Post+92',
+
     title: 'New Lens Arrival',
     description: 'Unboxing and first shots with a new prime lens.',
     author: {
@@ -4285,7 +4285,7 @@ export const mocks = [
   },
   {
     id: '93',
-    img: 'https://placehold.co/600x600?text=Post+93',
+
     title: 'Heatwave Coding',
     tags: ['Code', 'Coffee'],
     description: 'Surviving summer heat with iced coffee & code.',
@@ -4333,7 +4333,7 @@ export const mocks = [
   },
   {
     id: '94',
-    img: 'https://placehold.co/600x600?text=Post+94',
+
     title: 'Side Project Progress',
     description: 'Major update pushed to my current side project.',
     author: {
@@ -4380,7 +4380,7 @@ export const mocks = [
   },
   {
     id: '95',
-    img: 'https://placehold.co/600x600?text=Post+95',
+
     title: 'Evening Golden Light',
     description: 'Last light of the day — perfect for photos.',
     author: {
@@ -4427,7 +4427,7 @@ export const mocks = [
   },
   {
     id: '96',
-    img: 'https://placehold.co/600x600?text=Post+96',
+
     title: 'Learning Rust Basics',
     tags: ['Code'],
     description: 'First steps into Rust — very different mindset.',
@@ -4475,7 +4475,7 @@ export const mocks = [
   },
   {
     id: '97',
-    img: 'https://placehold.co/600x600?text=Post+97',
+
     title: 'Beach Day Reset',
     description: 'Day off at the beach — mind & body recharge.',
     author: {
@@ -4522,7 +4522,7 @@ export const mocks = [
   },
   {
     id: '98',
-    img: 'https://placehold.co/600x600?text=Post+98',
+
     title: 'Dark Mode Perfection',
     description: 'Tweaking dark mode colors for better contrast.',
     author: {
@@ -4569,7 +4569,7 @@ export const mocks = [
   },
   {
     id: '99',
-    img: 'https://placehold.co/600x600?text=Post+99',
+
     title: 'Late Summer Reading',
     description: 'Reading “The Pragmatic Programmer” again.',
     author: {
@@ -4616,7 +4616,7 @@ export const mocks = [
   },
   {
     id: '100',
-    img: 'https://placehold.co/600x600?text=Post+100',
+
     title: '100th Post Reflection',
     description: '100 little stories later — grateful for the journey.',
     author: {
