@@ -1,6 +1,5 @@
-import { useState, type FC } from 'react';
-
 import cn from 'classnames';
+import { type FC, useState } from 'react';
 
 import {
   EmailIcon,
@@ -32,6 +31,7 @@ export const Input: FC<InputPropsType> = ({
   iconPlace = 'left',
   variant = 'default',
   onBlur,
+  ref,
 }) => {
   const [isVisible, setIsVisible] = useState(type === 'text');
 
@@ -90,6 +90,7 @@ export const Input: FC<InputPropsType> = ({
           required={isRequired}
           onChange={onChange}
           onBlur={onBlur}
+          ref={ref}
         />
 
         {icon && iconPlace === 'right' && type !== 'password' && (

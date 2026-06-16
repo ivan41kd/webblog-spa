@@ -1,4 +1,5 @@
-import { type FC } from 'react';
+import { type FC, useState } from 'react';
+import Skeleton from 'react-loading-skeleton';
 
 import fallbackImage from '/fallback-image.png';
 
@@ -14,13 +15,19 @@ export const Image: FC<ImagePropsType> = ({
   alt,
   ...props
 }) => {
+  const [isLoading, setIsLoading] = useState(true);
   return (
-    <img
-      {...props}
-      className={className}
-      src={src}
-      alt={alt}
-      onError={(e) => (e.currentTarget.src = fallbackImage)}
-    />
+    <>
+      {isLoading && <Skeleton className={className} />}
+      <img
+        {...props}
+        className={className}
+        src={src}
+        alt={alt}
+        onLoad={() => setIsLoading(false)}
+        onError={(e) => (e.currentTarget.src = fallbackImage)}
+        style={{ display: isLoading ? 'none' : 'block' }}
+      />
+    </>
   );
 };

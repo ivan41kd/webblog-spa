@@ -1,7 +1,5 @@
-import { memo, useState, type FC } from 'react';
-
+import { type FC, memo, useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router';
-
 import { useDebouncedCallback } from 'use-debounce';
 
 import { Input } from '@shared/ui';
@@ -10,6 +8,12 @@ export const PostSearch: FC = memo(() => {
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('q') || '';
   const [text, setText] = useState(query);
+
+  const searchRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    searchRef.current?.focus();
+  }, []);
 
   const debouncedSearch = useDebouncedCallback((value: string) => {
     setSearchParams((param) => {
@@ -41,6 +45,7 @@ export const PostSearch: FC = memo(() => {
 
   return (
     <Input
+      ref={searchRef}
       value={text}
       type="search"
       size="lg"

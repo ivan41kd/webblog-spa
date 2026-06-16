@@ -1,4 +1,7 @@
+import { type Ref } from 'react';
+
 import type { FontSizeType, FontWeightType } from '../../types/index';
+
 export interface InputPropsType {
   name?: string;
   className?: string;
@@ -18,4 +21,5 @@ export interface InputPropsType {
   icon?: React.ReactNode | null;
   iconPlace?: 'left' | 'right';
   variant?: 'default' | 'lined';
+  ref?: Ref<HTMLInputElement>;
 }
