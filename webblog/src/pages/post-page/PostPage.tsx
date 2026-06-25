@@ -4,8 +4,6 @@ import { useAppSelector } from '@app/store/rootReducer';
 
 import {
   Breadcrumbs,
-  PostArticle,
-  PostComments,
   PostRecommended,
   PostRecommendedSkeletons,
   PromoBanner,
@@ -14,6 +12,8 @@ import {
 import { Section } from '@shared/ui';
 
 import styles from './post.module.scss';
+import { CommentSection } from './ui/comment-section';
+import { PostArticle } from './ui/post-article';
 
 export const PostPage: FC = () => {
   const isLoading = useAppSelector((state) => state.posts.isLoading);
@@ -22,9 +22,9 @@ export const PostPage: FC = () => {
     <Section className={styles.post}>
       <Breadcrumbs />
       <PostArticle />
-      <PostComments />
+      <CommentSection />
       {isLoading ? <PostRecommendedSkeletons /> : <PostRecommended />}
-      {!isLoading && <PromoBanner />}
+      <PromoBanner />
     </Section>
   );
 };

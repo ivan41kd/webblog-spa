@@ -1,6 +1,5 @@
-import type { FC } from 'react';
-
 import cn from 'classnames';
+import type { FC } from 'react';
 
 import { Container, Text } from '@shared/ui';
 

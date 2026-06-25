@@ -1,6 +1,5 @@
-import type { FC } from 'react';
-
 import cn from 'classnames';
+import type { FC } from 'react';
 
 import type { CheckboxPropsType } from '../type';
 import styles from './checkbox.module.scss';

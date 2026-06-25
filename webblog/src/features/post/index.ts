@@ -1,1 +1,1 @@
-export { PostComment, PostLike, PostSearch } from './ui';
+export { PostLike } from './ui';

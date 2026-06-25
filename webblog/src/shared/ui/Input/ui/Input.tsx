@@ -91,6 +91,7 @@ export const Input: FC<InputPropsType> = ({
           onChange={onChange}
           onBlur={onBlur}
           ref={ref}
+          autoComplete="on"
         />
 
         {icon && iconPlace === 'right' && type !== 'password' && (

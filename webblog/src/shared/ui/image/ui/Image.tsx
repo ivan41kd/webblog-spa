@@ -16,6 +16,7 @@ export const Image: FC<ImagePropsType> = ({
   ...props
 }) => {
   const [isLoading, setIsLoading] = useState(true);
+
   return (
     <>
       {isLoading && <Skeleton className={className} />}

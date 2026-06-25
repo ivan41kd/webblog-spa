@@ -1,1 +1,2 @@
-export { LoginButton, LoginForm, LoginModal, SignoutButton } from './ui';
+export { authReducer } from './model';
+export { LoginButton, LoginForm, LoginModal, UserMenu } from './ui';

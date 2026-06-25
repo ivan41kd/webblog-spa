@@ -16,6 +16,7 @@ export const ReadMore: FC<ReadMorePropsType> = ({
   amountOfWords = 280,
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
+
   const splittedText = text.includes(' ') ? text.split(' ') : text.split('');
   const itCanOverflow = splittedText.length > amountOfWords;
   const beginText = itCanOverflow

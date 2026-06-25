@@ -1,7 +1,11 @@
-import { memo, type SVGProps } from 'react';
+import { type SVGProps, memo } from 'react';
 
 export const EmailIcon = memo((props: SVGProps<SVGSVGElement>) => (
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" {...props}>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    {...props}>
     <path
       stroke="#6366f1"
       strokeLinecap="round"

@@ -7,12 +7,15 @@ import {
 
 import { headerReducer } from '@widgets/header';
 
+import { authReducer } from '@features/auth';
+
 import { postReducer } from '@entities/post';
 
 export const store = configureStore({
   reducer: {
     posts: postReducer,
     header: headerReducer,
+    auth: authReducer,
   },
 });
 

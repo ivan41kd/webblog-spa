@@ -1,6 +1,5 @@
-import { type FC, memo } from 'react';
-
 import classNames from 'classnames';
+import { type FC, memo } from 'react';
 
 import { Image, Text } from '@shared/ui';
 

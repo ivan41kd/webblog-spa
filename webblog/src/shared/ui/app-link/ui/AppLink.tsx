@@ -1,8 +1,6 @@
-import type { FC } from 'react';
-
-import { Link, useLocation, useSearchParams } from 'react-router';
-
 import cn from 'classnames';
+import type { FC } from 'react';
+import { Link, useLocation, useSearchParams } from 'react-router';
 
 interface AppLinkPropsType {
   title: string;

@@ -2,6 +2,7 @@ export { AppLink } from './app-link';
 export { Button } from './button';
 export { Checkbox } from './checkbox';
 export { Container } from './container';
+export { Drawer } from './drawer';
 export { Image } from './image';
 export { Input } from './input';
 export { LayoutMain } from './layouts';

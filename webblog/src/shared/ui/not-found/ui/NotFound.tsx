@@ -6,9 +6,11 @@ import styles from './not-found.module.scss';
 
 export const NotFound: FC = () => {
   const navigate = useNavigate();
+
   const handleClick = () => {
     navigate('/', { replace: true });
   };
+
   return (
     <div className={styles['not-found']}>
       <Title fontSize="2xl">404</Title>

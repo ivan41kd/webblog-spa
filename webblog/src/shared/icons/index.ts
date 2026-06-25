@@ -1,12 +1,13 @@
+export { BurgerIcon } from './burger-icon';
 export { CalendarIcon } from './calendar-icon';
-export { CompanyIcon } from './company-icon';
-export { CommentsIcon } from './comments-icon';
 export { ClockIcon } from './clock-icon';
+export { CommentsIcon } from './comments-icon';
+export { CompanyIcon } from './company-icon';
 export { EmailIcon } from './email-icon';
 export { EyeClosedIcon } from './eye-closed-icon';
 export { EyeOpenedIcon } from './eye-opened-icon';
 export { LikeIcon } from './like-icon';
-export { SearchIcon } from './search-icon';
 export { ResetIcon } from './reset-icon';
+export { SearchIcon } from './search-icon';
 export { UserIcon } from './user-icon';
 export { ViewsIcon } from './views-icon';

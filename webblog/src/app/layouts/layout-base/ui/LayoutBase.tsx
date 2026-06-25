@@ -1,5 +1,4 @@
 import { type FC } from 'react';
-
 import { Outlet, ScrollRestoration } from 'react-router';
 
 import { Footer, Header } from '@widgets';

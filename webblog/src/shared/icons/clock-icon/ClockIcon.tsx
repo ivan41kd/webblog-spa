@@ -1,7 +1,11 @@
 import type { SVGProps } from 'react';
 
 export const ClockIcon = (props: SVGProps<SVGSVGElement>) => (
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 192 192" {...props}>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 192 192"
+    {...props}>
     <g transform="translate(16 16)">
       <circle
         cx={80}

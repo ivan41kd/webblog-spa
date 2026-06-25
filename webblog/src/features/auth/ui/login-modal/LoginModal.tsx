@@ -12,6 +12,7 @@ export const LoginModal: FC<LoginModalPropsType> = ({ handler }) => {
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
+
   return (
     <>
       <div onClick={handleClick}>{handler}</div>

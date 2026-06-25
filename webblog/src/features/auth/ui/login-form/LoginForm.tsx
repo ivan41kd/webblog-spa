@@ -1,9 +1,12 @@
 import { type FC } from 'react';
 import { useNavigate, useSearchParams } from 'react-router';
 
-import { useForm, useLocalStorage } from '@shared/lib';
+import { useAppDispatch } from '@app/store/rootReducer';
+
+import { useForm } from '@shared/lib';
 import { Button, Input } from '@shared/ui';
 
+import { login } from '../../model/slice';
 import styles from './login-form.module.scss';
 
 type LoginFormPropsType = {
@@ -13,7 +16,9 @@ type LoginFormPropsType = {
 export const LoginForm: FC<LoginFormPropsType> = ({ isModal = false }) => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-  const { setItem } = useLocalStorage();
+
+  const dispatch = useAppDispatch();
+
   const { handleChange, formData, errors, validateForm } = useForm({
     defaultValues: { name: '', password: '' },
   });
@@ -22,7 +27,6 @@ export const LoginForm: FC<LoginFormPropsType> = ({ isModal = false }) => {
     e.preventDefault();
 
     if (validateForm()) {
-      setItem('user', JSON.stringify(formData));
       const continuePath = searchParams.get('continue');
       const cleanHash = window.location.hash.replace('#', '');
       if (continuePath) {
@@ -30,10 +34,9 @@ export const LoginForm: FC<LoginFormPropsType> = ({ isModal = false }) => {
           pathname: continuePath,
           hash: cleanHash,
         });
-      } else {
-        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-        isModal ? navigate(0) : navigate('/');
       }
+      if (isModal) navigate(0);
+      dispatch(login(JSON.stringify(formData)));
     }
   };
 

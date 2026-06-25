@@ -7,10 +7,10 @@ import styles from './modal.module.scss';
 
 export const Modal: FC<ModalPropsType> = ({ onClose = () => {}, children }) => {
   useEffect(() => {
-    document.body.classList.add('modal-open');
+    document.body.classList.add('scroll-disabled');
 
     return () => {
-      document.body.classList.remove('modal-open');
+      document.body.classList.remove('scroll-disabled');
     };
   }, []);
 

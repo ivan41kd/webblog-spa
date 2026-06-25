@@ -1,8 +1,6 @@
-import type { FC } from 'react';
-
-import { Link, useLocation, useMatches, type UIMatch } from 'react-router';
-
 import classNames from 'classnames';
+import type { FC } from 'react';
+import { Link, type UIMatch, useLocation, useMatches } from 'react-router';
 
 import { Text } from '@shared/ui';
 
@@ -20,6 +18,7 @@ interface handleCrumb {
 export const Breadcrumbs: FC = () => {
   const matches = useMatches();
   const { pathname } = useLocation();
+
   const links = (matches as UIMatch<unknown, handleCrumb>[])
     .filter((match) => typeof match.handle?.crumb === 'function')
     .map((match) => {
