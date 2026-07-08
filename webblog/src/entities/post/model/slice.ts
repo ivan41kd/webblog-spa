@@ -19,7 +19,7 @@ const initialState: {
   posts: posts,
   post: null,
   isFound: false,
-  isLoading: true,
+  isLoading: false,
   isCommentLoading: false,
   error: null,
 };
@@ -29,20 +29,24 @@ export const fetchPostSearch = createAsyncThunk(
   async ({ searchTerm, tags }: { searchTerm: string; tags?: string[] }) => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
+    const allPosts = posts.concat(
+      localStorage.getItem('post')
+        ? JSON.parse(localStorage.getItem('post') ?? '')
+        : []
+    );
+
     if (tags && tags.length) {
-      const postsWithTag = posts
-        .concat(JSON.parse(localStorage.getItem('post') ?? ''))
-        .filter((post) => tags.some((tag) => post.tags?.includes(tag)));
+      const postsWithTag = allPosts.filter((post) =>
+        tags.some((tag) => post.tags?.includes(tag))
+      );
 
       return postsWithTag.filter((post) =>
         post.title.toLowerCase().includes(searchTerm.toLowerCase())
       );
     }
-    return posts
-      .concat(JSON.parse(localStorage.getItem('post') ?? ''))
-      .filter((post) =>
-        post.title.toLowerCase().includes(searchTerm.toLowerCase())
-      );
+    return allPosts.filter((post) =>
+      post.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
   }
 );
 
@@ -50,9 +54,12 @@ export const fetchPost = createAsyncThunk(
   'post/get',
   async (id: string, { rejectWithValue }) => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
-    const post = posts
-      .concat(JSON.parse(localStorage.getItem('post') ?? ''))
-      .find((item) => item.id === id);
+    const allPosts = posts.concat(
+      localStorage.getItem('post')
+        ? JSON.parse(localStorage.getItem('post') ?? '')
+        : []
+    );
+    const post = allPosts.find((item) => item.id === id);
 
     if (!post) {
       return rejectWithValue('Post not found');
@@ -85,14 +92,24 @@ export const fetchPostComment = createAsyncThunk(
 
 export const fetchPosts = createAsyncThunk(
   'posts/get',
-  async (tags: string[]) => {
+  async (tags: string[], { rejectWithValue }) => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
+    const allPosts = posts.concat(
+      localStorage.getItem('post')
+        ? JSON.parse(localStorage.getItem('post') ?? '')
+        : []
+    );
     if (!tags.length) {
-      return posts.concat(JSON.parse(localStorage.getItem('post') ?? ''));
+      return allPosts;
     }
-    return posts
-      .concat(JSON.parse(localStorage.getItem('post') ?? ''))
-      .filter((post) => tags.some((tag) => post.tags?.includes(tag)));
+
+    if (!posts) {
+      return rejectWithValue('Post not found');
+    }
+
+    return allPosts.filter((post) =>
+      tags.some((tag) => post.tags?.includes(tag))
+    );
   }
 );
 
@@ -236,18 +253,15 @@ export const PostSlice = createSlice({
     });
     builder.addCase(fetchPostComment.fulfilled, (state, action) => {
       if (state.post) {
-        const comment = [
-          {
-            name: action.payload.name,
-            avatar: action.payload.avatar,
-            text: action.payload.text,
-            likes: 0,
-            date: action.payload.date,
-            isLiked: false,
-          },
-          ...state.post.comments,
-        ];
-        state.post.comments = comment;
+        const comment = {
+          name: action.payload.name,
+          avatar: action.payload.avatar,
+          text: action.payload.text,
+          likes: 0,
+          date: action.payload.date,
+          isLiked: false,
+        };
+        state.post.comments.unshift(comment);
         if (localStorage.getItem('post')) {
           localStorage.setItem('post', JSON.stringify(state.post));
         }
