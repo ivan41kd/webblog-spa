@@ -4,6 +4,7 @@ export const scrollToRefElement = (ref: RefObject<HTMLDivElement | null>) => {
   if (ref.current) {
     ref.current.scrollIntoView({
       behavior: 'smooth',
+      block: 'start',
     });
   }
 };

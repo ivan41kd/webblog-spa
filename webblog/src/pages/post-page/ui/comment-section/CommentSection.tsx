@@ -2,10 +2,10 @@ import { type FC, useRef } from 'react';
 
 import { useAppSelector } from '@app/store/rootReducer';
 
-import { LoginModal } from '@features';
+import { LoginModal } from '@widgets';
 
 import { Button, Text, Title } from '@shared/ui';
-import { scrollToRefElement } from '@shared/utils/scrollToRefElement';
+import { scrollToRefElement } from '@shared/utils';
 
 import styles from './post-comments.module.scss';
 import { CommentList } from './ui/comment-list';
@@ -13,6 +13,7 @@ import { CreateComment } from './ui/create-comment';
 
 export const CommentSection: FC = () => {
   const { isAuth } = useAppSelector((state) => state.auth);
+  const comments = useAppSelector((state) => state.posts.post?.comments);
 
   const commentListRef = useRef<HTMLDivElement>(null);
 
@@ -23,6 +24,9 @@ export const CommentSection: FC = () => {
       ref={commentListRef}>
       <Title tag="h2" fontSize="md" className={styles['post-comments-title']}>
         Comments
+        <Text tag="span" className={styles['post-comments-value']}>
+          {comments?.length}
+        </Text>
       </Title>
       <CommentList />
       {isAuth ? (
@@ -34,7 +38,9 @@ export const CommentSection: FC = () => {
       ) : (
         <div className={styles['post-comments-login-prompt']}>
           <Text>Please log in to leave a comment.</Text>
-          <LoginModal handler={<Button>Login</Button>} />
+          <LoginModal title={'Please log in to leave a comment.'}>
+            <Button>Login</Button>
+          </LoginModal>
         </div>
       )}
     </div>

@@ -1,7 +1,7 @@
 import { type FC, memo } from 'react';
 
 import { Image, ReadMore, Text } from '@shared/ui';
-import { formatDate } from '@shared/utils/formatDate';
+import { formatDate } from '@shared/utils';
 
 import styles from './comment.module.scss';
 import type { CommentCardPropsType } from './type';

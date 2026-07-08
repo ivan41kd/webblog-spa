@@ -1,5 +1,6 @@
 export {
   clearPost,
+  deletePost,
   fetchPost,
   fetchPostComment,
   fetchPosts,
@@ -7,5 +8,4 @@ export {
   likeComment,
   likePost,
   postReducer,
-  resetSearch,
 } from './slice';

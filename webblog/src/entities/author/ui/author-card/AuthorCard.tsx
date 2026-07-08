@@ -7,7 +7,7 @@ import styles from './author-card.module.scss';
 
 interface AuthorCardPropsType {
   name: string;
-  avatar: string;
+  avatar?: string;
   className?: string;
 }
 

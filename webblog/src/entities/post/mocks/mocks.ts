@@ -3,7 +3,7 @@ export const mocks = [
     id: '1',
 
     title: 'Morning Coffee',
-    tags: ['Coffee'],
+    tags: ['coffee'],
     description:
       'Starting the day with a fresh cup of coffee and planning ahead.',
     author: {
@@ -132,7 +132,7 @@ export const mocks = [
     id: '4',
 
     title: 'Weekend Coding',
-    tags: ['Weekend', 'Code'],
+    tags: ['weekend', 'code'],
     description:
       'Spent the weekend experimenting with new TypeScript features.',
     author: {
@@ -241,7 +241,7 @@ export const mocks = [
     id: '7',
 
     title: 'Learning React',
-    tags: ['Code'],
+    tags: ['code'],
     description: 'Today I practiced hooks and built a small interactive UI.',
     author: {
       name: 'Alex Rivera',
@@ -541,7 +541,7 @@ export const mocks = [
     id: '16',
 
     title: 'JavaScript Tips',
-    tags: ['Code'],
+    tags: ['code'],
     description: 'Sharing a few useful JavaScript tricks I discovered.',
     author: {
       name: 'Alex Rivera',
@@ -615,7 +615,7 @@ export const mocks = [
     id: '18',
 
     title: 'Cafe Work',
-    tags: ['Coffee'],
+    tags: ['coffee'],
     description: 'Worked remotely from a cozy cafe downtown.',
     author: {
       name: 'Alex Rivera',
@@ -649,7 +649,7 @@ export const mocks = [
     id: '19',
 
     title: 'New Keyboard',
-    tags: ['Code'],
+    tags: ['code'],
     description: 'Finally got a mechanical keyboard for coding.',
     author: {
       name: 'Alex Rivera',
@@ -683,7 +683,7 @@ export const mocks = [
     id: '20',
 
     title: 'Weekend Hiking',
-    tags: ['Weekend'],
+    tags: ['weekend'],
     description: 'Hiking through scenic trails outside the city.',
     author: {
       name: 'Alex Rivera',
@@ -717,7 +717,7 @@ export const mocks = [
     id: '21',
 
     title: 'Learning CSS Grid',
-    tags: ['Code'],
+    tags: ['code'],
     description: 'Practicing complex layouts using CSS Grid.',
     author: {
       name: 'Alex Rivera',
@@ -812,7 +812,7 @@ export const mocks = [
     id: '23',
 
     title: 'Morning Routine',
-    tags: ['Coffee'],
+    tags: ['coffee'],
     description: 'Building a healthy and productive morning routine.',
     author: {
       name: 'Alex Rivera',
@@ -867,7 +867,7 @@ export const mocks = [
     id: '24',
 
     title: 'Coffee Beans',
-    tags: ['Coffee'],
+    tags: ['coffee'],
     description: 'Testing different coffee beans and brewing styles.',
     author: {
       name: 'Alex Rivera',
@@ -915,7 +915,7 @@ export const mocks = [
     id: '25',
 
     title: 'Open Source Contribution',
-    tags: ['Code'],
+    tags: ['code'],
     description: 'Contributed to an open source project today.',
     author: {
       name: 'Alex Rivera',
@@ -970,7 +970,7 @@ export const mocks = [
     id: '26',
 
     title: 'Coding Night',
-    tags: ['Code'],
+    tags: ['code'],
     description: 'Late night coding session building a small app.',
     author: {
       name: 'Alex Rivera',
@@ -1105,7 +1105,7 @@ export const mocks = [
     id: '29',
 
     title: 'Debugging Day',
-    tags: ['Code'],
+    tags: ['code'],
     description: 'Spent hours debugging a tricky bug.',
     author: {
       name: 'Alex Rivera',
@@ -1200,7 +1200,7 @@ export const mocks = [
     id: '31',
 
     title: 'New Project Kickoff',
-    tags: ['Code'],
+    tags: ['code'],
     description: 'Started working on a brand new side project.',
     author: {
       name: 'Alex Rivera',
@@ -1403,7 +1403,7 @@ export const mocks = [
     id: '35',
 
     title: 'Learning Node.js',
-    tags: ['Code'],
+    tags: ['code'],
     description: 'Deep diving into backend with Node.js.',
     author: {
       name: 'Alex Rivera',
@@ -1552,7 +1552,7 @@ export const mocks = [
     id: '38',
 
     title: 'Weekend Market Visit',
-    tags: ['Weekend'],
+    tags: ['weekend'],
     description: 'Visited a local street market full of colors.',
     author: {
       name: 'Alex Rivera',
@@ -1600,7 +1600,7 @@ export const mocks = [
     id: '39',
 
     title: 'App Prototype',
-    tags: ['Code'],
+    tags: ['code'],
     description: 'Built a quick prototype for a new idea.',
     author: {
       name: 'Alex Rivera',
@@ -1702,7 +1702,7 @@ export const mocks = [
     id: '41',
 
     title: 'Frontend Refactor',
-    tags: ['Code'],
+    tags: ['code'],
     description: 'Refactored a big part of my frontend code.',
     author: {
       name: 'Alex Rivera',
@@ -1804,7 +1804,7 @@ export const mocks = [
     id: '43',
 
     title: 'Learning Git Advanced',
-    tags: ['Code'],
+    tags: ['code'],
     description: 'Practicing advanced Git commands and workflows.',
     author: {
       name: 'Alex Rivera',
@@ -1859,7 +1859,7 @@ export const mocks = [
     id: '44',
 
     title: 'Coffee Break Reflection',
-    tags: ['Coffee'],
+    tags: ['coffee'],
     description: 'Taking a small coffee break after intense work.',
     author: {
       name: 'Alex Rivera',
@@ -1961,7 +1961,7 @@ export const mocks = [
     id: '46',
 
     title: 'Clean Code Thoughts',
-    tags: ['Code'],
+    tags: ['code'],
     description: 'Reflected on the importance of writing clean code.',
     author: {
       name: 'Alex Rivera',
@@ -2164,7 +2164,7 @@ export const mocks = [
     id: '50',
 
     title: 'Weekend Relax Mode',
-    tags: ['Weekend'],
+    tags: ['weekend'],
     description: 'Taking time to relax and recharge fully.',
     author: {
       name: 'Alex Rivera',
@@ -2313,7 +2313,7 @@ export const mocks = [
     id: '53',
 
     title: 'Code Refactoring Day',
-    tags: ['Code'],
+    tags: ['code'],
     description: 'Improving structure and readability of existing code.',
     author: {
       name: 'Alex Rivera',
@@ -2469,7 +2469,7 @@ export const mocks = [
     id: '56',
 
     title: 'Quick Prototype Build',
-    tags: ['Code'],
+    tags: ['code'],
     description: 'Built a quick working prototype for validation.',
     author: {
       name: 'Alex Rivera',
@@ -2611,7 +2611,7 @@ export const mocks = [
     id: '59',
 
     title: 'Late Night Coding',
-    tags: ['Code'],
+    tags: ['code'],
     description: 'Working late to finish an important feature.',
     author: {
       name: 'Alex Rivera',
@@ -2767,7 +2767,7 @@ export const mocks = [
     id: '62',
 
     title: 'Bun.js First Try',
-    tags: ['Code'],
+    tags: ['code'],
     description: 'Experimenting with Bun.js as a faster runtime.',
     author: {
       name: 'Alex Rivera',
@@ -2916,7 +2916,7 @@ export const mocks = [
     id: '65',
 
     title: 'Astro Framework Intro',
-    tags: ['Code'],
+    tags: ['code'],
     description: 'First steps with Astro — really impressed.',
     author: {
       name: 'Alex Rivera',
@@ -2964,7 +2964,7 @@ export const mocks = [
     id: '66',
 
     title: 'Spring Cleaning Code',
-    tags: ['Code'],
+    tags: ['code'],
     description: 'Removing old unused code and dependencies.',
     author: {
       name: 'Alex Rivera',
@@ -3059,7 +3059,7 @@ export const mocks = [
     id: '68',
 
     title: 'Next.js App Router',
-    tags: ['Code'],
+    tags: ['code'],
     description: 'Migrating to the new App Router — lessons learned.',
     author: {
       name: 'Alex Rivera',
@@ -3154,7 +3154,7 @@ export const mocks = [
     id: '70',
 
     title: 'Tailwind v4 Upgrade',
-    tags: ['Code'],
+    tags: ['code'],
     description: 'Upgraded to Tailwind CSS v4 — first impressions.',
     author: {
       name: 'Alex Rivera',
@@ -3263,7 +3263,7 @@ export const mocks = [
     id: '72',
 
     title: 'Zod + TypeScript',
-    tags: ['Code'],
+    tags: ['code'],
     description: 'Using Zod for runtime validation — game changer.',
     author: {
       name: 'Alex Rivera',
@@ -3420,7 +3420,7 @@ export const mocks = [
     id: '75',
 
     title: 'React Compiler First Look',
-    tags: ['Code'],
+    tags: ['code'],
     description: 'Trying the new React Compiler — mind blown.',
     author: {
       name: 'Alex Rivera',
@@ -3475,7 +3475,7 @@ export const mocks = [
     id: '76',
 
     title: 'Spring UI Refresh',
-    tags: ['Code'],
+    tags: ['code'],
     description: 'Giving the personal site a spring refresh.',
     author: {
       name: 'Alex Rivera',
@@ -3664,7 +3664,7 @@ export const mocks = [
     id: '80',
 
     title: 'Motion One Experiments',
-    tags: ['Code'],
+    tags: ['code'],
     description: 'Playing with Motion One for smooth animations.',
     author: {
       name: 'Alex Rivera',
@@ -3766,7 +3766,7 @@ export const mocks = [
     id: '82',
 
     title: 'TypeScript 5.8 Features',
-    tags: ['Code'],
+    tags: ['code'],
     description: 'New goodies in TypeScript 5.8 release.',
     author: {
       name: 'Alex Rivera',
@@ -3908,7 +3908,7 @@ export const mocks = [
     id: '85',
 
     title: 'Vite 6 First Impressions',
-    tags: ['Code'],
+    tags: ['code'],
     description: 'Upgraded to Vite 6 — blazing fast as promised.',
     author: {
       name: 'Alex Rivera',
@@ -4050,7 +4050,7 @@ export const mocks = [
     id: '88',
 
     title: 'Server Components Deep Dive',
-    tags: ['Code'],
+    tags: ['code'],
     description: 'Understanding React Server Components better.',
     author: {
       name: 'Alex Rivera',
@@ -4145,7 +4145,7 @@ export const mocks = [
     id: '90',
 
     title: 'CSS Nesting Mastery',
-    tags: ['Code'],
+    tags: ['code'],
     description: 'Finally comfortable with native CSS nesting.',
     author: {
       name: 'Alex Rivera',
@@ -4287,7 +4287,7 @@ export const mocks = [
     id: '93',
 
     title: 'Heatwave Coding',
-    tags: ['Code', 'Coffee'],
+    tags: ['code', 'coffee'],
     description: 'Surviving summer heat with iced coffee & code.',
     author: {
       name: 'Alex Rivera',
@@ -4429,7 +4429,7 @@ export const mocks = [
     id: '96',
 
     title: 'Learning Rust Basics',
-    tags: ['Code'],
+    tags: ['code'],
     description: 'First steps into Rust — very different mindset.',
     author: {
       name: 'Alex Rivera',

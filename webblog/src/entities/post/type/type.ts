@@ -1,10 +1,14 @@
+import type { JSONContent } from '@tiptap/react';
+
 export interface PostContentType {
   text: string[];
 }
 
+export type PostContentDocType = JSONContent;
+
 export interface PostAuthorType {
-  name: string;
-  avatar: string;
+  name?: string;
+  avatar?: string;
 }
 
 export interface PostCommentsType {
@@ -16,13 +20,13 @@ export interface PostCommentsType {
   date: string;
 }
 export interface PostType {
-  id?: string;
+  id: string | number;
   img?: string;
   title: string;
   tags?: string[];
-  description: string;
+  description?: string;
   author: PostAuthorType;
-  content: PostContentType[];
+  content: PostContentType[] | PostContentDocType;
   isLiked?: boolean;
   views: number;
   likes: number;

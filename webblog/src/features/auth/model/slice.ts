@@ -5,9 +5,9 @@ const initialState: {
   name: string | null;
 } = {
   isAuth: !!localStorage.getItem('user'),
-  name:
-    localStorage.getItem('user') &&
-    JSON.parse(localStorage.getItem('user') as string).name,
+  name: localStorage.getItem('user')
+    ? JSON.parse(localStorage.getItem('user') ?? '').name
+    : null,
 };
 
 const AuthSlice = createSlice({
@@ -15,7 +15,7 @@ const AuthSlice = createSlice({
   initialState,
   reducers: {
     login: (state, action) => {
-      localStorage.setItem('user', action.payload);
+      localStorage.setItem('user', JSON.stringify(action.payload));
       if (localStorage.getItem('user')) {
         state.isAuth = true;
         state.name = JSON.parse(localStorage.getItem('user') as string).name;

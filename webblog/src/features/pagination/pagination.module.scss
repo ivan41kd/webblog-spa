@@ -17,6 +17,12 @@
     &.ellipsis {
       pointer-events: none;
     }
+    &.to-first,
+    &.to-last {
+      @media (width <= 768px) {
+        display: none;
+      }
+    }
   }
 }
 .pagination.base {

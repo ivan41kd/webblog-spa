@@ -1,0 +1,16 @@
+.post-search {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  &-reset-button {
+    width: max-content;
+    text-transform: capitalize;
+    &-icon {
+      width: clamp(1rem, 2.5vw, 1.5rem);
+      width: clamp(1rem, 2.5vw, 1.5rem);
+      path {
+        fill: white;
+      }
+    }
+  }
+}

@@ -5,43 +5,37 @@ import { useAppDispatch } from '@app/store/rootReducer';
 
 import { fetchPostSearch, fetchPosts } from '@entities';
 
-import { Button } from '@shared/ui';
-
 import { PostList, PostSearch } from './ui';
 
-export const PostListSearch: FC = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+interface PostListSearchPropsType {
+  withSearch?: boolean;
+}
+
+export const PostListSearch: FC<PostListSearchPropsType> = ({
+  withSearch = false,
+}) => {
+  const [searchParams] = useSearchParams();
   const dispatch = useAppDispatch();
 
-  const typeQuery = searchParams.get('type') || '';
-  const searchQuery = searchParams.get('q') || '';
+  const searchQuery = searchParams.get('q');
+  const typeQuery = searchParams.getAll('type');
 
   useEffect(() => {
     if (searchQuery) {
       dispatch(
         fetchPostSearch({
           searchTerm: searchQuery,
-          tag: typeQuery,
+          tags: typeQuery,
         })
       );
     } else {
       dispatch(fetchPosts(typeQuery));
     }
   }, [dispatch, searchQuery, typeQuery]);
+
   return (
     <>
-      <PostSearch />
-      {typeQuery && (
-        <Button
-          onClick={() =>
-            setSearchParams((params) => {
-              params.delete('type');
-              return params;
-            })
-          }>
-          Reset filters
-        </Button>
-      )}
+      {withSearch && <PostSearch />}
       <PostList />
     </>
   );

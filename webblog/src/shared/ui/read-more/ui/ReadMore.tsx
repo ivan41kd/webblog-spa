@@ -24,15 +24,15 @@ export const ReadMore: FC<ReadMorePropsType> = ({
     : text;
   const endText = splittedText.slice(amountOfWords - 1).join('');
 
+  const endTextClassName = classNames(styles['read-more-text end'], {
+    hidden: !isExpanded,
+  });
+
   const handleKeyboard = (e: React.KeyboardEvent<HTMLSpanElement>) => {
     if (e.code === 'Space' || e.code === 'Enter') {
       setIsExpanded(!isExpanded);
     }
   };
-
-  const endTextClassName = classNames(styles['read-more-text end'], {
-    hidden: !isExpanded,
-  });
 
   return (
     <div className={styles['read-more-container']}>

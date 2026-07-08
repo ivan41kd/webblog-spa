@@ -10,7 +10,7 @@
   border-radius: $radius-md;
   overflow: hidden;
   position: relative;
-  height: 400px;
+  height: 25rem;
   &:not(.skeleton) {
     cursor: pointer;
   }
@@ -38,7 +38,7 @@
         }
       }
       &-description {
-        height: 70px;
+        height: 4.375rem;
 
         &-text {
           opacity: 1;
@@ -48,6 +48,7 @@
       }
       &-title {
         @include line-clamp(2);
+        word-break: break-all;
       }
     }
   }
@@ -64,7 +65,6 @@
   }
   &-tags {
     display: flex;
-    width: 100%;
     flex-direction: column;
     position: absolute;
     gap: 0.75rem;
@@ -81,6 +81,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    text-transform: capitalize;
   }
 
   &-body {

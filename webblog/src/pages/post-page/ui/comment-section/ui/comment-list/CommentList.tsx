@@ -9,9 +9,13 @@ import { CommentCard, CommentCardSkeleton, likeComment } from '@entities';
 
 import { usePagination } from '@shared/lib';
 import { Text } from '@shared/ui';
-import { scrollToRefElement } from '@shared/utils/scrollToRefElement';
+import { scrollToRefElement } from '@shared/utils';
 
 import styles from '../../post-comments.module.scss';
+
+const commentSkeletons = Array.from({ length: 3 }, (_, i) => (
+  <CommentCardSkeleton key={`skeleton-${i}`} />
+));
 
 export const CommentList: FC = () => {
   const { isAuth } = useAppSelector((state) => state.auth);
@@ -24,18 +28,15 @@ export const CommentList: FC = () => {
   const dispatch = useAppDispatch();
 
   const commentRef = useRef<HTMLDivElement>(null);
+
   const {
     visibleData,
-    setCurrentPage,
-    currentPage,
     dataPerPage,
     totalPages,
     pageNumbers,
+    setOffset,
+    offset,
   } = usePagination(comments || [], 2);
-
-  const commentSkeletons = Array.from({ length: 3 }, (_, i) => (
-    <CommentCardSkeleton key={`skeleton-${i}`} />
-  ));
 
   const handleLike = useCallback(
     (id: number) => {
@@ -62,10 +63,11 @@ export const CommentList: FC = () => {
           {!visibleData.length && !isCommentLoading && <Text>No comments</Text>}
 
           {visibleData.map((comment, index) => {
+            const isLast = index === visibleData.length - 1;
             return (
               <CommentCard
                 key={`comment-${index}-${comment.name}`}
-                ref={commentRef}
+                ref={isLast ? commentRef : null}
                 comment={comment.text}
                 user={comment.name}
                 likes={comment.likes}
@@ -77,15 +79,13 @@ export const CommentList: FC = () => {
                 }}
                 likeSlot={
                   !isAuth ? (
-                    <LoginModal
-                      handler={
-                        <CommentLike
-                          likes={comment.likes}
-                          isLiked={comment.isLiked}
-                          onLike={() => handleLike(index)}
-                        />
-                      }
-                    />
+                    <LoginModal>
+                      <CommentLike
+                        likes={comment.likes}
+                        isLiked={comment.isLiked}
+                        onLike={() => {}}
+                      />
+                    </LoginModal>
                   ) : (
                     <CommentLike
                       likes={comment.likes}
@@ -104,10 +104,10 @@ export const CommentList: FC = () => {
             totalPages={totalPages}
             dataPerPage={dataPerPage}
             onPageChange={(number) => {
-              setCurrentPage(number);
+              setOffset(number);
               scrollToRefElement(commentRef);
             }}
-            currentPage={currentPage}
+            currentPage={offset}
             type="loadMore"
           />
         )}

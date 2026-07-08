@@ -1,5 +1,4 @@
 import type { FC } from 'react';
-import { useNavigate } from 'react-router';
 
 import { useAppDispatch } from '@app/store/rootReducer';
 
@@ -12,8 +11,6 @@ interface SignoutButtonPropsType {
 }
 
 export const SignoutButton: FC<SignoutButtonPropsType> = ({ className }) => {
-  const navigate = useNavigate();
-
   const dispatch = useAppDispatch();
 
   return (
@@ -23,7 +20,6 @@ export const SignoutButton: FC<SignoutButtonPropsType> = ({ className }) => {
       size="md"
       onClick={() => {
         dispatch(signout());
-        navigate(0);
       }}>
       Sign out
     </Button>

@@ -25,8 +25,8 @@
   &-search-icon,
   &-reset-icon {
     display: flex;
-    width: clamp(1.5rem, 1vw, 2rem);
-    height: clamp(1.5rem, 1vw, 2rem);
+    width: clamp(1rem, 1.7vw, 1.5rem);
+    height: clamp(1rem, 1.7vw, 1.5rem);
     position: absolute;
     right: 0.75rem;
     top: 50%;
@@ -107,7 +107,7 @@
   &-lg.input-icon-left &-field,
   &-lg.input-email &-field,
   &-lg.input-search &-field {
-    padding-left: 3rem;
+    padding-left: clamp(2rem, 3.5vw, 3rem);
   }
   &-icon-left &-field {
     padding-left: 3.25rem;
@@ -167,7 +167,7 @@
     border-radius: $radius-lg;
   }
   &-search &-field {
-    padding-right: clamp(2.5rem, 1vw, 1.875rem);
+    padding-right: clamp(1.8rem, 1vw, 1.875rem);
   }
 
   &-field {
@@ -176,6 +176,7 @@
     overflow: hidden;
     width: 100%;
     caret-color: $brand;
+    background: white;
 
     &:not(:placeholder-shown) {
       border: 0.0625rem solid $filled;

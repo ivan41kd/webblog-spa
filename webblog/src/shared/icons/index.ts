@@ -1,3 +1,4 @@
+export { BasketIcon } from './basket-icon';
 export { BurgerIcon } from './burger-icon';
 export { CalendarIcon } from './calendar-icon';
 export { ClockIcon } from './clock-icon';

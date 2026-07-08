@@ -3,6 +3,7 @@ export type { PostType } from './type';
 
 export {
   clearPost,
+  deletePost,
   fetchPost,
   fetchPostComment,
   fetchPosts,
@@ -10,7 +11,6 @@ export {
   likeComment,
   likePost,
   postReducer,
-  resetSearch,
 } from './model';
 export {
   PostCard,

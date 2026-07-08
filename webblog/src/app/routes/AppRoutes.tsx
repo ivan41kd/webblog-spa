@@ -2,10 +2,12 @@ import { RouterProvider, createBrowserRouter, redirect } from 'react-router';
 
 import { LayoutBase } from '@app/layouts';
 
-import { HomePage, LoginPage, PostPage } from '@pages';
+import { HomePage, PostCreatePage, PostPage } from '@pages';
 
-import { HOME, LOGIN, POST } from '@shared/routes';
+import { CREATE_POST, HOME, POST } from '@shared/routes';
 import { NotFound } from '@shared/ui';
+
+import { ProtectedRoute } from './ProtectedRoute';
 
 export const AppRoutes = () => {
   const routes = [
@@ -38,12 +40,18 @@ export const AppRoutes = () => {
             }),
           },
         },
+        {
+          element: <ProtectedRoute />,
+          children: [
+            {
+              path: CREATE_POST,
+              element: <PostCreatePage />,
+            },
+          ],
+        },
       ],
     },
-    {
-      path: LOGIN,
-      element: <LoginPage />,
-    },
+
     { path: '*', element: <NotFound /> },
   ];
 

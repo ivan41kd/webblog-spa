@@ -1,17 +1,22 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 import { mocks as posts } from '../mocks';
-import type { PostType } from '../type';
+import type {
+  PostAuthorType,
+  PostContentDocType,
+  PostContentType,
+  PostType,
+} from '../type';
 
 const initialState: {
-  posts: PostType[] | null;
+  posts: PostType[];
   post: PostType | null;
   isLoading: boolean;
   isCommentLoading: boolean;
   isFound: boolean;
   error: boolean | null;
 } = {
-  posts: null,
+  posts: posts,
   post: null,
   isFound: false,
   isLoading: true,
@@ -21,21 +26,23 @@ const initialState: {
 
 export const fetchPostSearch = createAsyncThunk(
   'posts/search',
-  async ({ searchTerm, tag }: { searchTerm: string; tag?: string }) => {
+  async ({ searchTerm, tags }: { searchTerm: string; tags?: string[] }) => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    if (tag) {
-      const postsWithTag = posts?.filter((post) =>
-        post.tags?.includes(tag.charAt(0).toUpperCase() + tag.slice(1))
-      );
+    if (tags && tags.length) {
+      const postsWithTag = posts
+        .concat(JSON.parse(localStorage.getItem('post') ?? ''))
+        .filter((post) => tags.some((tag) => post.tags?.includes(tag)));
 
       return postsWithTag.filter((post) =>
         post.title.toLowerCase().includes(searchTerm.toLowerCase())
       );
     }
-    return posts.filter((post) =>
-      post.title.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    return posts
+      .concat(JSON.parse(localStorage.getItem('post') ?? ''))
+      .filter((post) =>
+        post.title.toLowerCase().includes(searchTerm.toLowerCase())
+      );
   }
 );
 
@@ -43,7 +50,9 @@ export const fetchPost = createAsyncThunk(
   'post/get',
   async (id: string, { rejectWithValue }) => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
-    const post = posts.find((item) => item.id === id);
+    const post = posts
+      .concat(JSON.parse(localStorage.getItem('post') ?? ''))
+      .find((item) => item.id === id);
 
     if (!post) {
       return rejectWithValue('Post not found');
@@ -76,28 +85,44 @@ export const fetchPostComment = createAsyncThunk(
 
 export const fetchPosts = createAsyncThunk(
   'posts/get',
-  async (tag: string | undefined) => {
+  async (tags: string[]) => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
-
-    if (!tag) {
-      return posts;
+    if (!tags.length) {
+      return posts.concat(JSON.parse(localStorage.getItem('post') ?? ''));
     }
-    return posts?.filter((post) =>
-      post.tags?.includes(tag.charAt(0).toUpperCase() + tag.slice(1))
-    );
+    return posts
+      .concat(JSON.parse(localStorage.getItem('post') ?? ''))
+      .filter((post) => tags.some((tag) => post.tags?.includes(tag)));
   }
 );
 
-export const resetSearch = createAsyncThunk(
-  'posts/resetSearch',
-  async (tag: string | undefined) => {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    if (!tag) {
-      return posts;
-    }
-    return posts?.filter((post) =>
-      post.tags?.includes(tag.charAt(0).toUpperCase() + tag.slice(1))
-    );
+export const fetchCreatePost = createAsyncThunk(
+  'posts/create',
+  async ({
+    id,
+    title,
+    description,
+    author,
+    content,
+  }: {
+    id: string | number;
+    title: string;
+    description: string;
+    author: PostAuthorType;
+    content: PostContentType[] | PostContentDocType;
+  }) => {
+    return {
+      id,
+      title,
+      description,
+      author,
+      tags: [],
+      content,
+      views: 0,
+      likes: 0,
+      comments: [],
+      date: new Date() + '',
+    };
   }
 );
 
@@ -119,6 +144,19 @@ export const PostSlice = createSlice({
           post.likes--;
           post.isLiked = false;
         }
+        if (localStorage.getItem('post')) {
+          localStorage.setItem('post', JSON.stringify(state.post));
+        }
+      }
+    },
+    deletePost: (state, action) => {
+      const deletedPost = state.posts.find(
+        (post) => post.id === action.payload
+      );
+
+      if (deletedPost) {
+        state.posts = state.posts.filter((post) => post !== deletedPost);
+        localStorage.removeItem('post');
       }
     },
     likePost: (state) => {
@@ -129,6 +167,9 @@ export const PostSlice = createSlice({
         } else {
           state.post.likes--;
           state.post.isLiked = false;
+        }
+        if (localStorage.getItem('post')) {
+          localStorage.setItem('post', JSON.stringify(state.post));
         }
       }
     },
@@ -149,24 +190,14 @@ export const PostSlice = createSlice({
       state.isFound = false;
       state.error = true;
     });
-    builder.addCase(resetSearch.pending, (state) => {
-      state.isLoading = true;
-      state.isFound = false;
-    });
-    builder.addCase(resetSearch.fulfilled, (state, action) => {
-      state.posts = action.payload;
-      state.isLoading = false;
-    });
-    builder.addCase(resetSearch.rejected, (state) => {
-      state.isLoading = false;
-    });
+
     builder.addCase(fetchPosts.pending, (state) => {
       state.isLoading = true;
       state.error = false;
     });
     builder.addCase(fetchPosts.rejected, (state) => {
       state.error = true;
-      state.isLoading = true;
+      state.isLoading = false;
     });
     builder.addCase(fetchPosts.fulfilled, (state, action) => {
       state.isLoading = false;
@@ -185,13 +216,27 @@ export const PostSlice = createSlice({
       state.error = true;
       state.isLoading = false;
     });
+    builder.addCase(fetchCreatePost.pending, (state) => {
+      state.isLoading = true;
+      state.error = false;
+    });
+    builder.addCase(fetchCreatePost.fulfilled, (state, action) => {
+      state.posts = [...state.posts, action.payload];
+      localStorage.setItem('post', JSON.stringify(action.payload));
+
+      state.isLoading = false;
+    });
+    builder.addCase(fetchCreatePost.rejected, (state) => {
+      state.error = true;
+      state.isLoading = false;
+    });
     builder.addCase(fetchPostComment.pending, (state) => {
       state.error = false;
       state.isCommentLoading = true;
     });
     builder.addCase(fetchPostComment.fulfilled, (state, action) => {
       if (state.post) {
-        state.post.comments = [
+        const comment = [
           {
             name: action.payload.name,
             avatar: action.payload.avatar,
@@ -202,12 +247,18 @@ export const PostSlice = createSlice({
           },
           ...state.post.comments,
         ];
+        state.post.comments = comment;
+        if (localStorage.getItem('post')) {
+          localStorage.setItem('post', JSON.stringify(state.post));
+        }
+
         state.isCommentLoading = false;
       }
     });
   },
 });
 
-export const { clearPost, likeComment, likePost } = PostSlice.actions;
+export const { clearPost, likeComment, likePost, deletePost } =
+  PostSlice.actions;
 
 export const { reducer: postReducer } = PostSlice;

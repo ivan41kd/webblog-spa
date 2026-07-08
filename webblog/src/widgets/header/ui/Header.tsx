@@ -1,18 +1,18 @@
 import cn from 'classnames';
 import { type FC, useEffect } from 'react';
 import Skeleton from 'react-loading-skeleton';
-import { Link, NavLink } from 'react-router';
+import { Link, NavLink, useNavigate } from 'react-router';
 
 import { useAppDispatch, useAppSelector } from '@app/store/rootReducer';
 
-import { LoginButton, UserMenu } from '@features';
+import { LoginModal, UserMenu } from '@features/auth';
 
 import { CompanyIcon } from '@shared/icons';
-import { Container, NavList } from '@shared/ui';
+import { Button, Container, NavList, Text } from '@shared/ui';
 
 import { fetchHeaderList } from '../model/slice';
+import { HeaderMenu } from './header-menu';
 import styles from './header.module.scss';
-import { HeaderMenu } from './ui';
 
 interface HeaderPropsType {
   className?: string;
@@ -23,6 +23,7 @@ export const Header: FC<HeaderPropsType> = ({ className }) => {
   const { isAuth } = useAppSelector((state) => state.auth);
 
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const headerClass = cn(className, styles.header);
 
@@ -70,9 +71,18 @@ export const Header: FC<HeaderPropsType> = ({ className }) => {
             {isLoading ? (
               <Skeleton width={100} height={'100%'} />
             ) : !isAuth ? (
-              <LoginButton />
+              <LoginModal>
+                <Button className={styles['header-login-button']} size="md">
+                  <Text>Login</Text>
+                </Button>
+              </LoginModal>
             ) : (
-              <UserMenu className={styles['header-user']} />
+              <>
+                <Button onClick={() => navigate('posts/create')}>
+                  Create post
+                </Button>
+                <UserMenu className={styles['header-user']} />
+              </>
             )}
             <HeaderMenu
               navSlot={

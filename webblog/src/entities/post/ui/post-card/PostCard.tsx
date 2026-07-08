@@ -19,7 +19,7 @@ export const PostCard: FC<PostCardPropsType> = memo(
                   <div
                     className={styles['post-card-tag']}
                     key={`${tag}-${index}`}>
-                    {tag}
+                    <Text>{tag}</Text>
                   </div>
                 );
               })}
@@ -36,13 +36,15 @@ export const PostCard: FC<PostCardPropsType> = memo(
             {title}
           </Text>
 
-          <div className={styles['post-card-description']}>
-            <Text
-              fontSize="md"
-              className={styles['post-card-description-text']}>
-              {description}
-            </Text>
-          </div>
+          {description && (
+            <div className={styles['post-card-description']}>
+              <Text
+                fontSize="md"
+                className={styles['post-card-description-text']}>
+                {description}
+              </Text>
+            </div>
+          )}
 
           <div className={styles['post-card-info']}>
             <div className={styles['post-card-stats']}>

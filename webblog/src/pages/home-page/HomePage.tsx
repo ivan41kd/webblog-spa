@@ -9,7 +9,7 @@ import styles from './home-page.module.scss';
 export const HomePage: FC = () => {
   return (
     <Section className={styles.home}>
-      <PostListSearch />
+      <PostListSearch withSearch />
       <PromoBanner />
     </Section>
   );

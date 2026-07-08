@@ -22,6 +22,7 @@ export const CreateComment: FC<CreateCommentPropsType> = ({
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     if (validateForm() && isAuth && name) {
       dispatch(
         fetchPostComment({
@@ -35,10 +36,6 @@ export const CreateComment: FC<CreateCommentPropsType> = ({
     }
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    handleChange(e);
-  };
-
   return (
     <form onSubmit={handleSubmit} noValidate>
       <Textarea
@@ -46,7 +43,7 @@ export const CreateComment: FC<CreateCommentPropsType> = ({
         name="comment"
         value={formData.comment}
         error={errors.comment}
-        onChange={handleInputChange}
+        onChange={handleChange}
         placeholder="Write your comment"
       />
       <Button isSubmit>Add comment</Button>

@@ -43,4 +43,10 @@
     flex-direction: column;
     gap: 1rem;
   }
+  &-content-text {
+    word-break: break-all;
+    & span {
+      font-weight: bold;
+    }
+  }
 }

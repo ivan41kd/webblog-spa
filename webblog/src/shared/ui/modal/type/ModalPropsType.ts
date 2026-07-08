@@ -1,7 +1,7 @@
-import type { ReactNode } from 'react';
+import type { PropsWithChildren } from 'react';
 
-export interface ModalPropsType {
-  children: ReactNode;
+export interface ModalPropsType extends PropsWithChildren {
+  className?: string;
   onClose?: () => void;
   isOpen?: boolean;
 }

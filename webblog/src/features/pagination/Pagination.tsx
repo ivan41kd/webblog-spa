@@ -15,7 +15,7 @@ export const Pagination: FC<PaginationPropsType> = memo(
         {type === 'base' ? (
           <>
             <Button
-              className={styles['pagination-item']}
+              className={cn(styles['pagination-item'], styles['to-first'])}
               onClick={() => onPageChange(1)}
               isDisabled={currentPage === 1}>
               {'<<'}
@@ -55,7 +55,7 @@ export const Pagination: FC<PaginationPropsType> = memo(
               {'>'}
             </Button>
             <Button
-              className={styles['pagination-item']}
+              className={cn(styles['pagination-item'], styles['to-last'])}
               onClick={() => onPageChange(totalPages)}
               isDisabled={currentPage === totalPages}>
               {'>>'}

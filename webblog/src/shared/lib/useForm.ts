@@ -2,13 +2,17 @@ import { useState } from 'react';
 
 type FormDataType = { [key: string]: string };
 
+interface UseFormPropsType {
+  defaultValues: FormDataType;
+}
+
 type ErrorsType = { [key: string]: string };
 
-export const useForm = ({ defaultValues }: { defaultValues: FormDataType }) => {
+export const useForm = ({ defaultValues }: UseFormPropsType) => {
   const [formData, setFormData] = useState(defaultValues);
   const [errors, setErrors] = useState<ErrorsType>({});
 
-  const getFieldError = (name: string, value: string): string => {
+  const getFieldError = (name: string | unknown, value: string): string => {
     switch (name) {
       case 'name':
         return !value.trim() ? 'Name is required' : '';
@@ -22,6 +26,11 @@ export const useForm = ({ defaultValues }: { defaultValues: FormDataType }) => {
         return '';
       case 'comment':
         return !value.trim() ? 'Comment is required' : '';
+      case 'title':
+        return !value.trim() ? 'Title is required' : '';
+      case 'content': {
+        return !value ? 'Content is required' : '';
+      }
       default:
         return '';
     }
@@ -32,17 +41,17 @@ export const useForm = ({ defaultValues }: { defaultValues: FormDataType }) => {
   ) => {
     const { name, value } = e.target;
 
-    setFormData((formData) => ({ ...formData, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
     if (errors[name]) {
       setErrors((errors) => ({ ...errors, [name]: '' }));
     }
   };
 
   const validateForm = () => {
-    const newErrors: { [key: string]: string } = {};
+    const newErrors: ErrorsType = {};
 
     Object.keys(formData).forEach((key) => {
-      const error = getFieldError(key, formData[key]);
+      const error = getFieldError(key, formData[key] as string);
       if (error) newErrors[key] = error;
     });
 

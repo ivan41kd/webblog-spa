@@ -16,16 +16,12 @@ export const Button: FC<ButtonPropsType> = memo(
     isDisabled = false,
     isSubmit = false,
   }) => {
-    const btnClass = cn(
-      styles.button,
-      {
-        [styles[variant]]: variant !== 'default',
-        [styles[size]]: size,
-        [`text-${fontSize}`]: fontSize,
-        [`font-${fontWeight}`]: fontWeight,
-      },
-      className
-    );
+    const btnClass = cn(className, styles.button, {
+      [styles[variant]]: variant !== 'default',
+      [styles[size]]: size,
+      [`text-${fontSize}`]: fontSize,
+      [`font-${fontWeight}`]: fontWeight,
+    });
 
     return (
       <button

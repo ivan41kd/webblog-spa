@@ -1,1 +1,6 @@
-export type { PostType } from './type';
+export type {
+  PostAuthorType,
+  PostContentDocType,
+  PostContentType,
+  PostType,
+} from './type';

@@ -2,7 +2,7 @@ import type { FC } from 'react';
 
 import { CalendarIcon, ViewsIcon } from '@shared/icons';
 import { Image, Text } from '@shared/ui';
-import { formatDate } from '@shared/utils/formatDate';
+import { formatDate } from '@shared/utils';
 
 import styles from './post-row.module.scss';
 import type { PostRowPropsType } from './type';

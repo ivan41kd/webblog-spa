@@ -1,22 +1,14 @@
 import { type FC } from 'react';
-import { useNavigate, useSearchParams } from 'react-router';
 
 import { useAppDispatch } from '@app/store/rootReducer';
 
 import { useForm } from '@shared/lib';
 import { Button, Input } from '@shared/ui';
 
-import { login } from '../../model/slice';
+import { login } from '../../../../model';
 import styles from './login-form.module.scss';
 
-type LoginFormPropsType = {
-  isModal?: boolean;
-};
-
-export const LoginForm: FC<LoginFormPropsType> = ({ isModal = false }) => {
-  const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
-
+export const LoginForm: FC = () => {
   const dispatch = useAppDispatch();
 
   const { handleChange, formData, errors, validateForm } = useForm({
@@ -25,36 +17,19 @@ export const LoginForm: FC<LoginFormPropsType> = ({ isModal = false }) => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    e.stopPropagation();
 
     if (validateForm()) {
-      const continuePath = searchParams.get('continue');
-      const cleanHash = window.location.hash.replace('#', '');
-      if (continuePath) {
-        navigate({
-          pathname: continuePath,
-          hash: cleanHash,
-        });
-      }
-      if (isModal) navigate(0);
-      dispatch(login(JSON.stringify(formData)));
+      dispatch(login(formData));
     }
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    handleChange(e);
-  };
-
   return (
-    <form
-      onSubmit={(e) => {
-        handleSubmit(e);
-      }}
-      className={styles['login-form']}
-      noValidate>
+    <form onSubmit={handleSubmit} className={styles['login-form']} noValidate>
       <Input
         size="lg"
         type="text"
-        onChange={handleInputChange}
+        onChange={handleChange}
         value={formData.name}
         error={errors.name}
         placeholder="Name"
@@ -65,7 +40,7 @@ export const LoginForm: FC<LoginFormPropsType> = ({ isModal = false }) => {
       <Input
         size="lg"
         type="password"
-        onChange={handleInputChange}
+        onChange={handleChange}
         value={formData.password}
         error={errors.password}
         placeholder="Password"
