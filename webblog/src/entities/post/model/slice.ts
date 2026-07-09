@@ -16,7 +16,11 @@ const initialState: {
   isFound: boolean;
   error: boolean | null;
 } = {
-  posts: posts,
+  posts: posts.concat(
+    localStorage.getItem('post')
+      ? JSON.parse(localStorage.getItem('post') ?? '')
+      : []
+  ),
   post: null,
   isFound: false,
   isLoading: false,
@@ -162,7 +166,14 @@ export const PostSlice = createSlice({
           post.isLiked = false;
         }
         if (localStorage.getItem('post')) {
-          localStorage.setItem('post', JSON.stringify(state.post));
+          const localPosts = JSON.parse(localStorage.getItem('post') ?? '[]');
+          const index = localPosts.findIndex(
+            (post: PostType) => post.id === state?.post?.id
+          );
+          if (index !== -1) {
+            localPosts[index] = state.post;
+            localStorage.setItem('post', JSON.stringify(localPosts));
+          }
         }
       }
     },
@@ -171,9 +182,18 @@ export const PostSlice = createSlice({
         (post) => post.id === action.payload
       );
 
+      const localPosts = JSON.parse(localStorage.getItem('post') ?? '[]');
+
       if (deletedPost) {
-        state.posts = state.posts.filter((post) => post !== deletedPost);
-        localStorage.removeItem('post');
+        state.posts = state.posts.filter(
+          (post: PostType) => post.id !== action.payload
+        );
+        localStorage.setItem(
+          'post',
+          JSON.stringify(
+            localPosts.filter((post: PostType) => post.id !== action.payload)
+          )
+        );
       }
     },
     likePost: (state) => {
@@ -186,7 +206,14 @@ export const PostSlice = createSlice({
           state.post.isLiked = false;
         }
         if (localStorage.getItem('post')) {
-          localStorage.setItem('post', JSON.stringify(state.post));
+          const localPosts = JSON.parse(localStorage.getItem('post') ?? '[]');
+          const index = localPosts.findIndex(
+            (post: PostType) => post.id === state?.post?.id
+          );
+          if (index !== -1) {
+            localPosts[index] = state.post;
+            localStorage.setItem('post', JSON.stringify(localPosts));
+          }
         }
       }
     },
@@ -238,9 +265,13 @@ export const PostSlice = createSlice({
       state.error = false;
     });
     builder.addCase(fetchCreatePost.fulfilled, (state, action) => {
-      state.posts = [...state.posts, action.payload];
-      localStorage.setItem('post', JSON.stringify(action.payload));
+      const localPosts = JSON.parse(localStorage.getItem('post') ?? '[]');
 
+      state.posts = [...state.posts, action.payload];
+      localStorage.setItem(
+        'post',
+        JSON.stringify([...localPosts, action.payload])
+      );
       state.isLoading = false;
     });
     builder.addCase(fetchCreatePost.rejected, (state) => {
@@ -263,7 +294,14 @@ export const PostSlice = createSlice({
         };
         state.post.comments.unshift(comment);
         if (localStorage.getItem('post')) {
-          localStorage.setItem('post', JSON.stringify(state.post));
+          const localPosts = JSON.parse(localStorage.getItem('post') ?? '[]');
+          const index = localPosts.findIndex(
+            (post: PostType) => post.id === state?.post?.id
+          );
+          if (index !== -1) {
+            localPosts[index] = state.post;
+            localStorage.setItem('post', JSON.stringify(localPosts));
+          }
         }
 
         state.isCommentLoading = false;

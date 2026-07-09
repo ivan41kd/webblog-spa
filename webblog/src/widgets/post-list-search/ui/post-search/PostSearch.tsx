@@ -66,6 +66,7 @@ export const PostSearch: FC = memo(() => {
                 onClick={() =>
                   setSearchParams((params) => {
                     params.delete('type', query);
+                    params.delete('p');
                     return params;
                   })
                 }

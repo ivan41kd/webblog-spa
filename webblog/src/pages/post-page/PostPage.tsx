@@ -9,7 +9,7 @@ import {
   PromoBanner,
 } from '@widgets';
 
-import { PostDelete } from '@features/post/ui/post-delete/PostDelete';
+import { PostDelete } from '@features/post';
 
 import { Section } from '@shared/ui';
 
@@ -19,13 +19,12 @@ import { PostArticle } from './ui/post-article';
 
 export const PostPage: FC = () => {
   const isLoading = useAppSelector((state) => state.posts.isLoading);
-  const user = useAppSelector((state) => state.auth.name);
 
   return (
     <Section className={styles.post}>
       <div className={styles['post-header']}>
         <Breadcrumbs />
-        {user && <PostDelete className={styles['post-delete-button']} />}
+        <PostDelete className={styles['post-delete-button']} />
       </div>
       <PostArticle />
       <CommentSection />

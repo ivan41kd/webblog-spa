@@ -1,1 +1,1 @@
-export { PostLike } from './ui';
+export { PostDelete, PostLike } from './ui';

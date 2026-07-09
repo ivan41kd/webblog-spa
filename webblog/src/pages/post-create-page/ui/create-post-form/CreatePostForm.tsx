@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router';
 
 import { useAppDispatch, useAppSelector } from '@app/store/rootReducer';
 
-import { mocks as posts } from '@entities';
 import { fetchCreatePost } from '@entities/post/model/slice';
 
 import { useForm } from '@shared/lib';
@@ -20,6 +19,7 @@ export const CreatePostForm: FC = () => {
   const navigate = useNavigate();
 
   const { name } = useAppSelector((state) => state.auth);
+  const { posts } = useAppSelector((state) => state.posts);
 
   const dispatch = useAppDispatch();
 
