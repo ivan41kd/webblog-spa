@@ -1,12 +1,18 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-import { mocks as posts } from '../mocks';
+import { mocks } from '../mocks';
 import type {
   PostAuthorType,
   PostContentDocType,
   PostContentType,
   PostType,
 } from '../type';
+
+const posts = mocks.concat(
+  localStorage.getItem('post')
+    ? JSON.parse(localStorage.getItem('post') ?? '')
+    : []
+);
 
 const initialState: {
   posts: PostType[];
@@ -16,11 +22,7 @@ const initialState: {
   isFound: boolean;
   error: boolean | null;
 } = {
-  posts: posts.concat(
-    localStorage.getItem('post')
-      ? JSON.parse(localStorage.getItem('post') ?? '')
-      : []
-  ),
+  posts: posts,
   post: null,
   isFound: false,
   isLoading: false,
@@ -33,14 +35,8 @@ export const fetchPostSearch = createAsyncThunk(
   async ({ searchTerm, tags }: { searchTerm: string; tags?: string[] }) => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    const allPosts = posts.concat(
-      localStorage.getItem('post')
-        ? JSON.parse(localStorage.getItem('post') ?? '')
-        : []
-    );
-
     if (tags && tags.length) {
-      const postsWithTag = allPosts.filter((post) =>
+      const postsWithTag = posts.filter((post) =>
         tags.some((tag) => post.tags?.includes(tag))
       );
 
@@ -48,7 +44,7 @@ export const fetchPostSearch = createAsyncThunk(
         post.title.toLowerCase().includes(searchTerm.toLowerCase())
       );
     }
-    return allPosts.filter((post) =>
+    return posts.filter((post) =>
       post.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
   }
@@ -58,12 +54,8 @@ export const fetchPost = createAsyncThunk(
   'post/get',
   async (id: string, { rejectWithValue }) => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
-    const allPosts = posts.concat(
-      localStorage.getItem('post')
-        ? JSON.parse(localStorage.getItem('post') ?? '')
-        : []
-    );
-    const post = allPosts.find((item) => item.id === id);
+
+    const post = posts.find((item) => item.id === id);
 
     if (!post) {
       return rejectWithValue('Post not found');
@@ -98,22 +90,16 @@ export const fetchPosts = createAsyncThunk(
   'posts/get',
   async (tags: string[], { rejectWithValue }) => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
-    const allPosts = posts.concat(
-      localStorage.getItem('post')
-        ? JSON.parse(localStorage.getItem('post') ?? '')
-        : []
-    );
+
     if (!tags.length) {
-      return allPosts;
+      return posts;
     }
 
     if (!posts) {
       return rejectWithValue('Post not found');
     }
 
-    return allPosts.filter((post) =>
-      tags.some((tag) => post.tags?.includes(tag))
-    );
+    return posts.filter((post) => tags.some((tag) => post.tags?.includes(tag)));
   }
 );
 
