@@ -8,12 +8,6 @@ import type {
   PostType,
 } from '../type';
 
-const posts = mocks.concat(
-  localStorage.getItem('post')
-    ? JSON.parse(localStorage.getItem('post') ?? '')
-    : []
-);
-
 const initialState: {
   posts: PostType[];
   post: PostType | null;
@@ -22,10 +16,10 @@ const initialState: {
   isFound: boolean;
   error: boolean | null;
 } = {
-  posts: posts,
+  posts: [],
   post: null,
   isFound: false,
-  isLoading: false,
+  isLoading: true,
   isCommentLoading: false,
   error: null,
 };
@@ -34,6 +28,11 @@ export const fetchPostSearch = createAsyncThunk(
   'posts/search',
   async ({ searchTerm, tags }: { searchTerm: string; tags?: string[] }) => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
+    const posts = mocks.concat(
+      localStorage.getItem('post')
+        ? JSON.parse(localStorage.getItem('post') ?? '')
+        : []
+    );
 
     if (tags && tags.length) {
       const postsWithTag = posts.filter((post) =>
@@ -55,7 +54,12 @@ export const fetchPost = createAsyncThunk(
   async (id: string, { rejectWithValue }) => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    const post = posts.find((item) => item.id === id);
+    const postsLocal = mocks.concat(
+      localStorage.getItem('post')
+        ? JSON.parse(localStorage.getItem('post') ?? '')
+        : []
+    );
+    const post = postsLocal.find((item) => item.id === id);
 
     if (!post) {
       return rejectWithValue('Post not found');
@@ -90,7 +94,11 @@ export const fetchPosts = createAsyncThunk(
   'posts/get',
   async (tags: string[], { rejectWithValue }) => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
-
+    const posts = mocks.concat(
+      localStorage.getItem('post')
+        ? JSON.parse(localStorage.getItem('post') ?? '')
+        : []
+    );
     if (!tags.length) {
       return posts;
     }
@@ -129,6 +137,28 @@ export const fetchCreatePost = createAsyncThunk(
       likes: 0,
       comments: [],
       date: new Date() + '',
+    };
+  }
+);
+
+export const fetchEditPost = createAsyncThunk(
+  'posts/edit',
+  async ({
+    id,
+    title,
+    description,
+    content,
+  }: {
+    id: string | number;
+    title: string;
+    description: string;
+    content: PostContentType[] | PostContentDocType;
+  }) => {
+    return {
+      id,
+      title,
+      description,
+      content,
     };
   }
 );
@@ -261,6 +291,26 @@ export const PostSlice = createSlice({
       state.isLoading = false;
     });
     builder.addCase(fetchCreatePost.rejected, (state) => {
+      state.error = true;
+      state.isLoading = false;
+    });
+    builder.addCase(fetchEditPost.pending, (state) => {
+      state.isLoading = true;
+      state.error = false;
+    });
+    builder.addCase(fetchEditPost.fulfilled, (state, action) => {
+      const localPosts = JSON.parse(localStorage.getItem('post') ?? '[]');
+      const postIndex = localPosts.findIndex(
+        (el: PostType) => el.id === action.payload.id
+      );
+      if (postIndex !== -1) {
+        localPosts[postIndex] = { ...localPosts[postIndex], ...action.payload };
+
+        localStorage.setItem('post', JSON.stringify(localPosts));
+        state.isLoading = false;
+      }
+    });
+    builder.addCase(fetchEditPost.rejected, (state) => {
       state.error = true;
       state.isLoading = false;
     });

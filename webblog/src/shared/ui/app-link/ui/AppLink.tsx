@@ -1,6 +1,8 @@
+'use client';
 import cn from 'classnames';
+import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import type { FC } from 'react';
-import { Link, useLocation, useSearchParams } from 'react-router';
 
 interface AppLinkPropsType {
   title: string;
@@ -15,8 +17,7 @@ export const AppLink: FC<AppLinkPropsType> = ({
   className,
   children,
 }) => {
-  const [searchParams] = useSearchParams();
-  const location = useLocation();
+  const searchParams = useSearchParams();
 
   const allParams = Object.fromEntries(searchParams.entries());
   const titleInQuery = Object.values(allParams).includes(title.toLowerCase());
@@ -29,7 +30,7 @@ export const AppLink: FC<AppLinkPropsType> = ({
   });
 
   return (
-    <Link className={linkClassName} to={href}>
+    <Link className={linkClassName} href={href}>
       {children}
     </Link>
   );

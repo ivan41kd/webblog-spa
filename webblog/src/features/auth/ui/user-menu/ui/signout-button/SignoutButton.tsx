@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 
-import { useAppDispatch } from '@app/store/rootReducer';
+import { useAppDispatch } from '@app/hooks';
 
 import { signout } from '@features/auth/model';
 

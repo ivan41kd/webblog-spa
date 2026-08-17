@@ -1,30 +1,33 @@
-import { ResetIcon as CloseIcon } from '@/shared/icons';
+'use client';
+
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { type ChangeEvent, type FC, memo, useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router';
 import { useDebouncedCallback } from 'use-debounce';
 
+import { ResetIcon as CloseIcon } from '@shared/icons';
 import { Button, Input } from '@shared/ui';
 
 import styles from './post-search.module.scss';
 
 export const PostSearch: FC = memo(() => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const searchParams = useSearchParams();
 
+  const params = new URLSearchParams(searchParams.toString());
+  const router = useRouter();
+  const pathname = usePathname();
   const query = searchParams.get('q') || '';
   const typeQuery = searchParams.getAll('type') || '';
 
   const [text, setText] = useState(query);
 
   const debouncedSearch = useDebouncedCallback((value: string) => {
-    setSearchParams((param) => {
-      if (!value) {
-        param.delete('q');
-      } else {
-        param.set('q', value);
-      }
-      param.delete('p');
-      return param;
-    });
+    if (!value) {
+      params.delete('q');
+    } else {
+      params.set('q', value);
+    }
+    params.delete('p');
+    router.push(`${pathname}?${params.toString()}`);
   }, 700);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -36,11 +39,9 @@ export const PostSearch: FC = memo(() => {
   const handleClear = () => {
     setText('');
     debouncedSearch.cancel();
-    setSearchParams((param) => {
-      param.delete('q');
-      param.delete('p');
-      return param;
-    });
+    params.delete('p');
+    params.delete('q');
+    router.push(`${pathname}?${params.toString()}`);
   };
 
   useEffect(() => {
@@ -63,13 +64,11 @@ export const PostSearch: FC = memo(() => {
             return (
               <Button
                 className={styles['post-search-reset-button']}
-                onClick={() =>
-                  setSearchParams((params) => {
-                    params.delete('type', query);
-                    params.delete('p');
-                    return params;
-                  })
-                }
+                onClick={() => {
+                  params.delete('type', query);
+                  params.delete('p');
+                  router.push(`${pathname}?${params.toString()}`);
+                }}
                 key={`type-${query}`}>
                 {query}
                 <CloseIcon

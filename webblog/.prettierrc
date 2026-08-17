@@ -9,6 +9,7 @@
   "importOrder": [
     "<THIRD_PARTY_MODULES>",
     "^./($|/.*)$",
+    "^@public($|/.*)$",
     "^@app($|/.*)$",
     "^@processes($|/.*)$",
     "^@pages($|/.*)$",

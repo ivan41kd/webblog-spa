@@ -1,6 +1,6 @@
 import { type FC } from 'react';
 
-import { useAppDispatch } from '@app/store/rootReducer';
+import { useAppDispatch } from '@app/hooks';
 
 import { useForm } from '@shared/lib';
 import { Button, Input } from '@shared/ui';

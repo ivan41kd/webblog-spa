@@ -1,11 +1,12 @@
 import { type FC, memo } from 'react';
 
+import postImg from '@public/post-img.svg';
+
 import { LikeIcon, ViewsIcon } from '@shared/icons';
-import { Image, Text } from '@shared/ui';
+import { CustomImage, Text } from '@shared/ui';
 
 import styles from './post-card.module.scss';
 import type { PostCardPropsType } from './type';
-import postImg from '/post-img.svg';
 
 export const PostCard: FC<PostCardPropsType> = memo(
   ({ title, description, views, likes, date, tags }) => {
@@ -25,8 +26,8 @@ export const PostCard: FC<PostCardPropsType> = memo(
               })}
             </div>
           )}
-          <Image
-            src={postImg}
+          <CustomImage
+            src={postImg.src}
             alt={title}
             className={styles['post-card-img']}
           />

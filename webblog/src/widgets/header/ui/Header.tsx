@@ -1,101 +1,54 @@
 import cn from 'classnames';
-import { type FC, useEffect } from 'react';
-import Skeleton from 'react-loading-skeleton';
-import { Link, NavLink, useNavigate } from 'react-router';
+import Link from 'next/link';
+import { type FC } from 'react';
 
-import { useAppDispatch, useAppSelector } from '@app/store/rootReducer';
-
-import { LoginModal, UserMenu } from '@features/auth';
+import { StoreInitializer } from '@app/StoreInitilization';
 
 import { CompanyIcon } from '@shared/icons';
-import { Button, Container, NavList, Text } from '@shared/ui';
+import { Container } from '@shared/ui';
 
 import { fetchHeaderList } from '../model/slice';
-import { HeaderMenu } from './header-menu';
+import { HeaderAuth } from './header-auth';
+import { HeaderBurger } from './header-burger';
+import { HeaderNavList } from './header-navlist';
 import styles from './header.module.scss';
 
 interface HeaderPropsType {
   className?: string;
 }
-
+const navItems = [
+  { title: 'Coffee', link: '/home?type=coffee' },
+  { title: 'Weekend', link: '/home?type=weekend' },
+  { title: 'Code', link: '/home?type=code' },
+];
 export const Header: FC<HeaderPropsType> = ({ className }) => {
-  const { links, isLoading } = useAppSelector((state) => state.header);
-  const { isAuth } = useAppSelector((state) => state.auth);
-
-  const dispatch = useAppDispatch();
-  const navigate = useNavigate();
-
   const headerClass = cn(className, styles.header);
 
-  useEffect(() => {
-    dispatch(
-      fetchHeaderList([
-        { title: 'Coffee', link: '/home?type=coffee' },
-        {
-          title: 'Weekend',
-          link: '/home?type=weekend',
-        },
-        { title: 'Code', link: '/home?type=code' },
-      ])
-    );
-  }, [dispatch]);
-
   return (
-    <header className={headerClass}>
-      <Container>
-        <div className={styles['header-wrapper']}>
-          <div className={styles['header-main']}>
-            <Link to="/" className={styles['header-logo']} aria-label="Home">
-              <CompanyIcon className={styles['header-logo']} />
-            </Link>
-            <NavLink
-              to={'/home'}
-              className={({ isActive }) =>
-                cn(styles['header-home'], isActive && 'active')
-              }>
-              Home
-            </NavLink>
+    <StoreInitializer
+      initialize={(store) => store.dispatch(fetchHeaderList(navItems))}>
+      <header className={headerClass}>
+        <Container>
+          <div className={styles['header-wrapper']}>
+            <div className={styles['header-main']}>
+              <Link
+                href="/"
+                className={styles['header-logo']}
+                aria-label="Home">
+                <CompanyIcon className={styles['header-logo']} />
+              </Link>
+              <Link href="/home">Home</Link>
+            </div>
+            <nav className={styles['header-nav']}>
+              <HeaderNavList />
+            </nav>
+            <div className={styles['header-menu']}>
+              <HeaderAuth />
+              <HeaderBurger />
+            </div>
           </div>
-          <nav className={styles['header-nav']}>
-            {isLoading ? (
-              <Skeleton width={300} />
-            ) : (
-              <NavList
-                itemsList={links}
-                listClassName={styles['header-nav-list']}
-                itemClassName={styles['header-nav-item']}
-              />
-            )}
-          </nav>
-          <div className={styles['header-menu']}>
-            {isLoading ? (
-              <Skeleton width={100} height={'100%'} />
-            ) : !isAuth ? (
-              <LoginModal>
-                <Button className={styles['header-login-button']} size="md">
-                  <Text>Login</Text>
-                </Button>
-              </LoginModal>
-            ) : (
-              <>
-                <Button onClick={() => navigate('posts/create')}>
-                  Create post
-                </Button>
-                <UserMenu className={styles['header-user']} />
-              </>
-            )}
-            <HeaderMenu
-              navSlot={
-                <NavList
-                  itemsList={links}
-                  listClassName={styles['header-nav-list']}
-                  itemClassName={styles['header-nav-item']}
-                />
-              }
-            />
-          </div>
-        </div>
-      </Container>
-    </header>
+        </Container>
+      </header>
+    </StoreInitializer>
   );
 };

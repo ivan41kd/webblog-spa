@@ -4,6 +4,7 @@ export { CalendarIcon } from './calendar-icon';
 export { ClockIcon } from './clock-icon';
 export { CommentsIcon } from './comments-icon';
 export { CompanyIcon } from './company-icon';
+export { EditIcon } from './edit-icon';
 export { EmailIcon } from './email-icon';
 export { EyeClosedIcon } from './eye-closed-icon';
 export { EyeOpenedIcon } from './eye-opened-icon';

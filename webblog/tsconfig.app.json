@@ -25,8 +25,8 @@
       "@app": ["src/app"],
       "@app/*": ["src/app/*"],
 
-      "@pages": ["src/pages"],
-      "@pages/*": ["src/pages/*"],
+      "@pages": ["src/fsd-pages"],
+      "@pages/*": ["src/fsd-pages/*"],
 
       "@widgets": ["src/widgets"],
       "@widgets/*": ["src/widgets/*"],

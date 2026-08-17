@@ -1,6 +1,6 @@
 import { type FC, memo } from 'react';
 
-import { Image, ReadMore, Text } from '@shared/ui';
+import { CustomImage, ReadMore, Text } from '@shared/ui';
 import { formatDate } from '@shared/utils';
 
 import styles from './comment.module.scss';
@@ -11,7 +11,7 @@ export const CommentCard: FC<CommentCardPropsType> = memo(
     return (
       <div className={styles.comment} ref={ref}>
         <div className={styles['comment-info']}>
-          <Image className={styles['comment-avatar']} src={avatar} />
+          <CustomImage className={styles['comment-avatar']} src={avatar} />
           <div className={styles['comment-author']}>
             <Text>{user}</Text>
             <Text className={styles['comment-date']}>{formatDate(date)}</Text>

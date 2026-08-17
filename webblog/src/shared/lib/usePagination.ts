@@ -1,5 +1,6 @@
+'use client';
+import { useSearchParams } from 'next/navigation';
 import { type Dispatch, type SetStateAction, useMemo, useState } from 'react';
-import { useSearchParams } from 'react-router';
 
 interface UsePaginationReturnType<T> {
   pageData: T[];
@@ -16,7 +17,7 @@ export const usePagination = <T>(
   data: T[],
   dataPerPage = 12
 ): UsePaginationReturnType<T> => {
-  const [searchParams] = useSearchParams();
+  const searchParams = useSearchParams();
 
   const [offset, setOffset] = useState(1);
 

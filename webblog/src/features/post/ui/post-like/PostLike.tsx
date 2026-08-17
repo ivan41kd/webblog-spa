@@ -1,6 +1,6 @@
 import { type FC, memo } from 'react';
 
-import { useAppDispatch } from '@app/store/rootReducer';
+import { useAppDispatch } from '@app/hooks';
 
 import { likePost } from '@entities/post';
 

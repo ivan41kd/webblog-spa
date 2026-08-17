@@ -1,8 +1,9 @@
 @use '@styles/variables/radius' as *;
 .promo {
+  position: relative;
+  height: 18.75rem;
   &-img {
     width: 100%;
-    height: 18.75rem;
     object-fit: cover;
     border-radius: $radius-sm;
   }

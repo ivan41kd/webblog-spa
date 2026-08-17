@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 
 import { CalendarIcon, ViewsIcon } from '@shared/icons';
-import { Image, Text } from '@shared/ui';
+import { CustomImage, Text } from '@shared/ui';
 import { formatDate } from '@shared/utils';
 
 import styles from './post-row.module.scss';
@@ -18,11 +18,14 @@ export const PostRow: FC<PostRowPropsType> = ({
 }) => {
   return (
     <div className={styles['post-row']}>
-      <Image src={img} className={styles['post-row-img']} />
+      <CustomImage src={img} className={styles['post-row-img']} />
 
       <div className={styles['post-row-content']}>
         <div className={styles['post-row-author']}>
-          <Image src={authorImg} className={styles['post-row-author-avatar']} />
+          <CustomImage
+            src={authorImg}
+            className={styles['post-row-author-avatar']}
+          />
           <div className={styles['post-row-author-info']}>
             <Text className={styles['post-row-author-name']}>{authorName}</Text>
             <div className={styles['post-row-info']}>

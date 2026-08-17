@@ -1,13 +1,15 @@
 import { type FC } from 'react';
 
+import postImg from '@public/post-img.svg';
+
 import { CalendarIcon, ClockIcon, ViewsIcon } from '@shared/icons';
-import { Image, Text, Title } from '@shared/ui';
+import { CustomImage, Text, Title } from '@shared/ui';
 import { calculateReadingTime, formatDate } from '@shared/utils';
 
 import type { PostContentType } from '../../type';
+import { PostDocText } from './PostDocText';
 import styles from './post-details.module.scss';
 import type { PostDetailsPropsType } from './type';
-import postImg from '/post-img.svg';
 
 export const PostDetails: FC<PostDetailsPropsType> = ({
   title,
@@ -34,9 +36,11 @@ export const PostDetails: FC<PostDetailsPropsType> = ({
 
   const readingTime = getReadingTime();
 
+  console.log(content);
+
   return (
     <div className={styles['post-details']}>
-      <Image src={postImg} className={styles['post-details-img']} />
+      <CustomImage src={postImg} className={styles['post-details-img']} />
       <div className={styles['post-details-header']}>
         <Title className={styles['post-details-title']}>{title}</Title>
         <div className={styles['post-details-info']}>
@@ -60,40 +64,22 @@ export const PostDetails: FC<PostDetailsPropsType> = ({
 
       <div className={styles['post-details-content']}>
         {!isJSONType
-          ? content.map((content: PostContentType, index: number) => {
-              return (
-                <div className={styles['post-details-content']} key={index}>
-                  {content.text.map((text: string, textIndex: number) => {
-                    return (
-                      <Text
-                        key={`text-${textIndex}`}
-                        className={styles['post-details-content-text']}>
-                        {text}
-                      </Text>
-                    );
-                  })}
-                </div>
-              );
-            })
-          : content.content?.map((content, index) => {
-              return content.type === 'paragraph' && content.content ? (
+          ? content.map((content: PostContentType) =>
+              content.text.map((text: string, textIndex: number) => (
                 <Text
-                  key={`text-${index}`}
+                  key={`text-${textIndex}`}
                   className={styles['post-details-content-text']}>
-                  {content.content?.map((text, index) => {
-                    return text.marks && text.marks[0].type === 'bold' ? (
-                      <span key={`${text.marks[0].type}-${index}`}>
-                        {text.text}
-                      </span>
-                    ) : (
-                      text.text
-                    );
-                  })}
+                  {text}
                 </Text>
-              ) : (
-                <br />
-              );
-            })}
+              ))
+            )
+          : content.content?.map((textContent, index) => (
+              <PostDocText
+                textContent={textContent}
+                key={index}
+                type={textContent.type}
+              />
+            ))}
       </div>
     </div>
   );

@@ -1,4 +1,3 @@
-export { LoginModal } from '../features/auth/ui/login-modal';
 export { Breadcrumbs } from './breadcrumbs';
 export { Footer } from './footer';
 export { Header, headerReducer } from './header';

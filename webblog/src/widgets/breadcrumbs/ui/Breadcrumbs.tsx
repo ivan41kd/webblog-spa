@@ -1,40 +1,32 @@
-import classNames from 'classnames';
+'use client';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import type { FC } from 'react';
-import { Link, type UIMatch, useLocation, useMatches } from 'react-router';
-
-import { Text } from '@shared/ui';
 
 import styles from './breadcrumbs.module.scss';
 
-interface Breadcrumb {
-  label: string;
-  link: string;
-}
-
-interface handleCrumb {
-  crumb: (data: unknown) => Breadcrumb;
-}
-
 export const Breadcrumbs: FC = () => {
-  const matches = useMatches();
-  const { pathname } = useLocation();
+  const pathname = usePathname();
+  const segments = pathname.split('/').filter((item) => item !== '');
 
-  const links = (matches as UIMatch<unknown, handleCrumb>[])
-    .filter((match) => typeof match.handle?.crumb === 'function')
-    .map((match) => {
-      return match.handle.crumb(match.params);
-    });
+  const links = segments.map((segment, index) => {
+    const href = `/${segments.slice(0, index + 1).join('/')}`;
+
+    const label = segment;
+    return { href, label };
+  });
 
   return (
     <nav className={styles.breadcrumbs}>
+      <Link className={styles['breadcrumbs-item']} href={'/'}>
+        Home
+      </Link>
       {links.map((link) => (
         <Link
-          className={classNames(styles['breadcrumbs-item'], {
-            active: link.link === pathname,
-          })}
-          to={link.link}
-          key={link.link}>
-          <Text>{link.label}</Text>
+          className={styles['breadcrumbs-item']}
+          key={link.href}
+          href={link.href}>
+          {link.label}
         </Link>
       ))}
     </nav>

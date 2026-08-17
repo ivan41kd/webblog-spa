@@ -10,6 +10,7 @@
   &-img {
     object-position: center;
     height: 18.75rem;
+    width: 100%;
     object-fit: cover;
     border-radius: $radius-sm;
   }
@@ -45,7 +46,7 @@
   }
   &-content-text {
     word-break: break-all;
-    & span {
+    & span.bold {
       font-weight: bold;
     }
   }

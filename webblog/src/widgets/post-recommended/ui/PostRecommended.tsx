@@ -1,5 +1,5 @@
+import Link from 'next/link';
 import type { FC } from 'react';
-import { Link } from 'react-router';
 
 import { PostRow } from '@entities';
 
@@ -15,7 +15,7 @@ export const PostRecommended: FC = () => {
       <div className={styles['post-recommended-list']}>
         {RECOMMENDED_POSTS.map((item) => {
           return (
-            <Link to={`/posts/${item.id}`} key={item.id}>
+            <Link href={`/posts/${item.id}`} key={item.id}>
               <PostRow
                 img={item.img}
                 title={item.title}

@@ -1,8 +1,7 @@
+'use client';
+import { useAppSelector } from '@/app/hooks';
+import Image from 'next/image';
 import { type FC } from 'react';
-
-import { useAppSelector } from '@app/store/rootReducer';
-
-import { Image } from '@shared/ui';
 
 import styles from './promo.module.scss';
 
@@ -26,10 +25,19 @@ export const PromoBanner: FC = () => {
 
   // eslint-disable-next-line react-hooks/purity
   const id = Math.floor(Math.random() * items.length);
+
   if (isLoading) return;
+
   return (
     <div className={styles.promo}>
-      <Image className={styles['promo-img']} src={items[id].img} />
+      <Image
+        alt={items[id].alt}
+        fill
+        priority
+        className={styles['promo-img']}
+        src={items[id].img}
+        suppressHydrationWarning={true}
+      />
     </div>
   );
 };

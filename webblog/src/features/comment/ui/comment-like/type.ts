@@ -1,5 +1,5 @@
 export interface CommentLikePropsType {
   likes: number;
-  onLike: () => void;
+  onLike?: () => void;
   isLiked?: boolean;
 }

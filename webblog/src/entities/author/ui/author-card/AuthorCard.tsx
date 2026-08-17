@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { type FC, memo } from 'react';
 
-import { Image, Text } from '@shared/ui';
+import { CustomImage, Text } from '@shared/ui';
 
 import styles from './author-card.module.scss';
 
@@ -17,7 +17,7 @@ export const AuthorCard: FC<AuthorCardPropsType> = memo(
 
     return (
       <div className={authorCardClassName}>
-        <Image src={avatar} className={styles['author-card-img']} />
+        <CustomImage src={avatar} className={styles['author-card-img']} />
         <Text>Author:{name}</Text>
       </div>
     );

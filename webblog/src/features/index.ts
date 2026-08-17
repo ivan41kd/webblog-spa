@@ -1,3 +1,3 @@
 export { LoginModal, UserMenu } from './auth';
 export { Pagination } from './pagination';
-export { PostDelete, PostLike } from './post';
+export { PostEdit, PostLike } from './post';

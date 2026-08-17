@@ -1,9 +1,6 @@
-import { type FC, useEffect } from 'react';
-import { useSearchParams } from 'react-router';
-
-import { useAppDispatch } from '@app/store/rootReducer';
-
-import { fetchPostSearch, fetchPosts } from '@entities';
+import { StoreInitializer } from '@/app/StoreInitilization';
+import { AppStore } from '@/app/store/rootReducer';
+import { type FC } from 'react';
 
 import { PostList, PostSearch } from './ui';
 
@@ -14,29 +11,10 @@ interface PostListSearchPropsType {
 export const PostListSearch: FC<PostListSearchPropsType> = ({
   withSearch = false,
 }) => {
-  const [searchParams] = useSearchParams();
-  const dispatch = useAppDispatch();
-
-  const searchQuery = searchParams.get('q');
-  const typeQuery = searchParams.getAll('type');
-
-  useEffect(() => {
-    if (searchQuery) {
-      dispatch(
-        fetchPostSearch({
-          searchTerm: searchQuery,
-          tags: typeQuery,
-        })
-      );
-    } else {
-      dispatch(fetchPosts(typeQuery));
-    }
-  }, [dispatch, searchQuery, typeQuery]);
-
   return (
-    <>
+    <StoreInitializer initialize={(store: AppStore) => console.log(store)}>
       {withSearch && <PostSearch />}
       <PostList />
-    </>
+    </StoreInitializer>
   );
 };

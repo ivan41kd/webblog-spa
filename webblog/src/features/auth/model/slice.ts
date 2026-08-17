@@ -1,12 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const getFromLocalStorage = (key: string) => {
+  if (!key || typeof window === 'undefined') {
+    return '';
+  }
+  return localStorage.getItem(key);
+};
+
 const initialState: {
   isAuth: boolean;
   name: string | null;
 } = {
-  isAuth: !!localStorage.getItem('user'),
-  name: localStorage.getItem('user')
-    ? JSON.parse(localStorage.getItem('user') ?? '').name
+  isAuth: getFromLocalStorage('user') ? !!getFromLocalStorage('user') : false,
+  name: getFromLocalStorage('user')
+    ? JSON.parse(getFromLocalStorage('user') ?? '').name
     : null,
 };
 

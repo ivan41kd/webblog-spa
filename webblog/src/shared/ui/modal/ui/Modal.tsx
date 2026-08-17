@@ -1,3 +1,4 @@
+'use client';
 import cn from 'classnames';
 import { AnimatePresence, LazyMotion, m } from 'motion/react';
 import { type FC, useEffect } from 'react';

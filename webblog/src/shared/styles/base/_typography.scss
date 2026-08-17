@@ -1,13 +1,13 @@
 @use '@styles/variables/colors' as *;
 
 .text-sm {
-  font-size: clamp(0.75rem, 1.5vw, 0.875rem);
+  font-size: clamp(12px, 1.5vw, 12px);
 }
 .text-md {
-  font-size: clamp(0.875rem, 1.5vw, 1rem);
+  font-size: clamp(14px, 1.5vw, 16px);
 }
 .text-lg {
-  font-size: clamp(0.875rem, 1.5vw, 1.25rem);
+  font-size: clamp(14px, 1.5vw, 20px);
 }
 .text-xl {
   font-size: 1.5rem;

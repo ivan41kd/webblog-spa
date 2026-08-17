@@ -1,7 +1,8 @@
+'use client';
+import { useAppSelector } from '@/app/hooks/hooks';
+import Link from 'next/link';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { type FC, memo } from 'react';
-import { Link, useSearchParams } from 'react-router';
-
-import { useAppSelector } from '@app/store/rootReducer';
 
 import { Pagination } from '@features';
 
@@ -17,7 +18,10 @@ const skeletons = Array.from({ length: 4 }, (_, i) => (
 ));
 
 export const PostList: FC = memo(() => {
-  const [, setSearchParams] = useSearchParams();
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const params = new URLSearchParams(searchParams.toString());
+  const router = useRouter();
 
   const { posts, isLoading } = useAppSelector((state) => state.posts);
 
@@ -28,7 +32,7 @@ export const PostList: FC = memo(() => {
     return <div className={styles['post-list']}>{skeletons}</div>;
   }
 
-  if (!pageData.length) {
+  if (!pageData.length && !isLoading) {
     return <p>Posts not found</p>;
   }
 
@@ -36,7 +40,7 @@ export const PostList: FC = memo(() => {
     <>
       <div className={styles['post-list']}>
         {pageData.map((post) => (
-          <Link key={`post-${post.id}`} to={`/posts/${post.id}`}>
+          <Link key={`post-${post.id}`} href={`/posts/${post.id}`}>
             <PostCard
               title={post.title}
               description={post.description}
@@ -56,14 +60,12 @@ export const PostList: FC = memo(() => {
           dataPerPage={dataPerPage}
           currentPage={currentPage}
           onPageChange={(number) => {
-            setSearchParams((prev) => {
-              if (number === 1) {
-                prev.delete('p');
-              } else {
-                prev.set('p', String(number));
-              }
-              return prev;
-            });
+            if (number === 1) {
+              params.delete('p');
+            } else {
+              params.set('p', String(number));
+            }
+            router.push(`${pathname}?${params.toString()}`);
           }}
         />
       )}

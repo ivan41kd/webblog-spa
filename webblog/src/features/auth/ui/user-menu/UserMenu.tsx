@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import type { FC } from 'react';
 
-import { useAppSelector } from '@app/store/rootReducer';
+import { useAppSelector } from '@app/hooks';
 
 import { UserIcon } from '@shared/icons';
 import { Text } from '@shared/ui';
