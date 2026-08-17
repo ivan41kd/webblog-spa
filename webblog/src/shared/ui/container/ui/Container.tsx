@@ -1,4 +1,5 @@
 import cn from 'classnames';
+import type { FC } from 'react';
 
 import styles from './container.module.scss';
 
@@ -7,7 +8,7 @@ interface ContainerPropsType {
   children?: React.ReactNode;
 }
 
-export const Container = ({ className, children }: ContainerPropsType) => {
+export const Container: FC<ContainerPropsType> = ({ className, children }) => {
   const containerClass = cn(className, styles.container);
 
   return <div className={containerClass}>{children}</div>;

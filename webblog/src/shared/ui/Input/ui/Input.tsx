@@ -1,19 +1,26 @@
-import { useState } from 'react';
-
+'use client';
 import cn from 'classnames';
+import { type FC, useState } from 'react';
 
-import { EyeClosedIcon, EyeOpenedIcon, EmailIcon } from '@shared/icons';
+import {
+  EmailIcon,
+  EyeClosedIcon,
+  EyeOpenedIcon,
+  ResetIcon,
+  SearchIcon,
+} from '@shared/icons';
 
 import type { InputPropsType } from '../type';
-
 import styles from './input.module.scss';
 
-export const Input = ({
+export const Input: FC<InputPropsType> = ({
   className,
-  value = '',
   name = 'input',
+  value = '',
   onChange,
+  onReset,
   placeholder = '',
+  error,
   size = 'md',
   fontSize = 'md',
   fontWeight = 'regular',
@@ -24,53 +31,87 @@ export const Input = ({
   icon = null,
   iconPlace = 'left',
   variant = 'default',
-  isError = false,
-}: InputPropsType) => {
+  onBlur,
+  ref,
+}) => {
   const [isVisible, setIsVisible] = useState(type === 'text');
+
   const inputClass = cn(styles.input, styles[`input-${size}`], {
     [styles['input-password']]: type === 'password',
     [styles['input-email']]: type === 'email',
+    [styles['input-search']]: type === 'search',
     [styles['input-icon-left']]: icon && iconPlace === 'left',
     [styles['input-icon-right']]: icon && iconPlace === 'right',
   });
 
+  const inputType =
+    type === 'email'
+      ? type
+      : type === 'password'
+        ? isVisible
+          ? 'text'
+          : 'password'
+        : type;
+
   return (
     <div className={inputClass}>
       {icon && iconPlace === 'left' && type !== 'email' && (
-        <i className={`${styles[`input-icon`]}`}>{icon}</i>
+        <div className={`${styles[`input-icon`]}`}>{icon}</div>
       )}
+      <div className={cn(styles[`input-wrapper`])}>
+        {type === 'email' && (
+          <div className={`${styles[`input-email-icon`]}`}>
+            <EmailIcon />
+          </div>
+        )}
 
-      {type === 'email' && (
-        <i className={`${styles[`input-email-icon`]}`}>
-          <EmailIcon />
-        </i>
-      )}
+        {type === 'search' && (
+          <div className={`${styles[`input-search-icon`]}`}>
+            <SearchIcon />
+          </div>
+        )}
 
-      <input
-        className={cn(styles['input-field'], `text-${fontSize}`, `font-${fontWeight}`, className, {
-          [styles['input-error']]: isError,
-          [styles[`input-${variant}`]]: variant !== 'default',
-        })}
-        defaultValue={value}
-        placeholder={placeholder}
-        type={
-          type === 'email' ? type : type === 'password' ? (isVisible ? 'text' : 'password') : type
-        }
-        minLength={(type === 'password' && 8) || 0}
-        disabled={isDisabled}
-        readOnly={readOnly}
-        name={name}
-        required={isRequired}
-        onChange={onChange}
-      />
-      {icon && iconPlace === 'right' && type !== 'password' && (
-        <i className={`${styles[`input-icon`]}`}>{icon}</i>
-      )}
-      {type === 'password' && (
-        <i className={`${styles['input-password-icon']}`} onClick={() => setIsVisible(!isVisible)}>
-          {isVisible ? <EyeOpenedIcon /> : <EyeClosedIcon />}
-        </i>
-      )}
+        <input
+          className={cn(
+            styles['input-field'],
+            `text-${fontSize}`,
+            `font-${fontWeight}`,
+            className,
+            {
+              [styles[`input-${variant}`]]: variant !== 'default',
+            }
+          )}
+          value={value}
+          placeholder={placeholder}
+          type={inputType}
+          minLength={(type === 'password' && 8) || 0}
+          disabled={isDisabled}
+          readOnly={readOnly}
+          name={name}
+          required={isRequired}
+          onChange={onChange}
+          onBlur={onBlur}
+          ref={ref}
+          autoComplete="on"
+        />
+
+        {icon && iconPlace === 'right' && type !== 'password' && (
+          <div className={`${styles[`input-icon`]}`}>{icon}</div>
+        )}
+        {type === 'password' && (
+          <div
+            className={`${styles['input-password-icon']}`}
+            onClick={() => setIsVisible(!isVisible)}>
+            {isVisible ? <EyeOpenedIcon /> : <EyeClosedIcon />}
+          </div>
+        )}
+        {type === 'search' && value && (
+          <div className={`${styles['input-reset-icon']}`} onClick={onReset}>
+            <ResetIcon />
+          </div>
+        )}
+      </div>
+      {error && <span className="error-text">{error}</span>}
     </div>
   );
 };

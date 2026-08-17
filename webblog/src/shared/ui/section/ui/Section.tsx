@@ -1,4 +1,5 @@
 import cn from 'classnames';
+import type { FC } from 'react';
 
 import styles from './section.module.scss';
 
@@ -7,7 +8,10 @@ interface SectionTypeProps {
   className?: string;
 }
 
-export const Section = ({ children, className = '' }: SectionTypeProps) => {
+export const Section: FC<SectionTypeProps> = ({
+  children,
+  className = '',
+}: SectionTypeProps) => {
   const sectionClass = cn(className, styles.section);
 
   return <section className={sectionClass}>{children}</section>;

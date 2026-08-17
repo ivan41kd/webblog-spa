@@ -1,14 +1,22 @@
 @use '@styles/variables/variables' as *;
-@use './normalize';
 @use '@styles/variables/colors' as *;
+@use './normalize';
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
+html {
+  scroll-padding: 5rem;
+}
 body {
   font-family: $main-font;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   background: $body;
 }
+body.scroll-disabled {
+  overflow: clip;
+}
+
 a {
   text-decoration: none;
   color: $link-default;
@@ -37,4 +45,18 @@ input {
 
 main {
   flex-grow: 1;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.5rem, 1.5vw, 1rem);
+}
+
+.hidden {
+  display: none;
+}
+
+.react-loading-skeleton {
+  line-height: unset !important;
 }

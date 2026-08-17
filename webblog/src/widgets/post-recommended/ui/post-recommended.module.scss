@@ -1,0 +1,16 @@
+@use '@styles/variables/colors' as *;
+
+.post-recommended {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  &-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  &-img {
+    width: 18.75rem;
+    height: 18.75rem;
+  }
+}

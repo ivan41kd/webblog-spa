@@ -1,0 +1,27 @@
+@use '@styles/variables/colors' as *;
+
+.read-more {
+  &-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  &-button {
+    width: auto; /* Keeps width dynamic */
+    display: inline-block;
+    cursor: pointer;
+    color: $brand;
+    transition: 0.3s color;
+    &:hover {
+      color: $brand-hover;
+    }
+    &:active {
+      color: $brand-active;
+    }
+  }
+  &-text.end {
+    &.hidden {
+      display: none;
+    }
+  }
+}

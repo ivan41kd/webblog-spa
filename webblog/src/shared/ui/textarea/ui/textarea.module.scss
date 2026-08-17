@@ -1,0 +1,53 @@
+@use '@styles/variables/variables' as *;
+@use '@styles/variables/radius' as *;
+@use '@styles/variables/colors' as *;
+
+.textarea {
+  display: flex;
+  flex-direction: column;
+
+  &-field {
+    transition: 0.2s border;
+    field-sizing: content;
+    resize: none;
+    border: 0.0625rem solid $input-border;
+    &:not(:placeholder-shown) {
+      border: 0.0625rem solid $filled;
+    }
+    &:hover {
+      border: 0.0625rem solid $input-hover;
+      transition: 0.2s ease-in-out border;
+    }
+    &:focus,
+    &:focus-visible {
+      border: 0.0625rem solid $focus;
+      transition: 0.3s ease-out border;
+      outline: none;
+    }
+    &::placeholder {
+      color: $input-hover;
+    }
+  }
+  &-xs &-field {
+    padding: 0.25rem;
+    border-radius: $radius-sm;
+  }
+  &-sm &-field {
+    padding: 0.5rem;
+    border-radius: $radius-sm;
+  }
+  &-md &-field {
+    padding: 0.75rem;
+    border-radius: $radius-md;
+  }
+  &-lg &-field {
+    padding: clamp(0.5rem, 1vw, 2rem);
+    border-radius: $radius-lg;
+  }
+
+  &-field {
+    &:has(+ :global.error-text) {
+      border: 0.0625rem solid $error;
+    }
+  }
+}

@@ -7,6 +7,7 @@ export interface ButtonPropsType {
   fontWeight?: FontWeightType;
   size?: 'sm' | 'md' | 'lg' | 'xl';
   variant?: 'default' | 'primary' | 'secondary' | 'tertiary';
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent) => void;
   isDisabled?: boolean;
+  isSubmit?: boolean;
 }

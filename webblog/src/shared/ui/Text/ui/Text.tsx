@@ -1,14 +1,15 @@
 import cn from 'classnames';
+import type { FC } from 'react';
 
 import type { TextPropsType } from '../type';
 
-export const Text = ({
+export const Text: FC<TextPropsType> = ({
   tag = 'p',
   className,
-  fontSize,
+  fontSize = 'md',
   fontWeight = 'regular',
   children,
-}: TextPropsType) => {
+}) => {
   const Tag = tag;
 
   return (
@@ -16,8 +17,7 @@ export const Text = ({
       className={cn(className, {
         [`text-${fontSize}`]: fontSize,
         [`font-${fontWeight}`]: fontWeight,
-      })}
-    >
+      })}>
       {children}
     </Tag>
   );

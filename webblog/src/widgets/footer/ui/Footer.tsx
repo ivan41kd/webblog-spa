@@ -1,6 +1,7 @@
 import cn from 'classnames';
+import type { FC } from 'react';
 
-import { Container, Text } from '@/shared/ui';
+import { Container, Text } from '@shared/ui';
 
 import styles from './footer.module.scss';
 
@@ -8,7 +9,7 @@ interface FooterPropsType {
   className?: string;
 }
 
-export const Footer = ({ className }: FooterPropsType) => {
+export const Footer: FC<FooterPropsType> = ({ className }) => {
   const footerClass = cn(className, styles.footer);
 
   return (

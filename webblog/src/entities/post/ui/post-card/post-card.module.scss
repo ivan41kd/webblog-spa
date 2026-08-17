@@ -1,0 +1,149 @@
+@use '@styles/variables/radius' as *;
+@use '@styles/variables/colors' as *;
+@use '@styles/mixins/mixins' as *;
+
+.post-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  border: $border-dark 1px solid;
+  border-radius: $radius-md;
+  overflow: hidden;
+  position: relative;
+  height: 25rem;
+  &:not(.skeleton) {
+    cursor: pointer;
+  }
+  color: $text-main;
+
+  p {
+    transition: all 0.3s;
+  }
+
+  &:hover:not(.skeleton) {
+    .post-card {
+      &-body {
+        background-color: $primary;
+
+        p {
+          color: white;
+        }
+
+        .post-card-stats-icon > path {
+          stroke: white;
+          fill: white;
+        }
+        .post-card-stats-icon g {
+          stroke: white;
+        }
+      }
+      &-description {
+        height: 4.375rem;
+
+        &-text {
+          opacity: 1;
+          transition: all 0.3s;
+          transition-delay: 0.3s;
+        }
+      }
+      &-title {
+        @include line-clamp(2);
+        word-break: break-all;
+      }
+    }
+  }
+
+  &-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &-header {
+    height: 20rem;
+    position: relative;
+  }
+  &-tags {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    gap: 0.75rem;
+    padding: 0.5rem;
+  }
+  &-tag {
+    background: $brand;
+    color: white;
+    padding: 0.5rem;
+    border-radius: $radius-md;
+    max-width: 6.25rem;
+    width: max-content;
+    overflow: hidden;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-transform: capitalize;
+  }
+
+  &-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: min(0.625rem, 1.5vw);
+    margin-top: auto;
+    gap: 0.25rem;
+    background-color: white;
+    transition: 0.3s all;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+  }
+  &-title {
+    @include line-clamp(1);
+  }
+  &-description {
+    transition: all 0.3s;
+    overflow: hidden;
+
+    &-text {
+      opacity: 0;
+      font-size: clamp(0.875rem, 1.5vw, 1rem);
+      margin: 0;
+      @include line-clamp(2);
+      overflow: hidden;
+      text-wrap: balance;
+      color: white;
+    }
+  }
+
+  &:not(.skeleton) &-description {
+    height: 0px;
+  }
+
+  &-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0.625rem;
+  }
+  &-stats {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+  }
+  &-stats-icon {
+    width: 1.125rem;
+    height: 1.125rem;
+  }
+  &-stats-item {
+    display: flex;
+    gap: 0.3125rem;
+    align-items: center;
+  }
+
+  &-date,
+  &-views,
+  &-likes {
+    font-size: clamp(0.75rem, 1.5vw, 0.675rem);
+  }
+}

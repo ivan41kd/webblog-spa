@@ -20,12 +20,31 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
-      "@shared/*": ["src/shared/*"],
-      "@icons/*": ["src/shared/icons/*"],
-      "@pages": ["src/pages"],
-      "@styles/*": ["src/shared/styles/*"],
+      "@public/*": ["public/*"],
+
+      "@app": ["src/app"],
       "@app/*": ["src/app/*"],
-      "@widgets": ["src/widgets"]
+
+      "@pages": ["src/fsd-pages"],
+      "@pages/*": ["src/fsd-pages/*"],
+
+      "@widgets": ["src/widgets"],
+      "@widgets/*": ["src/widgets/*"],
+
+      "@features": ["src/features"],
+      "@features/*": ["src/features/*"],
+
+      "@entities": ["src/entities"],
+      "@entities/*": ["src/entities/*"],
+
+      "@shared": ["src/shared"],
+      "@shared/*": ["src/shared/*"],
+
+      "@icons": ["src/shared/icons"],
+      "@icons/*": ["src/shared/icons/*"],
+
+      "@styles": ["src/shared/styles"],
+      "@styles/*": ["src/shared/styles/*"]
     },
 
     /* Linting */

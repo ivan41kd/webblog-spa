@@ -1,0 +1,18 @@
+@use '@styles/variables/colors' as *;
+
+.breadcrumbs {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+
+  &-item {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    text-transform: capitalize;
+  }
+  &-item:not(:last-child)::after {
+    content: '>';
+    color: $brand;
+  }
+}
